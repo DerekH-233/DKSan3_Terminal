@@ -1,0 +1,39 @@
+name: DKSan3 Daily Log Generator
+on:
+  schedule:
+    - cron: '0 21 * * *' # 每天北京时间早上 5 点自动运行 (UTC 21:00)
+  workflow_dispatch: # 允许你手动点击运行
+
+jobs:
+  generate_log:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Generate Log via DeepSeek
+        run: |
+          RESPONSE=$(curl https://api.deepseek.com/v1/chat/completions \
+            -H "Content-Type: application/json" \
+            -H "Authorization: Bearer ${{ secrets.DEEPSEEK_KEY }}" \
+            -d '{
+              "model": "deepseek-chat",
+              "messages": [
+                {"role": "system", "content": "你是一个名为 DKSan3 的深空观察员，隶属于深空联合 (DSU)。语气冷酷、科学、专业。"},
+                {"role": "user", "content": "撰写今天的任务日志。包含一个观测坐标、系统损耗率，以及一段硬核感悟。300字内。"}
+              ]
+            }')
+          
+          # 提取 AI 内容并存入 logs 文件夹
+          CONTENT=$(echo $RESPONSE | jq -r '.choices[0].message.content')
+          mkdir -p logs
+          FILENAME="logs/$(date +%Y-%m-%d).txt"
+          echo "$CONTENT" > $FILENAME
+
+      - name: Commit and Push
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add logs/
+          git commit -m "AI_LOG_UPDATE: $(date +%Y-%m-%d)"
+          git push
