@@ -1,20 +1,16 @@
 const DSU_CORE = {
     boot() {
-        // 1. 隐藏启动屏
-        document.getElementById('init-screen').style.display = 'none';
+        const initScreen = document.getElementById('init-screen');
+        if (initScreen) {
+            initScreen.style.opacity = '0'; // 先变透明
+            setTimeout(() => initScreen.remove(), 500); // 0.5秒后彻底从网页中删除，绝不占位
+        }
         
-        // 2. 启动音频与视觉
         document.getElementById('bgm').play();
         DSU_RENDERER.init();
         
-        // 3. 加载外部资源
-        document.getElementById('daily-img').style.backgroundImage = `url('https://apod.as93.net/image')`;
-        document.getElementById('current-date').innerText = new Date().toLocaleDateString();
-        
-        // 4. 启动 AI 日志抓取
+        // ... 其他逻辑保持不变 ...
         DSU_AI.fetchLogs();
-        
-        // 5. 启动打字机
         this.runTypewriter();
     },
 
