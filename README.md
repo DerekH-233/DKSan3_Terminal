@@ -53,3 +53,10 @@ dksan3-terminal/
 │   └── YYYY-MM-DD.txt       # [观测存档] 存储由 AI 自动生成的每日文本
 ├── index.html               # [系统入口] 网页主载体
 └── README.md                # [指令说明] 你当前阅读的文档
+
+
+### 🔗 外部上行链路 (External Uplinks)
+
+**AI 核心获取** : [DeepSeek API 控制台](https://platform.deepseek.com/)
+**深空影像来源** : [NASA APOD 官方网站](https://apod.nasa.gov/apod/astropix.html)
+**背景音频 (BGM)** : (https://mc.kurogames.com/website-preface/assets/bgm-ca49994e.mp3)
