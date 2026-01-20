@@ -14,34 +14,45 @@ jobs:
       - name: Fetch NASA APOD Metadata
         id: apod_data
         run: |
-          # 抓取 NASA 每日一图的元数据
+          # 抓取 NASA 每日一图数据
           DATA=$(curl -s "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY")
+          # 使用 jq 提取并清理数据
           TITLE=$(echo $DATA | jq -r '.title')
-          DESC=$(echo $DATA | jq -r '.explanation | .[0:600]') # 截取前600字防止超出长度
-          echo "title=$TITLE" >> $GITHUB_OUTPUT
-          echo "desc=$DESC" >> $GITHUB_OUTPUT
+          DESC=$(echo $DATA | jq -r '.explanation | .[0:600]')
+          # 存入环境变量，防止引号冲突
+          echo "TITLE=$TITLE" >> $GITHUB_ENV
+          echo "DESC=$DESC" >> $GITHUB_ENV
 
       - name: Generate Log via DeepSeek
+        env:
+          DEEPSEEK_KEY: ${{ secrets.DEEPSEEK_KEY }}
         run: |
-          # 将 NASA 数据作为上下文传给 DeepSeek
-          RESPONSE=$(curl https://api.deepseek.com/v1/chat/completions \
-            -H "Content-Type: application/json" \
-            -H "Authorization: Bearer ${{ secrets.DEEPSEEK_KEY }}" \
-            -d '{
-              "model": "deepseek-chat",
-              "messages": [
-                {
-                  "role": "system", 
-                  "content": "你是一个名为 DKSan3 的深空观察员，隶属于深空联合 (DSU)。语气冷酷、科学，带有 15% 的感性扰动。禁止使用 Markdown 格式符号，禁止出现星号（*）。仅输出纯文本，通过换行表达逻辑。"
-                },
-                {
-                  "role": "user", 
-                  "content": "今日观测目标是: ${{ steps.apod_data.outputs.title }}。参考科学背景: ${{ steps.apod_data.outputs.desc }}。请以观察员 DKSan3 的身份撰写一篇 300 字以内的任务日志。你需要基于上述科学事实进行汇报，并融入 15% 的个人情绪扰动。开头请注明观测坐标和系统损耗。记住：绝对不准出现星号格式符号。"
-                }
+          # 使用 jq 安全地构造 JSON 负载，自动处理所有引号和转义
+          JSON_PAYLOAD=$(jq -n \
+            --arg title "$TITLE" \
+            --arg desc "$DESC" \
+            --arg sys_msg "你是一个名为 DKSan3 的深空观察员，隶属于深空联合 (DSU)。语气冷酷、科学，带有 15% 的感性扰动。禁止使用 Markdown 格式符号，禁止出现星号（*）。仅输出纯文本。" \
+            '{
+              model: "deepseek-chat",
+              messages: [
+                {role: "system", content: $sys_msg},
+                {role: "user", content: ("今日观测目标是: " + $title + "。参考科学背景: " + $desc + "。请撰写一篇 300 字以内的任务日志。包含观测坐标和系统损耗。融入 15% 的个人情绪扰动。绝对不准出现星号。")}
               ]
             }')
+
+          RESPONSE=$(curl -s https://api.deepseek.com/v1/chat/completions \
+            -H "Content-Type: application/json" \
+            -H "Authorization: Bearer $DEEPSEEK_KEY" \
+            -d "$JSON_PAYLOAD")
           
           CONTENT=$(echo $RESPONSE | jq -r '.choices[0].message.content')
+          
+          # 检查内容是否获取成功
+          if [ "$CONTENT" == "null" ]; then
+            echo "API Response Error"
+            exit 1
+          fi
+
           mkdir -p logs
           FILENAME="logs/$(date +%Y-%m-%d).txt"
           echo "$CONTENT" > $FILENAME
@@ -51,5 +62,5 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add logs/
-          git commit -m "AI_LOG_SYNC_NASA: $(date +%Y-%m-%d)"
+          git commit -m "AI_LOG_SYNC_NASA: $(date +%Y-%m-%d)" || echo "No changes to commit"
           git push
