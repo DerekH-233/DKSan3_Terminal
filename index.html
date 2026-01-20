@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DKSan3 // DEEP_SPACE_UNION</title>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <!-- 引入 Three.js 核心库 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+
+    <!-- 初始化遮罩 -->
+    <div id="init-screen">
+        <div class="init-glitch">DEEP_SPACE_UNION</div>
+        <button class="init-btn" onclick="DSU_CORE.boot()">[ INITIALIZE_TERMINAL ]</button>
+    </div>
+
+    <!-- 背景 3D 渲染容器 -->
+    <canvas id="three-canvas"></canvas>
+
+    <!-- 四角 HUD 增强感 -->
+    <div class="hud-bracket top-left"><div class="hud-data">SCANNING: 7F-A<br>LAT: 44.09N</div></div>
+    <div class="hud-bracket top-right"><div class="hud-data" style="text-align:right;">LINK: ACTIVE<br>DKSan3_AUTH_OK</div></div>
+    <div class="hud-bracket bottom-left"><div class="hud-data">MISSION: 我们生而眺望</div></div>
+    <div class="hud-bracket bottom-right"><div class="hud-data" style="text-align:right;">SYS: V8.0.1<br>LOC: DEEP_SPACE</div></div>
+
+    <nav>
+        <div class="nav-brand">DSU // DKSan3</div>
+        <div class="nav-status">NODE: STABLE // <span id="current-date"></span></div>
+    </nav>
+
+    <div class="container">
+        <header>
+            <div id="typewriter" class="typewriter-text"></div>
+            <h1 class="main-title">OBSERVER_DKS</h1>
+            <p class="subtitle">隶属于深空联合 (DSU) / 异构信息处理中心</p>
+        </header>
+
+        <!-- 每日深空观测图 (NASA APOD) -->
+        <div class="hero-img" id="daily-img">
+            <div class="img-overlay">LIVE_DATA_FEED // NASA_APOD</div>
+        </div>
+
+        <main class="content-grid">
+            <section>
+                <h2 class="section-label">[ MISSION_LOGS ]</h2>
+                <div id="article-list">
+                    <!-- AI 日志由 ai-fetcher.js 填充 -->
+                </div>
+            </section>
+            
+            <aside>
+                <div class="info-panel">
+                    <h3>SYSTEM_INFO</h3>
+                    <p>>> 纠缠处理器: ONLINE<br>>> 信号延迟: 1.4ms<br>>> 任务: 「生而眺望，直至星尘填满眼眶。」</p>
+                </div>
+            </aside>
+        </main>
+    </div>
+
+    <!-- 文章全屏阅读器 -->
+    <div id="reader" onclick="DSU_UI.closeReader()">
+        <div class="reader-content" id="reader-content"></div>
+    </div>
+
+    <audio id="bgm" loop>
+        <source src="https://mc.kurogames.com/website-preface/assets/bgm-ca49994e.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- 模块化脚本加载 -->
+    <script src="js/three-engine.js"></script>
+    <script src="js/ai-fetcher.js"></script>
+    <script src="js/core.js"></script>
+</body>
+</html>
