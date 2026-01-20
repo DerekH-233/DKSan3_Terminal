@@ -44,15 +44,15 @@ const DSU_AI = {
 
                 // 核心：点击交互逻辑
                 card.onclick = async () => {
-                    console.log(`[DSU] 正在提取日志: ${log.date}`);
+                    // 验证点击：如果点不动，连这个弹窗都不会出
+                    console.log("点击成功：开始提取日志");
+                    
                     try {
                         const contentResp = await fetch(this.getLogPath(`${log.date}.txt`));
-                        if (!contentResp.ok) throw new Error('LOG_FILE_NOT_FOUND');
                         const content = await contentResp.text();
                         this.showReader(log.title, content, log.date);
                     } catch (err) {
-                        console.error(err);
-                        alert("无法读取日志内容，请检查 logs 文件夹。");
+                        alert("提取失败");
                     }
                 };
 
