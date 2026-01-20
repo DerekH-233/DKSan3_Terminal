@@ -1,3 +1,5 @@
+**系统已就绪，DKSan3。祝你在星辰大海的眺望中，旅途愉快。**
+
 # [ DKSan3 // 深空终端 ]
 
 这是我在数字荒原中搭建的一个观测哨。这里不生产热闹，只记录关于冷色调、网格线和星空的某种偏执。
@@ -31,3 +33,23 @@
 
 **节点所有者**: DKSan3  
 **技术协作**: ChatGPT / DeepSeek / NASA APOD  
+
+
+### 📂 系统架构 (Project Structure)
+
+为了便于管理和扩展，项目采用了模块化结构：
+
+```text
+dksan3-terminal/
+├── .github/workflows/       
+│   └── daily_log.yml        # [自动机] 接入 DeepSeek 与 NASA 数据的同步大脑
+├── css/                     
+│   └── main.css             # [视觉控制] 核心工业机能风样式定义
+├── js/                      
+│   ├── three-engine.js      # [核心驱动] Three.js 背景动力引擎
+│   ├── ai-fetcher.js        # [通讯链路] 负责日志抓取与蓝图渲染
+│   └── core.js              # [系统控制] 终端初始化与全局交互逻辑
+├── logs/                    
+│   └── YYYY-MM-DD.txt       # [观测存档] 存储由 AI 自动生成的每日文本
+├── index.html               # [系统入口] 网页主载体
+└── README.md                # [指令说明] 你当前阅读的文档
