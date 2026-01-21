@@ -165,25 +165,84 @@
         };
 
         // --- 2. 3D 背景 (Three.js) ---
+// --- 虚幻蓝图风 3D 背景 (DSU_V13_BLUEPRINT) ---
         function initThree() {
             const scene = new THREE.Scene();
-            const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
-            const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('three-canvas'), alpha: true });
+            const camera = new THREE.PerspectiveCamera(90, window.innerWidth/window.innerHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ 
+                canvas: document.getElementById('three-canvas'), 
+                alpha: true,
+                antialias: true 
+            });
             renderer.setSize(window.innerWidth, window.innerHeight);
 
-            const grid = new THREE.GridHelper(100, 50, 0xff5a09, 0x222222);
-            grid.position.y = -5;
+            // 1. 无限延伸的蓝图网格 (Blueprint Grid)
+            // 使用极淡的青色，营造制图板的感觉
+            const grid = new THREE.GridHelper(500, 50, 0xFFFFFF, 0x111111);
+            grid.position.y = -8;
+            grid.material.opacity = 0.15;
+            grid.material.transparent = true;
             scene.add(grid);
 
-            camera.position.z = 15; camera.position.y = 2;
+            // 2. 虚幻蓝图球体 (The Observer Sphere)
+            // 使用高细分度的经纬线，但不显示实体表面
+            const sphereGeo = new THREE.SphereGeometry(100, 40, 40); 
+            const wireframe = new THREE.WireframeGeometry(sphereGeo);
+            // 建议将线框材质的透明度调低到 0.03 - 0.05 之间
+            const lineMat = new THREE.LineBasicMaterial({ 
+                color: 0xFFFFFF, 
+                transparent: true, 
+                opacity: 0.1, // 极低透明度，营造一种“空气中浮现的UI”感
+                depthWrite: false // 防止线条互相遮挡造成的视觉闪烁
+            });
+            const lineSegment = new THREE.LineSegments(wireframe, lineMat);
+            scene.add(lineSegment);
+
+            // 3. 背景尘埃粒子 (保留并优化)
+            const particlesGeo = new THREE.BufferGeometry();
+            const pCount = 1200;
+            const posArray = new Float32Array(pCount * 3);
+            for(let i=0; i<pCount*3; i++) { 
+                posArray[i] = (Math.random() - 0.5) * 100; 
+            }
+            particlesGeo.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+            const particlesMat = new THREE.PointsMaterial({ 
+                size: 0.03, 
+                color: 0x00f0ff,
+                transparent: true,
+                opacity: 0.4
+            });
+            const particles = new THREE.Points(particlesGeo, particlesMat);
+            scene.add(particles);
+
+            // 4. 坐标轴指示器 (辅助蓝图感)
+            const axesHelper = new THREE.AxesHelper(5);
+            axesHelper.position.y = -7.9;
+            axesHelper.material.opacity = 0;
+            axesHelper.material.transparent = true;
+            scene.add(axesHelper);
+
+            camera.position.z = 25;
+            camera.position.y = 4;
 
             function animate() {
                 requestAnimationFrame(animate);
-                grid.position.z += 0.05;
-                if(grid.position.z > 2) grid.position.z = 0;
+                
+                // 地面网格缓慢移动
+                grid.position.z += 0.02;
+                if(grid.position.z > 2.5) grid.position.z = 0;
+
+                // 球体极慢旋转，模拟星球自转或雷达扫描
+                lineSegment.rotation.y += 0.0005;
+                lineSegment.rotation.x += 0.0002;
+
+                // 尘埃粒子漂浮
+                particles.rotation.y -= 0.0003;
+                
                 renderer.render(scene, camera);
             }
             animate();
+
             window.addEventListener('resize', () => {
                 camera.aspect = window.innerWidth / window.innerHeight;
                 camera.updateProjectionMatrix();
