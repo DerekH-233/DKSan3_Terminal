@@ -16,9 +16,9 @@ jobs:
         id: apod_data
         run: |
           # 抓取数据
-          DATA=$(curl -s "https://apod.as93.net/data")
+          DATA=$(curl -s "https://apod.as93.net/apod")
           TITLE=$(echo $DATA | jq -r '.title')
-          DESC=$(echo $DATA | jq -r '.explanation | .[0:600]')
+          DESC=$(echo $DATA | jq -r '.explanation | .[0:800]')
           echo "TITLE=$TITLE" >> $GITHUB_ENV
           echo "DESC=$DESC" >> $GITHUB_ENV
 
