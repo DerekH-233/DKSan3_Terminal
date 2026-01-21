@@ -46,15 +46,11 @@
 
 ```text
 dksan3-terminal/
-├── .github/workflows/       
-│   └── daily_log.yml        # [自动机] 接入 DeepSeek 与 NASA 数据的同步大脑
-├── css/                     
-│   └── main.css             # [视觉控制] 核心工业机能风样式定义
-├── js/                      
-│   ├── three-engine.js      # [核心驱动] Three.js 背景动力引擎
-│   ├── ai-fetcher.js        # [通讯链路] 负责日志抓取与蓝图渲染
-│   └── core.js              # [系统控制] 终端初始化与全局交互逻辑
-├── logs/                    
-│   └── YYYY-MM-DD.txt       # [观测存档] 存储由 AI 自动生成的每日文本
-├── index.html               # [系统入口] 网页主载体
-└── README.md                # [指令说明] 你当前阅读的文档
+├── .github/                     
+│   └── workflows/
+│       └── daily_log.yml        # [核心] 每天凌晨 0 点运行的 AI 脚本
+├── logs/                        # [动态数据] 所有的日志都在这里
+│   ├── manifest.json            # [大脑] 记录所有日志的日期和标题
+│   └── 2024-01-20.txt           # [存档] AI 写的具体内容
+├── index.html                   # [全量网页] 所有的 CSS 和 JS 都在这里面
+└── README.md                    # [系统说明]
