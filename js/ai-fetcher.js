@@ -2,54 +2,72 @@ const DSU_AI = {
     async fetchLogs() {
         const list = document.getElementById('article-list');
         if (!list) return;
-        list.innerHTML = "LOADING_DATA...";
+        list.innerHTML = "<p style='opacity:0.5'>[ 正在同步深空存档... ]</p>";
 
         try {
-            // 加上时间戳防止浏览器缓存 manifest
-            const resp = await fetch('logs/manifest.json?t=' + new Date().getTime());
-            const logs = await resp.json();
+            // 抓取索引清单，加时间戳防止缓存
+            const response = await fetch('logs/manifest.json?t=' + new Date().getTime());
+            if (!response.ok) throw new Error('MANIFEST_NOT_FOUND');
+            const logs = await response.json();
+            
             list.innerHTML = "";
+            if (logs.length === 0) {
+                list.innerHTML = "<p>存档库为空。等待初始观测...</p>";
+                return;
+            }
 
             logs.forEach(log => {
-                const div = document.createElement('div');
-                div.style.cssText = "border:1px solid rgba(255,90,9,0.3); padding:20px; margin-bottom:20px; cursor:pointer; position:relative; z-index:999; background:rgba(0,0,0,0.8);";
-                div.innerHTML = `<small style="color:#ff5a09">${log.date}</small><h3 style="color:#fff;margin-top:5px;">${log.title}</h3>`;
-                
-                // 强制绑定点击
-                div.onclick = () => {
-                    console.log("Card Clicked!");
-                    this.loadContent(log.date, log.title);
-                };
-                list.appendChild(div);
+                const card = document.createElement('div');
+                card.className = 'article-card';
+                card.innerHTML = `
+                    <small>LOG_ID // ${log.date}</small>
+                    <h3>${log.title}</h3>
+                    <div style="font-size:10px; opacity:0.3; margin-top:15px;">>> 点击提取字节流数据</div>
+                `;
+                card.onclick = () => this.loadPost(log.date, log.title);
+                list.appendChild(card);
             });
         } catch (e) {
-            list.innerHTML = "OFFLINE: MANIFEST_NOT_FOUND";
+            console.error(e);
+            list.innerHTML = "<p style='color:var(--primary)'>[错误] 无法建立连接。请检查 logs/manifest.json</p>";
         }
     },
 
-    async loadContent(date, title) {
+    async loadPost(date, title) {
         try {
             const resp = await fetch(`logs/${date}.txt`);
-            const txt = await resp.text();
-            this.show(title, txt, date);
-        } catch (e) { alert("ERROR_EXTRACTING_LOG"); }
+            const content = await resp.text();
+            this.showReader(title, content, date);
+        } catch (e) { alert("数据包提取失败"); }
     },
 
-    show(title, content, date) {
+    showReader(title, content, date) {
         const reader = document.getElementById('reader');
         reader.innerHTML = `
-            <div style="max-width:800px; margin:0 auto; color:#00f0ff;">
-                <button onclick="DSU_UI.closeReader()" style="position:fixed; top:20px; right:20px; background:#000; color:#ff5a09; border:1px solid #ff5a09; padding:10px; cursor:pointer; z-index:4000;">[ CLOSE ]</button>
-                <h1>${title}</h1><hr><div style="white-space:pre-wrap; margin-top:20px;">${content}</div>
-            </div>`;
+            <div class="reader-inner">
+                <button onclick="window.DSU_UI.closeReader()" style="position:fixed; top:30px; right:40px; background:none; border:1px solid var(--primary); color:var(--primary); padding:10px 15px; cursor:pointer; font-family:'Share Tech Mono'; z-index:4000;">[X] CLOSE</button>
+                <div style="border-left: 3px solid var(--primary); padding-left:20px; margin-bottom:40px;">
+                    <h1 style="color:var(--primary); line-height:1.2;">${title}</h1>
+                    <small style="opacity:0.5;">TIMESTAMP: ${date} // OMEGA_AUTH</small>
+                </div>
+                <div style="white-space:pre-wrap; line-height:1.8; font-size:1.1rem; color:var(--accent);">${content}</div>
+                <div style="margin-top:60px; padding:40px 0; border-top:1px solid #222; text-align:center;">
+                    <button onclick="window.DSU_UI.closeReader()" style="background:none; border:1px solid var(--primary); color:var(--primary); padding:15px 40px; cursor:pointer; width:100%; max-width:300px;">RETURN_TO_TERMINAL</button>
+                </div>
+            </div>
+        `;
         reader.style.display = 'block';
         document.body.style.overflow = 'hidden';
+        reader.scrollTop = 0;
     }
 };
 
 window.DSU_UI = {
-    closeReader: () => {
-        document.getElementById('reader').style.display = 'none';
-        document.body.style.overflow = '';
+    closeReader: function() {
+        const reader = document.getElementById('reader');
+        if (reader) {
+            reader.style.display = 'none';
+            document.body.style.overflow = '';
+        }
     }
 };
