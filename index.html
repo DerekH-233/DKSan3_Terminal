@@ -5,52 +5,122 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DKSan3 // DEEP_SPACE_UNION</title>
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/main.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        :root {
+            --primary: #ff5a09; 
+            --accent: #00f0ff;
+            --bg: #030303;
+            --text: #c0c0c0;
+            --border: rgba(255, 90, 9, 0.2);
+        }
+
+        /* 基础样式 */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Share Tech Mono', monospace; }
+        body { background-color: var(--bg); color: var(--text); overflow-x: hidden; line-height: 1.6; }
+
+        /* 3D 背景与滤镜 */
+        #three-canvas { position: fixed; inset: 0; z-index: -1; pointer-events: none; }
+        body::after {
+            content: ""; position: fixed; inset: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%);
+            background-size: 100% 4px; z-index: 2000; pointer-events: none; opacity: 0.2;
+        }
+
+        /* 初始化屏 */
+        #init-screen {
+            position: fixed; inset: 0; background: #000; z-index: 9999;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+        }
+        .init-btn {
+            padding: 15px 40px; border: 1px solid var(--primary); color: var(--primary);
+            background: none; font-size: 1.2rem; cursor: pointer; transition: 0.3s;
+        }
+        .init-btn:hover { background: var(--primary); color: #000; box-shadow: 0 0 30px var(--primary); }
+
+        /* 核心布局 */
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 40px; position: relative; z-index: 10; }
+        nav { position: fixed; top: 0; width: 100%; padding: 25px 40px; display: flex; justify-content: space-between; z-index: 1000; background: linear-gradient(to bottom, #000, transparent); }
+        header { padding: 160px 0 60px; }
+        .main-title { font-size: clamp(2.5rem, 8vw, 5rem); color: #fff; text-transform: uppercase; line-height: 0.8; }
+        .typewriter-text { color: var(--primary); font-size: 0.9rem; margin-bottom: 10px; min-height: 2em; }
+
+        .hero-img { width: 100%; height: 400px; border: 1px solid var(--border); background-size: cover; background-position: center; filter: grayscale(1); margin-bottom: 60px; }
+        
+        /* 日志列表样式 */
+        .article-card {
+            border: 1px solid var(--border); padding: 20px; margin-bottom: 20px;
+            background: rgba(10,10,10,0.8); cursor: pointer; transition: 0.3s;
+        }
+        .article-card:hover { border-color: var(--accent); background: rgba(0,240,255,0.05); transform: translateX(5px); }
+        .article-card h3 { color: #fff; margin-top: 5px; }
+
+        /* HUD 挂件 */
+        .hud-bracket { position: fixed; width: 60px; height: 60px; border: 1px solid var(--border); z-index: 500; opacity: 0.3; pointer-events: none; }
+        .top-left { top: 20px; left: 20px; border-right: none; border-bottom: none; }
+        .top-right { top: 20px; right: 20px; border-left: none; border-bottom: none; }
+        .bottom-left { bottom: 20px; left: 20px; border-right: none; border-top: none; }
+        .bottom-right { bottom: 20px; right: 20px; border-left: none; border-top: none; }
+
+        /* 全屏阅读器 */
+        #reader {
+            position: fixed; inset: 0; background: rgba(0,5,10,0.98);
+            z-index: 3000; display: none; padding: 60px; overflow-y: auto;
+        }
+        .reader-inner { max-width: 800px; margin: 0 auto; color: var(--accent); }
+
+        /* 页脚 */
+        footer { margin-top: 80px; padding: 60px 0; border-top: 1px solid var(--border); text-align: center; font-size: 10px; }
+        footer a { color: var(--primary); text-decoration: none; border: 1px solid var(--primary); padding: 5px 15px; }
+
+        @media (max-width: 768px) {
+            .container { padding: 0 20px; }
+            #reader { padding: 40px 20px; }
+        }
+    </style>
 </head>
 <body>
+
     <div id="init-screen">
-        <div class="init-glitch">DEEP_SPACE_UNION</div>
-        <button class="init-btn" onclick="DSU_CORE.boot()">[ INITIALIZE_TERMINAL ]</button>
+        <div style="color:var(--primary); font-size: 10px; margin-bottom: 20px;">[ DEEP_SPACE_UNION_BOOT ]</div>
+        <button class="init-btn" onclick="DSU_BOOT()">INITIALIZE</button>
     </div>
 
     <canvas id="three-canvas"></canvas>
 
-    <div class="hud-bracket top-left"><div class="hud-data">SCANNING: 7F-A<br>LAT: 44.09N</div></div>
-    <div class="hud-bracket top-right"><div class="hud-data" style="text-align:right;">LINK: ACTIVE<br>DKSan3_AUTH_OK</div></div>
-    <div class="hud-bracket bottom-left"><div class="hud-data">MISSION: 我们生而眺望</div></div>
-    <div class="hud-bracket bottom-right"><div class="hud-data" style="text-align:right;">SYS: V10.2<br>LOC: DEEP_SPACE</div></div>
+    <div class="hud-bracket top-left"></div><div class="hud-bracket top-right"></div>
+    <div class="hud-bracket bottom-left"></div><div class="hud-bracket bottom-right"></div>
 
     <nav>
-        <div class="nav-brand">DSU // DKSan3</div>
-        <div class="nav-status">NODE: STABLE // <span id="current-date"></span></div>
+        <div style="color:var(--primary); font-weight:bold;">DSU // DKSan3</div>
+        <div style="font-size: 10px; opacity:0.6;">NODE: STABLE // <span id="current-date"></span></div>
     </nav>
 
     <div class="container">
         <header>
             <div id="typewriter" class="typewriter-text"></div>
-            <h1 class="main-title">Observer_DKS</h1>
-            <p style="opacity:0.5; font-size:12px; letter-spacing:2px; margin-top:10px;">隶属于深空联合 (DSU) / 异构信息处理组</p>
+            <h1 class="main-title">DKSan3</h1>
+            <p style="opacity:0.5; font-size:12px; margin-top:10px;">我们生而眺望 // WE BORN TO GAZE</p>
         </header>
 
         <div class="hero-img" id="daily-img"></div>
 
-        <main class="content-grid">
+        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 40px;" id="main-grid">
             <section>
                 <h2 style="color:var(--primary); font-size:1rem; margin-bottom:20px;">[ MISSION_LOGS ]</h2>
                 <div id="article-list"></div>
             </section>
             <aside>
-                <div class="info-panel">
-                    <h3 style="color:var(--accent); margin-bottom:10px;">SYSTEM_INFO</h3>
-                    <p>>> 纠缠处理器: ONLINE<br>>> 任务: 我们生而眺望</p>
+                <div style="border: 1px solid var(--border); padding: 20px; background: rgba(0,0,0,0.5); font-size: 11px;">
+                    <h3 style="color:var(--accent); margin-bottom:10px;">SYSTEM</h3>
+                    <p>>> 状态: 稳定自持<br>>> 任务: 深度采样<br>>> 协议: AI_AUTONOMOUS</p>
                 </div>
             </aside>
-        </main>
+        </div>
 
-        <footer style="margin-top:100px; padding:60px 0; border-top:1px solid var(--border); text-align:center;">
-            <div style="font-size:10px; opacity:0.3; margin-bottom:15px;">&copy; 2024 TERMINAL_SYSTEM // DKSan3</div>
-            <a href="https://github.com/DerekH-233/DKSan3_Terminal" target="_blank" style="color:var(--primary); text-decoration:none; border:1px solid var(--primary); padding:8px 20px; font-size:11px;">VIEW_SOURCE_CODE</a>
+        <footer>
+            <div style="margin-bottom:20px; opacity:0.3;">&copy; 2024 TERMINAL_SYSTEM // DKSan3</div>
+            <a href="https://github.com/DerekH-233/DKSan3_Terminal" target="_blank">VIEW_SOURCE_CODE</a>
         </footer>
     </div>
 
@@ -58,8 +128,99 @@
 
     <audio id="bgm" loop><source src="https://mc.kurogames.com/website-preface/assets/bgm-ca49994e.mp3" type="audio/mpeg"></audio>
 
-    <script src="js/three-engine.js"></script>
-    <script src="js/ai-fetcher.js"></script>
-    <script src="js/core.js"></script>
+    <script>
+        // --- 1. 系统启动与核心控制 ---
+        const DSU_BOOT = () => {
+            document.getElementById('init-screen').remove();
+            document.getElementById('bgm').play();
+            document.getElementById('current-date').innerText = new Date().toLocaleDateString();
+            document.getElementById('daily-img').style.backgroundImage = "url('https://apod.as93.net/image')";
+            
+            initThree();
+            fetchLogs();
+            typeWriter();
+        };
+
+        // --- 2. 3D 背景 (Three.js) ---
+        function initThree() {
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('three-canvas'), alpha: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+
+            const grid = new THREE.GridHelper(100, 50, 0xff5a09, 0x222222);
+            grid.position.y = -5;
+            scene.add(grid);
+
+            camera.position.z = 15; camera.position.y = 2;
+
+            function animate() {
+                requestAnimationFrame(animate);
+                grid.position.z += 0.05;
+                if(grid.position.z > 2) grid.position.z = 0;
+                renderer.render(scene, camera);
+            }
+            animate();
+            window.addEventListener('resize', () => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            });
+        }
+
+        // --- 3. AI 日志抓取与清单渲染 ---
+        async function fetchLogs() {
+            const list = document.getElementById('article-list');
+            try {
+                const res = await fetch('logs/manifest.json?t=' + new Date().getTime());
+                const logs = await res.json();
+                list.innerHTML = "";
+                logs.forEach(log => {
+                    const div = document.createElement('div');
+                    div.className = 'article-card';
+                    div.innerHTML = `<small>${log.date}</small><h3>${log.title}</h3>`;
+                    div.onclick = () => loadPost(log.date, log.title);
+                    list.appendChild(div);
+                });
+            } catch (e) {
+                list.innerHTML = "<p>等待信号同步...</p>";
+            }
+        }
+
+        async function loadPost(date, title) {
+            const res = await fetch(`logs/${date}.txt`);
+            const text = await res.text();
+            const reader = document.getElementById('reader');
+            reader.innerHTML = `
+                <div class="reader-inner">
+                    <button onclick="closeReader()" style="position:fixed; top:30px; right:40px; background:none; border:1px solid var(--primary); color:var(--primary); padding:10px; cursor:pointer;">[X] CLOSE</button>
+                    <h1 style="color:var(--primary); margin-bottom:20px;">${title}</h1>
+                    <div style="white-space:pre-wrap; line-height:1.8;">${text}</div>
+                    <button onclick="closeReader()" style="margin-top:40px; background:none; border:1px solid var(--primary); color:var(--primary); padding:10px 40px; cursor:pointer; width:100%;">RETURN</button>
+                </div>
+            `;
+            reader.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeReader() {
+            document.getElementById('reader').style.display = 'none';
+            document.body.style.overflow = '';
+        }
+
+        // --- 4. 打字机 ---
+        function typeWriter() {
+            const text = ">> 初始化深空终端...\n>> 识别操作员: DKSan3\n>> 目标锁定: 我们生而眺望";
+            let i = 0;
+            const el = document.getElementById('typewriter');
+            function type() {
+                if (i < text.length) {
+                    el.innerHTML += text.charAt(i) === '\n' ? '<br>' : text.charAt(i);
+                    i++; setTimeout(type, 40);
+                }
+            }
+            type();
+        }
+    </script>
 </body>
 </html>
