@@ -1,115 +1,55 @@
-/**
- * DKSan3_Terminal // AI_FETCHER // V10.0_STABLE
- */
-
 const DSU_AI = {
-    // 自动探测路径：无论你在本地还是服务器，确保能找到 logs
-    getLogPath(filename) {
-        return `logs/${filename}`;
-    },
-
     async fetchLogs() {
         const list = document.getElementById('article-list');
         if (!list) return;
-        
-        list.innerHTML = "<p style='opacity:0.5'>[ 正在检索深空存档清单... ]</p>";
+        list.innerHTML = "LOADING_DATA...";
 
         try {
-            // 获取索引清单
-            const response = await fetch(this.getLogPath('manifest.json'));
-            if (!response.ok) throw new Error('MANIFEST_NOT_FOUND');
-            
-            const logs = await response.json();
-            list.innerHTML = ""; // 清空加载提示
+            // 加上时间戳防止浏览器缓存 manifest
+            const resp = await fetch('logs/manifest.json?t=' + new Date().getTime());
+            const logs = await resp.json();
+            list.innerHTML = "";
 
-            if (logs.length === 0) {
-                list.innerHTML = "<p>存档库为空。等待初始观测...</p>";
-                return;
-            }
-
-            // 渲染日志列表
             logs.forEach(log => {
-                const card = document.createElement('div');
-                card.className = 'article-card';
-                // 强制样式确保可点击
-                card.style.cursor = 'pointer';
-                card.style.position = 'relative';
-                card.style.zIndex = '100';
-
-                card.innerHTML = `
-                    <small style="color:var(--primary); pointer-events:none;">DATA_LOG // ${log.date}</small>
-                    <h3 style="margin-top:10px; pointer-events:none;">${log.title}</h3>
-                    <div style="margin-top:10px; font-size:10px; opacity:0.4; pointer-events:none;">>> 提取数据包 (ENTER)</div>
-                `;
-
-                // 核心：点击交互逻辑
-                card.onclick = async () => {
-                    // 验证点击：如果点不动，连这个弹窗都不会出
-                    console.log("点击成功：开始提取日志");
-                    
-                    try {
-                        const contentResp = await fetch(this.getLogPath(`${log.date}.txt`));
-                        const content = await contentResp.text();
-                        this.showReader(log.title, content, log.date);
-                    } catch (err) {
-                        alert("提取失败");
-                    }
+                const div = document.createElement('div');
+                div.style.cssText = "border:1px solid rgba(255,90,9,0.3); padding:20px; margin-bottom:20px; cursor:pointer; position:relative; z-index:999; background:rgba(0,0,0,0.8);";
+                div.innerHTML = `<small style="color:#ff5a09">${log.date}</small><h3 style="color:#fff;margin-top:5px;">${log.title}</h3>`;
+                
+                // 强制绑定点击
+                div.onclick = () => {
+                    console.log("Card Clicked!");
+                    this.loadContent(log.date, log.title);
                 };
-
-                list.appendChild(card);
+                list.appendChild(div);
             });
         } catch (e) {
-            console.error(e);
-            list.innerHTML = "<p style='color:var(--primary)'>[错误] 无法建立数据连接。请确保 Action 已生成 manifest.json。</p>";
+            list.innerHTML = "OFFLINE: MANIFEST_NOT_FOUND";
         }
     },
 
-    showReader(title, content, date) {
+    async loadContent(date, title) {
+        try {
+            const resp = await fetch(`logs/${date}.txt`);
+            const txt = await resp.text();
+            this.show(title, txt, date);
+        } catch (e) { alert("ERROR_EXTRACTING_LOG"); }
+    },
+
+    show(title, content, date) {
         const reader = document.getElementById('reader');
-        if (!reader) return;
-
-        // 注入排版精美的阅读器内容
         reader.innerHTML = `
-            <div style="max-width: 800px; margin: 0 auto; position: relative;">
-                <!-- 右上角关闭 -->
-                <button onclick="window.DSU_UI.closeReader()" 
-                        style="position:fixed; top:30px; right:40px; background:none; border:1px solid var(--primary); color:var(--primary); padding:10px 15px; cursor:pointer; font-family:'Share Tech Mono'; z-index:4000;">
-                    [X] CLOSE
-                </button>
-
-                <div style="border-left: 3px solid var(--primary); padding-left: 20px; margin-bottom: 40px; margin-top: 40px;">
-                    <h1 style="color:var(--primary); font-size: 1.8rem; line-height:1.2;">${title}</h1>
-                    <small style="opacity:0.5;">TIMESTAMP: ${date} // ACCESS: OMEGA</small>
-                </div>
-
-                <div style="white-space: pre-wrap; font-size:1.1rem; line-height:1.8; color:var(--accent); margin-bottom: 80px;">
-                    ${content}
-                </div>
-
-                <div style="margin: 60px 0; padding: 40px 0; border-top: 1px solid #222; text-align: center;">
-                    <button onclick="window.DSU_UI.closeReader()" 
-                            style="background:none; border:1px solid var(--primary); color:var(--primary); padding:15px 40px; cursor:pointer; font-family:'Share Tech Mono'; width:100%; max-width:300px;">
-                        RETURN_TO_TERMINAL
-                    </button>
-                </div>
-            </div>
-        `;
-
+            <div style="max-width:800px; margin:0 auto; color:#00f0ff;">
+                <button onclick="DSU_UI.closeReader()" style="position:fixed; top:20px; right:20px; background:#000; color:#ff5a09; border:1px solid #ff5a09; padding:10px; cursor:pointer; z-index:4000;">[ CLOSE ]</button>
+                <h1>${title}</h1><hr><div style="white-space:pre-wrap; margin-top:20px;">${content}</div>
+            </div>`;
         reader.style.display = 'block';
-        document.body.style.overflow = 'hidden'; // 彻底锁定主屏滚动
-        reader.scrollTop = 0; // 回到顶部
+        document.body.style.overflow = 'hidden';
     }
 };
 
-// 确保 DSU_UI 全局可用，无论在 HTML 还是按钮里调用
 window.DSU_UI = {
-    closeReader: function() {
-        const reader = document.getElementById('reader');
-        if (reader) {
-            reader.style.display = 'none';
-            document.body.style.overflow = ''; // 恢复滚动
-            document.body.style.height = ''; 
-            console.log("[DSU] 阅读器已关闭，主屏控制权已恢复。");
-        }
+    closeReader: () => {
+        document.getElementById('reader').style.display = 'none';
+        document.body.style.overflow = '';
     }
 };
