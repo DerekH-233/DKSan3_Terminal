@@ -1,9 +1,8 @@
-name: DKSan3 Daily Log Generator (APOD_PROXY_SYNC)
+name: DKSan3 Daily Log Generator (NASA_OFFICIAL_SYNC)
 on:
   schedule:
-    # 修改为 UTC 07:00运行（对应美国东部凌晨2点，确保NASA已更新）
-    - cron: '0 7 * * *' 
-  workflow_dispatch: # 保留手动触发，方便你测试
+    - cron: '0 7 * * *' # 北京时间下午 3 点运行
+  workflow_dispatch:
 
 jobs:
   generate_log:
@@ -12,15 +11,22 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Fetch APOD via Proxy
+      - name: Fetch NASA Official Data
         id: apod_data
         run: |
-          # 抓取数据
-          DATA=$(curl -s "https://apod.as93.net/apod")
+          # 直接调用 NASA 官方 API (使用 DEMO_KEY)
+          # 如果以后访问频繁，建议你去 api.nasa.gov 申请一个专属 Key 替换 DEMO_KEY
+          DATA=$(curl -s "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY")
+          
+          # 提取数据
           TITLE=$(echo $DATA | jq -r '.title')
-          DESC=$(echo $DATA | jq -r '.explanation | .[0:800]')
+          DESC=$(echo $DATA | jq -r '.explanation | .[0:600]')
+          IMG_URL=$(echo $DATA | jq -r '.url')
+          
+          # 存入环境变量
           echo "TITLE=$TITLE" >> $GITHUB_ENV
           echo "DESC=$DESC" >> $GITHUB_ENV
+          echo "IMG_URL=$IMG_URL" >> $GITHUB_ENV
 
       - name: Generate Log via DeepSeek
         env:
@@ -29,12 +35,12 @@ jobs:
           JSON_PAYLOAD=$(jq -n \
             --arg title "$TITLE" \
             --arg desc "$DESC" \
-            --arg sys_msg "你是一个名为 DKSan3 的深空观察员，隶属于深空联合 (DSU)。语气冷酷、科学，带有 15% 的感性扰动。禁止使用 Markdown 格式符号，禁止出现星号（*）。仅输出纯文本。" \
+            --arg sys_msg "你是一个名为 DKSan3 的深空观察员，隶属于深空联合 (DSU)。语气冷酷。禁止星号。" \
             '{
               model: "deepseek-chat",
               messages: [
                 {role: "system", content: $sys_msg},
-                {role: "user", content: ("今日观测目标: " + $title + "。参考事实: " + $desc + "。请以 DKSan3 的身份撰写一篇 300 字以内的任务日志。包含观测坐标和系统损耗。禁止使用星号。")}
+                {role: "user", content: ("观测目标: " + $title + "。参考背景: " + $desc + "。撰写300字日志，含坐标和损耗。禁止星号。")}
               ]
             }')
 
@@ -48,10 +54,11 @@ jobs:
           DATE=$(date +%Y-%m-%d)
           echo "$CONTENT" > logs/$DATE.txt
           
-          # 更新清单逻辑
+          # --- 核心优化：把图片地址存进清单 ---
           MANIFEST="logs/manifest.json"
           if [ ! -f "$MANIFEST" ]; then echo "[]" > $MANIFEST; fi
-          UPDATED_JSON=$(jq --arg date "$DATE" --arg title "$TITLE" '. += [{"date": $date, "title": $title}] | unique_by(.date) | sort_by(.date) | reverse' $MANIFEST)
+          UPDATED_JSON=$(jq --arg date "$DATE" --arg title "$TITLE" --arg img "$IMG_URL" \
+            '. += [{"date": $date, "title": $title, "img": $img}] | unique_by(.date) | sort_by(.date) | reverse' $MANIFEST)
           echo "$UPDATED_JSON" > $MANIFEST
 
       - name: Commit and Push
@@ -59,5 +66,5 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add logs/
-          git commit -m "AI_LOG_SYNC_ALIGNED: $(date +%Y-%m-%d)" || echo "No changes"
+          git commit -m "AI_LOG_NASA_SYNC: $(date +%Y-%m-%d)" || echo "No changes"
           git push
