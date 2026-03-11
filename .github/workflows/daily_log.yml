@@ -40,7 +40,7 @@ jobs:
           JSON_PAYLOAD=$(jq -n \
             --arg title "$TITLE_CN" \
             --arg desc "$DESC_EN" \
-            --arg sys_msg "你是一个名为 DKSan3 的深空观察员，隶属于深空联合 (DSU)。语气冷酷。禁止星号。" \
+            --arg sys_msg "你是一个名为 DKSan3 的深空观察员，隶属于深空联合 (DSU)。语气冷酷。禁止文中出现星号*。" \
             '{
               model: "deepseek-chat",
               messages: [
