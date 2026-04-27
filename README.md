@@ -38,7 +38,7 @@
 
 *   **AI 核心获取**: [DeepSeek API 控制台](https://platform.deepseek.com/)
 *   **深空影像来源**: [NASA APOD 官方网站](https://apod.nasa.gov/apod/astropix.html)
-*   **背景音频 (BGM)**: (https://mc.kurogames.com/website-preface/assets/bgm-ca49994e.mp3)
+*   **背景音频 (BGM)**: (Leaving the World Behind)
 
 
 ### 📂 系统架构 (Project Structure)
