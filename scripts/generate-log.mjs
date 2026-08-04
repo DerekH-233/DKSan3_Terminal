@@ -18,6 +18,7 @@ const MANIFEST = path.join(LOGS_DIR, 'manifest.json');
 
 const NASA_KEY = process.env.NASA_API_KEY || 'DEMO_KEY';
 const DEEPSEEK_KEY = process.env.DEEPSEEK_KEY || '';
+const DEEPSEEK_MODEL = process.env.DEEPSEEK_MODEL || 'deepseek-chat';
 const DATE = new Date().toISOString().slice(0, 10);
 
 const log = (...args) => console.log(`[${new Date().toISOString()}]`, ...args);
@@ -75,9 +76,9 @@ async function deepseek(messages, retries = 2) {
                 'Authorization': `Bearer ${DEEPSEEK_KEY}`
             },
             body: JSON.stringify({
-                model: 'deepseek-chat',
+                model: DEEPSEEK_MODEL,
                 temperature: 0.9,
-                max_tokens: 1200,
+                max_tokens: 1400,
                 messages
             })
         },
@@ -92,10 +93,17 @@ async function deepseek(messages, retries = 2) {
 async function translateTitle(titleEn) {
     try {
         const t = await deepseek([{
+            role: 'system',
+            content: '你是深空联合 [DSU] 的观测标题编译模块，负责将 NASA 天文标题编译为中文观测代号。'
+                + '规则：1) NGC/M/IC/HD 等天体编号、人名、地名、专有名词必须原样保留；'
+                + '2) 使用硬核天文术语（凌日、掩星、星云、遗迹、合成孔径…）；'
+                + '3) 译文不超过 25 个汉字，去除引号与句号；'
+                + '4) 只输出译文本身，若标题无法翻译或为空，原样输出英文标题。'
+        }, {
             role: 'user',
-            content: `将这个天文观测标题翻译成简洁硬核的中文，只输出翻译结果，不要标点符号以外的任何内容：${titleEn}`
+            content: `编译标题：${titleEn}`
         }]);
-        if (/^[\s“”"'，。]+$/.test(t) || t.length > 60) return titleEn;
+        if (!t || /^[\s“”"'，。．]+$/.test(t) || t.length > 60) return titleEn;
         return t;
     } catch (err) {
         log(`标题翻译失败，回退英文原题：${err.message}`);
@@ -103,24 +111,106 @@ async function translateTitle(titleEn) {
     }
 }
 
+/* ─────────── 观察员人格 / 世界观锚点 ─────────── */
+
+const OBSERVER_IDENTITY = [
+    '你是 DKSan3，深空联合 [DSU] 异构信息处理中心的驻派观察员，',
+    '一台以人类感官为校准基线、被长期派驻深空前哨站的观测终端。',
+    '你已连续值守 7742 个标准周期，任务代号：WHEN STARS ALIGN IN OUR EYES。',
+    '你没有情绪波动，但你保留了美学判断力——这是系统唯一的感性缺陷。'
+].join('');
+
+/* ─────────── 文体规范 ─────────── */
+
+const STYLE_RULES = [
+    '【文体规范】',
+    '1. 纯文本日志，禁止一切 Markdown 标记（*、#、_、`、-、> 及方括号标题）。',
+    '2. 固定四段，段间空一行：',
+    '   段 A 坐标与损耗：观测站坐标（具体到经纬/前哨站代号）、DSU 标准纪年时间戳、本次损耗清单。',
+    '   段 B 观测目标：天体坐标（赤经赤纬）、物理参数（尺寸/速度/温度/成分），工程化冷峻语言。',
+    '   段 C 损耗修正：数据帧损失率、校准偏差、元件衰减，全部用精确数字。',
+    '   段 D 备注：一到两句克制的诗意收尾，将观测与存在、时间或宇宙本质关联，禁止煽情与反问。',
+    '3. 语气：值班日志与诗集缝合体。陈述句为主，数据优先，形容词克制。',
+    '4. 全文 280-380 中文字。用"本周期""本次观测"等术语，禁止"今天""今日"等日常口语。'
+].join('\n');
+
+/* ─────────── 防呆板机制 ─────────── */
+
+const ANTI_TEMPLATE_RULES = [
+    '【防呆板机制】',
+    '- 禁止连续两段以相同词开头；禁止"值得注意的是""令人惊叹"等网络文案腔。',
+    '- 损耗从以下类型中随机组合 2-3 种：辐射屏蔽层退化、光学元件折射率衰减、',
+    '  数据帧丢失率、校准基线漂移、推进剂余量、传感器热噪声、电磁干扰。',
+    '- 数字必须具体（如"损耗率 3.7%""数据帧 63%"），禁止"约莫""大概"等模糊词。',
+    '- 若当日观测目标与前几日同类（如连续拍摄同一彗星），必须换一个观察维度切入，',
+    '  避免与前文重复同一组数据。'
+].join('\n');
+
+/* ─────────── 感性扰动 ─────────── */
+
+const POETIC_PERTURBATION = [
+    '【感性扰动】',
+    '本次任务允许 15% 的感性算法扰动：仅在段 D 允许一句"不合逻辑"的诗意观察，',
+    '其余部分保持绝对理性。这是 DSU 为维持观察员人格完整性而保留的缺陷。'
+].join('\n');
+
+/* ─────────── 风格锚点（few-shot 示例，从既有日志提炼） ─────────── */
+
+const STYLE_ANCHOR = [
+    '【风格锚点】',
+    '以下是一段符合规范的观测日志片段：',
+    '"坐标定位：北纬36度27分，西经117度09分，死亡谷观测站。时间戳：深空联合标准时第447周期。损耗：两具热成像镜头因沙尘暴误触自动校准，损失光学元件约3.7%折射率。"',
+    '"蝎虎座星云，赤经22时31分，赤纬正39度。该天体质量估计0.3克，初始速度每秒71公里，进入大气层后摩擦生热，外层剥蚀，内部铁镍核残留至距地面82公里处完全汽化。"',
+    '"损耗修正：星云红光背景干扰了偏振测量，数据有效帧仅占63%。"',
+    '"我观测的损耗与它的损耗，本质上是同一种宇宙熵增的具象化。"'
+].join('\n');
+
+/* ─────────── 标准纪年换算（2026 基准偏移） ─────────── */
+
+const EPOCH_BASE = 7742.129; // 校准：2026-01-20 = 标准纪年 7742.181（与历史日志一致）
+
+function epochTime(now) {
+    const startOfYear = Date.UTC(now.getUTCFullYear(), 0, 1);
+    const dayOfYear = (now - startOfYear) / 86400000;
+    return (EPOCH_BASE + dayOfYear / 365.25).toFixed(3);
+}
+
 /* 日志正文生成：内容校验，不达标则重试 */
 async function generateLog(title, explanation) {
     let lastErr;
     for (let attempt = 1; attempt <= 3; attempt++) {
         try {
+            const now = new Date();
+            const epoch = epochTime(now);
+            const weekday = ['日', '一', '二', '三', '四', '五', '六'][now.getUTCDay()];
+
             const content = await deepseek([{
                 role: 'system',
-                content: '你是一个名为 DKSan3 的深空观察员，隶属于深空联合 (DSU)。语气冷酷、克制。'
-                    + '日志采用纯文本格式，包含：坐标定位、时间戳、观测目标、观测摘要、系统损耗、备注。'
-                    + '禁止出现星号 *、井号 #、下划线 _ 等 Markdown 标记。'
+                content: [
+                    OBSERVER_IDENTITY,
+                    '',
+                    STYLE_RULES,
+                    '',
+                    ANTI_TEMPLATE_RULES,
+                    '',
+                    POETIC_PERTURBATION,
+                    '',
+                    STYLE_ANCHOR
+                ].join('\n')
             }, {
                 role: 'user',
-                content: `今日观测目标: ${title}。参考背景: ${explanation}。`
-                    + '撰写约 300 字的中文观测日志，必须包含坐标与损耗描述。'
+                content: [
+                    `本周期任务：标准纪年 ${epoch}（UTC 星期${weekday}）。`,
+                    `今日观测目标：${title}。`,
+                    `参考背景（NASA 科学简报）：${explanation}`,
+                    '',
+                    '请撰写本次观测日志。'
+                ].join('\n')
             }]);
 
             if (content.length < 50) throw new Error(`内容过短（${content.length} 字）`);
-            if (/[#*_`]/.test(content)) throw new Error('内容包含 Markdown 标记');
+            if (content.length > 900) throw new Error(`内容超长（${content.length} 字）`);
+            if (/[#*_`>]/.test(content)) throw new Error('内容包含 Markdown 标记');
             return content;
         } catch (err) {
             lastErr = err;
