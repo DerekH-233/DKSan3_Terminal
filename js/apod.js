@@ -4,7 +4,7 @@
    支持：图片 / 视频 / 降级占位；标题随界面语言切换
    ============================================================ */
 
-import { t, isZh } from './i18n.js?v=7.10';
+import { t, isZh } from './i18n.js?v=7.15';
 
 const frame = document.getElementById('hero-frame');
 const media = document.getElementById('hero-media');
@@ -57,9 +57,10 @@ export function init(manifestData) {
         img.src = entry.img;
     }
 
-    /* 点击 → 站内二级页面（观测视图）：左大图 / 右阅读器 / 右下角原链接 */
+    /* 点击 → 站内二级页面（观测视图）：左大图 / 右阅读器 / 右下角原链接
+       （origin=1 标记 hero 入口：仅此入口显示官网跳转按钮） */
     const openView = () => {
-        location.href = `view.html?date=${encodeURIComponent(entry.date || '')}`;
+        location.href = `view.html?date=${encodeURIComponent(entry.date || '')}&origin=1`;
     };
     media.addEventListener('click', openView);
     media.addEventListener('keydown', e => {

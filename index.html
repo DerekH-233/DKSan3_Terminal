@@ -23,8 +23,8 @@
     }
     </script>
 
-    <link rel="stylesheet" href="css/main.css?v=7.10">
-    <script type="module" src="js/app.js?v=7.10" defer></script>
+    <link rel="stylesheet" href="css/main.css?v=7.15">
+    <script type="module" src="js/app.js?v=7.15" defer></script>
 </head>
 <body>
 
@@ -159,27 +159,6 @@
         <div class="tc-line"></div>
         <div class="tc-points" id="tc-points"></div>
     </nav>
-
-    <!-- ▸ 日志阅读器 -->
-    <div id="reader" class="reader" role="dialog" aria-modal="true" data-i18n-aria="readerAria" aria-label="日志阅读" hidden>
-        <div class="reader-inner">
-            <div class="reader-head">
-                <div class="reader-meta">
-                    <span class="reader-tag" id="reader-date">[ -- ]</span>
-                    <span class="reader-tag" data-i18n="logRecord">LOG_RECORD</span>
-                </div>
-                <button class="reader-close" id="reader-close" data-i18n="close" aria-label="CLOSE">[X] CLOSE</button>
-            </div>
-            <h1 class="reader-title" id="reader-title"></h1>
-            <div class="reader-body" id="reader-body" tabindex="0"></div>
-            <div class="reader-foot">
-                <button class="reader-nav" id="reader-prev" data-i18n="prev" aria-label="PREV">◄ PREV</button>
-                <span class="reader-pos" id="reader-pos">1 / 1</span>
-                <button class="reader-nav" id="reader-next" data-i18n="next" aria-label="NEXT">NEXT ►</button>
-            </div>
-            <div class="reader-progress" aria-hidden="true"><i id="reader-progress-fill"></i></div>
-        </div>
-    </div>
 
     <!-- ▸ 终端输出面板 -->
     <div id="term-panel" class="term-panel" role="log" aria-label="终端输出" hidden></div>

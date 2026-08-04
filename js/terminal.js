@@ -4,10 +4,10 @@
    快捷键：` 聚焦 / Esc 关闭
    ============================================================ */
 
-import { openLog, getLogs, getCount, focusSearch, decodeTitle } from './logs.js?v=7.10';
-import { cycle, set, get as getTheme } from './theme.js?v=7.10';
-import { toggle as toggleBgm, isPlaying } from './audio.js?v=7.10';
-import { t, isZh } from './i18n.js?v=7.10';
+import { getLogs, getCount, focusSearch, decodeTitle } from './logs.js?v=7.15';
+import { cycle, set, get as getTheme } from './theme.js?v=7.15';
+import { toggle as toggleBgm, isPlaying } from './audio.js?v=7.15';
+import { t, isZh } from './i18n.js?v=7.15';
 
 const input = document.getElementById('cmd-input');
 const bar = document.getElementById('cmd-bar');
@@ -67,7 +67,7 @@ const COMMANDS = {
         const all = getLogs();
         const hit = all.find(l => l.date === args[0]);
         if (!hit) return out(t('termNotFound', { date: args[0] }), 'err');
-        openLog(hit.date, hit);
+        window.open(`view.html?date=${encodeURIComponent(hit.date)}`, '_blank', 'noopener');
         out(t('termReading', { date: args[0] }), 'ok');
     },
 

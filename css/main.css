@@ -822,54 +822,6 @@ body::after {
 /* 特殊记录缩略图：愉悦星球 */
 .log-thumb.joy::after { display: none; }
 
-/* 阅读器大图 */
-.reader-art {
-    position: relative;
-    width: 100%;
-    height: clamp(160px, 26vh, 300px);
-    background-size: cover;
-    background-position: center;
-    border: 1px solid var(--c-border-strong);
-    margin-bottom: 26px;
-    box-shadow: 0 0 30px var(--c-glow);
-    overflow: hidden;
-}
-
-.reader-art::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: repeating-linear-gradient(to bottom, transparent 0 3px, rgba(0, 0, 0, 0.14) 3px 4px);
-    pointer-events: none;
-}
-
-.reader-art.fail {
-    background: radial-gradient(ellipse at 50% 45%, #101a24 0%, #05080c 70%, #000 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.reader-art.fail::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='60' height='60' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
-    animation: noise-shift 0.5s steps(3) infinite;
-}
-
-.reader-art.fail::after {
-    content: "SIGNAL_LOST";
-    font-size: 11px;
-    letter-spacing: 2px;
-    color: var(--c-danger);
-    border: 1px solid var(--c-danger);
-    padding: 6px 12px;
-    opacity: 0.9;
-    animation: blink 1.6s steps(1) infinite;
-    background: rgba(0, 0, 0, 0.55);
-}
-
 .log-more { text-align: center; color: var(--c-text-dim); font-size: 11px; padding: 10px 0; letter-spacing: 2px; }
 .log-more.hidden { display: none; }
 
@@ -968,78 +920,7 @@ body::after {
 
 .foot-sub { margin-top: 8px; opacity: 0.5; }
 
-/* ────────────────────────── 日志阅读器 ────────────────────────── */
-.reader {
-    position: fixed;
-    inset: 0;
-    z-index: 3000;
-    background: rgba(1, 4, 7, 0.97);
-    backdrop-filter: blur(6px);
-    overflow-y: auto;
-    opacity: 0;
-    transition: opacity 0.35s var(--ease);
-}
-
-.reader.show { opacity: 1; }
-.reader.hide { opacity: 0; }
-
-.reader-inner {
-    max-width: 780px;
-    margin: 0 auto;
-    padding: 90px 40px 120px;
-    position: relative;
-}
-
-.reader-head {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 14px;
-    border-bottom: 1px solid var(--c-border);
-    padding-bottom: 14px;
-}
-
-.reader-meta { display: flex; gap: 12px; }
-
-.reader-tag { color: var(--c-primary); font-size: 10px; letter-spacing: 2px; text-shadow: 0 0 8px var(--c-glow); }
-
-.reader-close {
-    background: none;
-    border: 1px solid var(--c-border-strong);
-    color: var(--c-primary);
-    font-family: inherit;
-    font-size: 10px;
-    padding: 6px 12px;
-    cursor: pointer;
-    letter-spacing: 1px;
-    transition: all var(--t-fast);
-}
-
-.reader-close:hover { background: var(--c-primary); color: #000; box-shadow: 0 0 18px var(--c-glow); }
-
-.reader-title {
-    color: var(--c-accent);
-    font-family: var(--f-sans);
-    font-weight: 500;
-    font-size: clamp(1.3rem, 4vw, 1.9rem);
-    line-height: 1.5;
-    margin-bottom: 34px;
-    text-shadow: 0 0 20px var(--c-glow-accent);
-}
-
-.reader-body {
-    color: var(--c-text);
-    font-size: 14.5px;
-    line-height: 2.1;
-    white-space: pre-wrap;
-    word-break: break-word;
-    font-family: var(--f-sans);
-    outline: none;
-    min-height: 30vh;
-}
-
-.reader-body > div { animation: para-in 0.5s var(--ease) both; }
-
+/* ────────────────────────── 通用阅读组件（供观测视图等复用） ────────────────────────── */
 /* 英文副本缺失提示 */
 .reader-note {
     color: var(--c-warn);
@@ -1056,37 +937,6 @@ body::after {
     from { opacity: 0; transform: translateY(8px); }
     to { opacity: 1; transform: translateY(0); }
 }
-
-.reader-foot {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 56px;
-    border-top: 1px solid var(--c-border);
-    padding-top: 20px;
-}
-
-.reader-nav {
-    background: none;
-    border: 1px solid var(--c-border);
-    color: var(--c-text-dim);
-    font-family: inherit;
-    font-size: 10px;
-    letter-spacing: 1.5px;
-    padding: 8px 16px;
-    cursor: pointer;
-    transition: all var(--t-fast);
-}
-
-.reader-nav:hover:not(:disabled) {
-    border-color: var(--c-primary);
-    color: var(--c-primary);
-    box-shadow: 0 0 12px var(--c-glow);
-}
-
-.reader-nav:disabled { opacity: 0.3; cursor: default; }
-
-.reader-pos { color: var(--c-text-dim); font-size: 10px; letter-spacing: 2px; }
 
 /* 阅读进度条 */
 .reader-progress {
@@ -1509,13 +1359,47 @@ body.fallback-scene {
 
 .view-log-body > div { animation: para-in 0.5s var(--ease) both; }
 
-/* 右下角：原链接 */
+/* 阅读器底部：上一篇/下一篇 + 原链接 */
 .view-reader-foot {
     display: flex;
-    justify-content: flex-end;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
     border-top: 1px solid var(--c-border);
     padding: 16px 0 20px;
     margin-top: 18px;
+    flex-wrap: wrap;
+}
+
+.view-nav { display: flex; gap: 10px; }
+
+/* 上一篇/下一篇：主题色可视化按钮 */
+.view-nav-btn {
+    background: none;
+    border: 1px solid var(--c-primary);
+    color: var(--c-primary);
+    font-family: inherit;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    padding: 9px 18px;
+    cursor: pointer;
+    text-shadow: 0 0 8px var(--c-glow);
+    transition: all var(--t-fast) var(--ease);
+}
+
+.view-nav-btn:hover:not(:disabled) {
+    background: var(--c-primary);
+    color: #000;
+    box-shadow: 0 0 18px var(--c-glow);
+    transform: translateY(-1px);
+}
+
+.view-nav-btn:disabled {
+    opacity: 0.3;
+    cursor: default;
+    border-color: var(--c-text-dim);
+    color: var(--c-text-dim);
+    text-shadow: none;
 }
 
 .view-origin {

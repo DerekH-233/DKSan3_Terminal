@@ -5,8 +5,9 @@
    双语：标题/正文随界面语言；数据异常科幻化处理
    ============================================================ */
 
-import * as theme from './theme.js?v=7.10';
-import * as i18n from './i18n.js?v=7.10';
+import * as theme from './theme.js?v=7.15';
+import * as i18n from './i18n.js?v=7.15';
+import { joyImageDataUri } from './logs.js?v=7.15';
 
 const CACHE_KEY = 'dsu_manifest_v2';
 
@@ -98,17 +99,21 @@ async function fetchLogText(log) {
 async function render(entry) {
     document.title = `DKSan3 // ${entry.date}`;
 
-    /* 左侧：NASA 大图 */
+    /* 左侧大图：特别记录 → 愉悦星球插画（主题色联动）；普通日志 → 当日影像 */
     const media = document.getElementById('view-media');
-    const imgUrl = entry.img && entry.img !== 'null' ? entry.img : null;
-    if (imgUrl && !/\.(mp4|webm|mov)(\?|$)/i.test(imgUrl)) {
-        const img = new Image();
-        img.decoding = 'async';
-        img.onload = () => { media.style.backgroundImage = `url("${imgUrl}")`; };
-        img.onerror = () => media.classList.add('fail');
-        img.src = imgUrl;
+    if (entry.special) {
+        media.style.backgroundImage = `url("${joyImageDataUri()}")`;
     } else {
-        media.classList.add('fail');
+        const imgUrl = entry.img && entry.img !== 'null' ? entry.img : null;
+        if (imgUrl && !/\.(mp4|webm|mov)(\?|$)/i.test(imgUrl)) {
+            const img = new Image();
+            img.decoding = 'async';
+            img.onload = () => { media.style.backgroundImage = `url("${imgUrl}")`; };
+            img.onerror = () => media.classList.add('fail');
+            img.src = imgUrl;
+        } else {
+            media.classList.add('fail');
+        }
     }
     document.getElementById('view-nasa-date').textContent = `[ ${entry.date} ]`;
     document.getElementById('view-nasa-title').textContent = nasaTitle(entry);
@@ -141,70 +146,104 @@ async function render(entry) {
 
 /* ───────────── 启动 ───────────── */
 
-function main() {
-    i18n.init();
-    theme.init();
-
-    document.getElementById('view-back').addEventListener('click', () => {
-        if (history.length > 1) history.back();
-        else location.href = './';
-    });
-
-    document.getElementById('btn-lang').addEventListener('click', () => {
-        i18n.toggleLang();
-        const entry = currentEntry;
-        if (entry) render(entry);
-    });
-
-    const params = new URLSearchParams(location.search);
-    const want = params.get('date');
-
-    loadManifest().then(manifest => {
-        const entry = manifest.find(e => e && e.date === want) || manifest[0];
-        if (!entry) {
-            document.getElementById('view-nasa-title').textContent = i18n.t('heroFallback');
-            return;
-        }
-        currentEntry = entry;
-        render(entry);
-    });
-}
-
 let currentEntry = null;
+let manifestList = [];
 
 const ORIGIN_URL = 'https://apod.nasa.gov/apod/';
 
+/* 主日志序列（排除 special 特别记录） */
+function mainLogs() { return manifestList.filter(e => e && !e.special); }
+
+/* 键盘翻页：←/→ 在相邻主日志间切换（越界不循环，停在边界；特别记录不参与翻页） */
+function step(dir) {
+    const seq = mainLogs();
+    if (seq.length < 2 || !currentEntry || currentEntry.special) return;
+    const idx = seq.findIndex(e => e.date === currentEntry.date);
+    const nextIdx = idx + dir;
+    if (nextIdx < 0 || nextIdx >= seq.length) return;
+    const next = seq[nextIdx];
+    currentEntry = next;
+    history.replaceState(null, '', `view.html?date=${encodeURIComponent(next.date)}`);
+    render(next);
+    updateNav();
+    window.scrollTo({ top: 0 });
+}
+
+/* 上一篇/下一篇按钮状态：首条禁用 PREV，末条禁用 NEXT；特别记录整体禁用 */
+function updateNav() {
+    const seq = mainLogs();
+    const prevBtn = document.getElementById('view-prev');
+    const nextBtn = document.getElementById('view-next');
+    if (!seq.length || !currentEntry || currentEntry.special) {
+        prevBtn.disabled = true;
+        nextBtn.disabled = true;
+        return;
+    }
+    const idx = seq.findIndex(e => e.date === currentEntry.date);
+    prevBtn.disabled = idx <= 0;
+    nextBtn.disabled = idx >= seq.length - 1;
+}
+
 function main() {
     i18n.init();
     theme.init();
 
-    /* 原链接跳转：只绑定一次（修复语言切换重渲染导致监听器累积、一次点击开多窗）；
-       跳转入口仅保留右下角按钮，左栏大图点击不跳转 */
-    const openOriginal = () => window.open(ORIGIN_URL, '_blank', 'noopener');
-    document.getElementById('view-origin').addEventListener('click', openOriginal);
+    /* 原链接跳转：仅 hero 入口（origin=1）显示；
+       只绑定一次（修复语言切换重渲染导致监听器累积、一次点击开多窗） */
+    const params = new URLSearchParams(location.search);
+    const fromHero = params.get('origin') === '1';
+    const originBtn = document.getElementById('view-origin');
+    if (fromHero) {
+        const openOriginal = () => window.open(ORIGIN_URL, '_blank', 'noopener');
+        originBtn.addEventListener('click', openOriginal);
+    } else {
+        originBtn.hidden = true;
+    }
 
     document.getElementById('view-back').addEventListener('click', () => {
         if (history.length > 1) history.back();
         else location.href = './';
     });
 
+    /* 上一篇/下一篇：主题色可视化按钮（与键盘 ←/→ 共用逻辑） */
+    document.getElementById('view-prev').addEventListener('click', () => step(-1));
+    document.getElementById('view-next').addEventListener('click', () => step(1));
+    updateNav();
+
     document.getElementById('btn-lang').addEventListener('click', () => {
         i18n.toggleLang();
-        const entry = currentEntry;
-        if (entry) render(entry);
+        if (currentEntry) render(currentEntry);
     });
 
-    const params = new URLSearchParams(location.search);
+    /* 键盘翻页 */
+    document.addEventListener('keydown', e => {
+        if (e.key === 'ArrowLeft') step(-1);
+        else if (e.key === 'ArrowRight') step(1);
+    });
+
+    /* 阅读进度条 */
+    const fill = document.getElementById('view-progress-fill');
+    window.addEventListener('scroll', () => {
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        fill.style.width = max > 0 ? `${(window.scrollY / max) * 100}%` : '0%';
+    }, { passive: true });
+
     const want = params.get('date');
+    const wantSpecial = params.get('special') === '1';
 
     loadManifest().then(manifest => {
-        const entry = manifest.find(e => e && e.date === want) || manifest[0];
+        manifestList = manifest;
+        /* special=1 → 特别记录；否则 → 当天主日志（默认，hero 进入） */
+        const entry = wantSpecial
+            ? manifest.find(e => e && e.date === want && e.special)
+            : manifest.find(e => e && e.date === want && !e.special) || manifest[0];
         if (!entry) {
             document.getElementById('view-nasa-title').textContent = i18n.t('heroFallback');
             return;
         }
         currentEntry = entry;
         render(entry);
+        updateNav();
     });
 }
 
