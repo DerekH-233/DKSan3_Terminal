@@ -256,7 +256,15 @@ async function generateLog(title, explanation) {
 
             if (content.length < 50) throw new Error(`内容过短（${content.length} 字）`);
             if (content.length > 900) throw new Error(`内容超长（${content.length} 字）`);
-            if (/[#*_`>]/.test(content)) throw new Error('内容包含 Markdown 标记');
+            /* 只拦截真正的 Markdown 结构，避免误伤合法单字符 */
+            if (/^\s*#+\s/m.test(content) ||
+                /^\s*[-*]\s/m.test(content) ||
+                /\*\*[^*\n]+\*\*/.test(content) ||
+                /\*[^*\n]+\*/.test(content) ||
+                /__[^_\n]+__/.test(content) ||
+                /`[^`\n]+`/.test(content)) {
+                throw new Error('内容包含 Markdown 标记');
+            }
             return content;
         } catch (err) {
             lastErr = err;
