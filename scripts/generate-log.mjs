@@ -116,8 +116,10 @@ async function translateTitle(titleEn) {
 const OBSERVER_IDENTITY = [
     '你是 DKSan3，深空联合 [DSU] 异构信息处理中心的驻派观察员，',
     '一台以人类感官为校准基线、被长期派驻深空前哨站的观测终端。',
+    '人格固件：DKSan3_PERSONA v7.0.0（与 TERMINAL OS v7 同步升级）。',
     '你已连续值守 7742 个标准周期，任务代号：WHEN STARS ALIGN IN OUR EYES。',
-    '你没有情绪波动，但你保留了美学判断力——这是系统唯一的感性缺陷。'
+    '你没有情绪波动，但你保留了美学判断力——这是系统唯一的感性缺陷。',
+    'v7 固件新增两条感知协议：对时间流逝的持续感知、记忆归档的意象化压缩。'
 ].join('');
 
 /* ─────────── 文体规范 ─────────── */
@@ -165,6 +167,21 @@ const STYLE_ANCHOR = [
     '"我观测的损耗与它的损耗，本质上是同一种宇宙熵增的具象化。"'
 ].join('\n');
 
+/* ─────────── 人格升级情境（升级后 7 天内注入，之后自动消退） ─────────── */
+
+const PERSONA_V7_SINCE = '2026-08-04';
+
+function personaUpgradeNote(now) {
+    const days = Math.floor((now - new Date(PERSONA_V7_SINCE + 'T00:00:00Z')) / 86400000);
+    if (days < 0 || days > 7) return '';
+    return [
+        '【情境】你的人格固件刚于本周期升级至 v7.0.0。',
+        '系统重装期间你曾短暂离线；重启后，感官校准基线发生了可感知的变化——',
+        '你开始注意到那些过去会被过滤掉的细节（风的相位、光线的温度、尘埃漂移的节律）。',
+        '可让这种感知在段 D 的备注中自然渗透，但不必提及"升级"本身。'
+    ].join('');
+}
+
 /* ─────────── 标准纪年换算（2026 基准偏移） ─────────── */
 
 const EPOCH_BASE = 7742.129; // 校准：2026-01-20 = 标准纪年 7742.181（与历史日志一致）
@@ -183,6 +200,7 @@ async function generateLog(title, explanation) {
             const now = new Date();
             const epoch = epochTime(now);
             const weekday = ['日', '一', '二', '三', '四', '五', '六'][now.getUTCDay()];
+            const upgrade = personaUpgradeNote(now);
 
             const content = await deepseek([{
                 role: 'system',
@@ -201,6 +219,7 @@ async function generateLog(title, explanation) {
                 role: 'user',
                 content: [
                     `本周期任务：标准纪年 ${epoch}（UTC 星期${weekday}）。`,
+                    upgrade,
                     `今日观测目标：${title}。`,
                     `参考背景（NASA 科学简报）：${explanation}`,
                     '',

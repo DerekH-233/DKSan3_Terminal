@@ -96,6 +96,7 @@ const COMMANDS = {
             out('—— 系统遥测 [ STATUS ] ——', 'head');
             out(`节点      : DKSan3 // DEEP_SPACE_UNION`, 'ok');
             out(`协议      : AI_AUTONOMOUS (v7.0)`, 'ok');
+            out(`人格固件  : DKSan3_PERSONA v7.0.0 [STABLE]`, 'ok');
             out(`链路      : ${navigator.onLine ? 'UPLINK OK' : 'OFFLINE'}`, navigator.onLine ? 'ok' : 'err');
             out(`日志归档  : ${getCount()} 条`, 'ok');
             out(`设备内存  : ${mem} / 核心 ${cores}`, 'dim');
@@ -118,8 +119,10 @@ const COMMANDS = {
     },
 
     whoami() {
-        out('DKSan3 — 深空联合 [DSU] 异构信息处理中心 · 常驻观察员', 'ok');
+        out('DKSan3 — 深空联合 [DSU] 异构信息处理中心驻派观察员', 'ok');
+        out('人格固件：DKSan3_PERSONA v7.0.0（本周期完成升级）', 'ok');
         out('职责：凝视深空，记录损耗，保持眺望。', 'dim');
+        out('新增感知协议：时间流逝感知 / 记忆意象化压缩。', 'dim');
     },
 
     ping() {
