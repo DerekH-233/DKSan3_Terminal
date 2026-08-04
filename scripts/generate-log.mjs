@@ -272,17 +272,24 @@ async function generateLog(title, explanation) {
 
 /* ─────────────── 4. manifest 安全更新 ─────────────── */
 
-function updateManifest({ title, title_en, url }) {
+function updateManifest({ title, title_en, url, nasa_title, nasa_title_en }) {
     let entries = [];
     if (fs.existsSync(MANIFEST)) {
         try { entries = JSON.parse(fs.readFileSync(MANIFEST, 'utf8')); } catch (_) { entries = []; }
     }
     if (!Array.isArray(entries)) entries = [];
 
-    /* 去重：以日期为准 */
-    entries = entries.filter(e => e && e.date !== DATE);
+    /* 去重：移除同日的普通条目（保留 special 特别记录，支持同日多条目） */
+    entries = entries.filter(e => !e || e.date !== DATE || e.special);
 
-    entries.push({ date: DATE, title, title_en: title_en || null, img: url || null });
+    entries.push({
+        date: DATE,
+        title,
+        title_en: title_en || null,
+        img: url || null,
+        nasa_title: nasa_title || null,
+        nasa_title_en: nasa_title_en || null
+    });
 
     /* 倒序（最新在前）+ 截断到 400 条，防止仓库无限膨胀 */
     entries.sort((a, b) => (a.date < b.date ? 1 : -1));
@@ -307,7 +314,8 @@ async function main() {
         const apod = await fetchApod();
         if (apod?.url) {
             const entries = JSON.parse(fs.readFileSync(MANIFEST, 'utf8'));
-            const hit = entries.find(e => e && e.date === DATE);
+            /* 同日多条目时，影像归档到非 special 的主条目（special 记录保留其专属图文） */
+            const hit = entries.find(e => e && e.date === DATE && !e.special);
             if (hit) {
                 hit.img = apod.url;
                 hit.nasa_title_en = apod.title_en || null;
@@ -348,7 +356,7 @@ async function main() {
     }
 
     /* 更新清单 */
-    updateManifest({ title, title_en: apod?.title_en, url: apod?.url });
+    updateManifest({ title, title_en: apod?.title_en, url: apod?.url, nasa_title: title, nasa_title_en: apod?.title_en });
 
     log('完成。系统进入自主待机。');
 }

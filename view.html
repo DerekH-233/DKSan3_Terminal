@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="classic">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="DKSan3 观测视图 — NASA 今日影像与观测日志对照。">
+    <meta name="theme-color" content="#030303">
+    <meta name="color-scheme" content="dark">
+    <title>DKSan3 // OBSERVATION_VIEW</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%23030303'/%3E%3Cpath d='M3 13V3h10v10H3zm1-1h8V4H4v8z' fill='%23ff5a09'/%3E%3Cpath d='M6 9.5L8 6l2 3.5z' fill='%2300f0ff'/%3E%3C/svg%3E">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Noto+Sans+SC:wght@300;400;500;700&display=swap">
+
+    <link rel="stylesheet" href="css/main.css?v=7.10">
+</head>
+<body>
+
+    <!-- CRT 覆盖层 -->
+    <div class="crt" aria-hidden="true"></div>
+
+    <!-- 顶部 -->
+    <header class="view-top" id="view-top">
+        <button class="view-back" id="view-back" data-i18n="back">◄ BACK</button>
+        <span class="view-top-id">DSU // OBSERVATION_VIEW</span>
+        <button class="lang-btn" id="btn-lang" data-i18n="langBtn"></button>
+    </header>
+
+    <!-- 二级页面主体：左大图 / 右阅读器 -->
+    <main class="view-grid" id="view-grid">
+        <section class="view-image" aria-label="今日影像">
+            <div class="view-media" id="view-media" role="button" tabindex="0"></div>
+            <div class="view-media-info">
+                <span class="view-tag" id="view-nasa-date">[ ---- ]</span>
+                <h2 class="view-nasa-title" id="view-nasa-title"></h2>
+                <span class="view-nasa-sub" data-i18n="heroSub">NASA_APOD // DAILY_UPLINK</span>
+            </div>
+        </section>
+
+        <section class="view-reader" aria-label="观测日志">
+            <div class="view-reader-head">
+                <span class="view-tag" id="view-log-date">[ -- ]</span>
+                <span class="view-tag" data-i18n="logRecord">LOG_RECORD</span>
+            </div>
+            <h1 class="view-log-title" id="view-log-title"></h1>
+            <div class="view-log-body" id="view-log-body"></div>
+            <div class="view-reader-foot">
+                <button class="view-origin" id="view-origin">◈ NASA_ORIGINAL</button>
+            </div>
+        </section>
+    </main>
+
+    <script type="module" src="js/view.js?v=7.10"></script>
+</body>
+</html>

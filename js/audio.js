@@ -3,7 +3,7 @@
    状态持久化；自动播放策略失败时静默降级
    ============================================================ */
 
-import { t } from './i18n.js?v=7.8';
+import { t } from './i18n.js?v=7.10';
 
 const KEY = 'dsu_bgm_v1';
 let audio = null;

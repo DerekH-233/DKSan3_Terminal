@@ -167,7 +167,10 @@ const ZH = {
     cmdBarAria: '命令输入',
 
     /* 语言按钮 */
-    langBtn: 'EN'
+    langBtn: 'EN',
+
+    /* 观测视图 */
+    back: '◄ BACK'
 };
 
 const EN = {
@@ -332,7 +335,10 @@ const EN = {
     cmdBarAria: 'Command input',
 
     /* 语言按钮 */
-    langBtn: '中'
+    langBtn: '中',
+
+    /* 观测视图 */
+    back: '◄ BACK'
 };
 
 const DICTS = { zh: ZH, en: EN };

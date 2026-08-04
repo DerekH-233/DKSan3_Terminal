@@ -8,7 +8,7 @@
    安全：所有动态内容经 textContent 渲染，杜绝注入
    ============================================================ */
 
-import { t, isZh } from './i18n.js?v=7.8';
+import { t, isZh } from './i18n.js?v=7.10';
 
 const CACHE_KEY = 'dsu_manifest_v2';
 const CACHE_TTL = 1000 * 60 * 60 * 6;   // 缓存 6 小时
@@ -367,7 +367,8 @@ function openLogAt(idx) {
  * 因此除状态码外还必须校验 content-type 为 text/plain，防止 HTML 源码混入正文；
  * 内容为 "null"/过短（采集失败）时，替换为信号失真的科幻文案。
  */
-async function fetchLogText(date) {
+async function fetchLogText(log) {
+    const base = (log && log.file) || (typeof log === 'string' ? log : (log && log.date));
     const fetchTxt = async (name) => {
         const res = await fetch(`logs/${name}`, { cache: 'no-cache' });
         if (!res.ok) return null;
@@ -384,12 +385,12 @@ async function fetchLogText(date) {
 
     let raw;
     if (!isZh()) {
-        raw = await fetchTxt(`${date}.en.txt`).catch(() => null);
+        raw = await fetchTxt(`${base}.en.txt`).catch(() => null);
         if (raw !== null) {
             const ok = sanitize(raw);
             return { text: ok ?? t('readerCorrupt'), fallback: ok === null };
         }
-        raw = await fetchTxt(`${date}.txt`).catch(() => null);
+        raw = await fetchTxt(`${base}.txt`).catch(() => null);
         if (raw !== null) {
             const ok = sanitize(raw);
             return { text: ok ?? t('readerCorrupt'), fallback: true };
@@ -397,7 +398,7 @@ async function fetchLogText(date) {
         return { text: t('readerLinkDown'), fallback: false };
     }
 
-    raw = await fetchTxt(`${date}.txt`).catch(() => null);
+    raw = await fetchTxt(`${base}.txt`).catch(() => null);
     if (raw !== null) {
         const ok = sanitize(raw);
         return { text: ok ?? t('readerCorrupt'), fallback: false };
@@ -407,7 +408,7 @@ async function fetchLogText(date) {
 
 export async function openLog(date, log, idx) {
     if (!date) return;
-    const { text, fallback } = await fetchLogText(date);
+    const { text, fallback } = await fetchLogText(log);
 
     readerIndex = idx ?? filtered.findIndex(l => l.date === date);
 
