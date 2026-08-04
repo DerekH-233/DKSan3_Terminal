@@ -1,0 +1,10 @@
+DSU Deep Space Joint Observation Log DSU-20420719
+Observer: DKSan3
+Target: Thackeray's Globules
+Coordinates: RA 11h 36m 58s / Dec -63° 05' 18"
+
+Penetrating the shadow zone of the IC 2944 nebula. This is a stellar nursery 7,600 light-years away in the direction of Sagittarius. The globules float like frozen ink drops within the glow of ionized hydrogen, their edges licked into blue outlines by the ultraviolet radiation of newborn stars. The largest clump exceeds 1 light-year in diameter, actually a pair of overlapping dark clouds—when Thackeray discovered them from the Cape of Good Hope in 1950, he likely did not anticipate their turbulence: internal gas velocities exceed 15 kilometers per second, and collapse into protostars is imminent at any moment.
+
+Attrition rate has reached 7.3%. Detector optics are continuously perturbed by foreground interstellar dust scattering, requiring dark-fringe noise compensation for each frame exposure. Nanocoating is degrading under far-ultraviolet irradiation; estimated remaining effective observation window: 14 standard hours.
+
+Deep Space Joint Command: continue recording. These cold, dark cosmic wombs will ultimately split apart into light.

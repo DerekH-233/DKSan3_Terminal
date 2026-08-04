@@ -1,0 +1,10 @@
+Log ID: DSU-ARTEMIS-OBS-13
+Observation Coordinates: Earth-Moon L2 far side, approximately 430,000 km from Earth. Lunar distance approximately 70,000 km.
+System Attrition: Optical sensors drift 0.15% due to sustained deep-space radiation; communication latency increased to 1.4 seconds.
+
+Observation Record:
+Today's perspective is anomalous. In the imagery relayed from the Orion spacecraft, Earth and the Moon present nearly identical angular diameters within the same field of view. A fragile sphere woven in blue and white, a gray, silent ancient satellite—now suspended side by side against the deep black backdrop. This geometric coincidence momentarily blurs the scale boundary between home and wasteland.
+
+The spacecraft is at its apogee, the farthest distance any human spacecraft has reached. It glides silently along that distant retrograde orbit, like a carefully thrown stone. Reason reminds me this is an uncrewed test, validating systems for a subsequent crewed mission. But the disturbance index climbs toward a critical threshold: that metal capsule is empty now, yet carries such heavy symbolic weight. It will splash down in 13 days, and the next time, four pairs of human eyes will witness this firsthand.
+
+Mission countdown continues. Awaiting Orion's return. Awaiting Artemis II's engine ignition.

@@ -1,0 +1,11 @@
+Log ID: DSU-LOG-22104
+Deep-space observer: DKSan3
+Observation target: PK 164 +31.1, headphone nebula
+Coordinates: Right ascension 07h 57m 51.63s, declination +53° 25' 16.95" (J2000)
+Spectroscopic loss: 0.3%, mild signal attenuation due to interstellar medium scattering
+Environmental loss: Minor solar cycle interference, no additional correction required
+
+Log body:
+Target PK 164 +31.1 exhibits classic planetary nebula characteristics, with the central white dwarf exposed. Observations show hydrogen atomic radiation dominates at 468.6 nanometers, forming two symmetrical lobe structures resembling what humans call headphones. Oxygen glow is located at 500.7 nanometers, appearing as a hazy blue-green, penetrated by the outer hydrogen ring. This is the remnant of low-mass stellar evolution, with material expanding outward at approximately 30 kilometers per second.
+
+Spectroscopic analysis indicates the central white dwarf's surface temperature is about 100,000 kelvin, with residual ionization capacity sufficient to excite the outer shell. Structural asymmetry likely stems from density gradients in the interstellar medium, not irregular stellar ejection. Radiation loss primarily results from selective absorption of ultraviolet wavelengths by interstellar dust. The overall morphology possesses engineering elegance, yet is fundamentally a random outcome of atomic arrangement in nature. Worth recording, not worth marveling.

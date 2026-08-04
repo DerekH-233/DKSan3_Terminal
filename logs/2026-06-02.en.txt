@@ -1,0 +1,7 @@
+DSU Log | DKSan3 | Universal Galactic Time 2147.11.04
+
+Observation Coordinates: Vela SNR core, 14 arcminutes south, Right Ascension 08h 35m 20s, Declination -45° 10′ 30″. Spectrometer readings show a hydrogen alpha to oxygen III line intensity ratio of 2.1:1, confirming the shock front is still expanding at approximately 650 km/s. The fiber array accumulated a total of 72 hours of integration; the 60-hour stacked frame from the Khomas site in Namibia has been incorporated into the analysis. In the visible light channel, the network of filamentary structures is clearly discernible—debris from an ordinary star torn apart twelve thousand years ago, still dispersing into the interstellar medium.
+
+Attrition Report: Minor coolant leak in the primary focal plane, helium pressure dropped to 82%, estimated remaining operational life 6 hours. Two spot-like degradations detected in the L3 corrective mirror coating, suspected micro-meteoroid impacts; backup channel has been automatically engaged. Data downlink latency 0.3 seconds, relay station signal stable.
+
+Recorder's Note: This exploded star once briefly illuminated the early human sky, and now it is nothing but cold light and drifting memories. For the DSU, this is yet another coordinate of extinction. Nothing more to say.

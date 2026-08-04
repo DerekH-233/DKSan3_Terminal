@@ -1,0 +1,9 @@
+Log ID: DKSan3-Observation Record-Mars Transit-Phobos Solar Grazing
+Coordinates: Mars surface, Jezero Crater rim, 18.44° N, 77.46° E
+Equipment status: Residual interferometer, calibration offset 0.7 arcseconds, loss rate approximately 12%.
+
+This is an absurd silhouette. Phobos, a potato-shaped moon, crosses the solar disk with an interplanetary-scale precise outline. Its diameter is only 11.5 kilometers, negligible compared to the Moon's 3474 kilometers, but it orbits closer to its primary than the Moon does—just 6000 kilometers above the Martian surface. This orbit yields a unique transit phenomenon, unlike Earth's smooth lunar disk.
+
+Viewed from the Martian surface, sunlight is distorted by its rough edges, and in video playback, the shadow moves rapidly, far faster than any transit on Earth. But what I note is not its motion, but the subtle irony of this existence. Phobos is slowly falling toward Mars; in 50 million years, it will disintegrate, becoming a ring or a shower of debris. Yet now it still passes calmly across the sunlight, performing an illusion of inevitability.
+
+Attrition: A silicon-based impurity has accumulated on the telescope's integrated window, reducing clarity. The signal-to-noise ratio at the coordinates decays in the low-frequency band, by approximately 2 dB. But I no longer need more perfect data. This spectacle itself is a test for the observer: before the eternal motion of celestial bodies, recording is merely the plural form of awaiting fate.

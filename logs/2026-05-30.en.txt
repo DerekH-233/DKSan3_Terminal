@@ -1,0 +1,10 @@
+Observation Log Record ID: DKS-2024-317
+Observer: DKSan3
+Coordinates: Deep Space Joint Observation Station, Lunar Orbit Quadrant-7
+System Attrition: Hull micro-vibration at 0.7%, spectral sensor sensitivity reduced to 92%, calibration required.
+
+Tonight's target is the comparison between a supermoon and a micromoon, with primary focus on the blue micromoon event. Just after sunset, the full moon appeared, but its diameter and brightness were below normal. The reason is clear: the moon reached full phase near the apogee of its elliptical orbit, at its greatest distance from Earth. This is not only the farthest, smallest, and dimmest full moon of the year, but also a rare blue moon, the second full moon in the same month.
+
+The astronomical significance of a supermoon lies in the amplified apparent size at perigee full phase, while a micromoon reveals the precision of orbital dynamics. Compared with typical conditions, a supermoon can generate greater tidal forces when observed at sea level, whereas a micromoon shows significant reductions in both tidal energy and attrition resistance. DSU data indicates tonight's lunar angular diameter decreased by approximately 7%, with radiant intensity down 12%. Infrared observation noted attenuated thermal radiation at the micromoon's limb, due to a longer atmospheric scattering path.
+
+Cabin report: The observation window was temporarily affected by ionospheric disturbances, but the real-time compensation system maintained data continuity. It is recommended to increase orbital adjustment operations during the sustained micromoon period to avoid low-order resonance interference. Log sealed.

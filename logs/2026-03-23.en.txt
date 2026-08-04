@@ -1,0 +1,20 @@
+<Deep Space Observation Log>
+Observer: DKSan3
+Coordinates: 53.4704° N, 122.3669° E
+Target: Correlation analysis of near-Earth atmospheric optical phenomena at Mohe and Orion background
+Date: [Current Date]
+Status: Recording
+
+Observation Record:
+Surface temperature at Mohe is -32°C. Confirmed target light pillar is not aurora; it is a near-Earth ice crystal reflection phenomenon. Ground light sources reflect off a low-altitude suspended flat ice crystal layer, forming vertical light pillar arrays. Ice crystals originate from crystal fog formed at the surface, not evaporated, differing from typical sun pillar formation conditions.
+
+Betelgeuse and Rigel in Orion serve as background calibration points. The light pillar phenomenon does not interfere with deep-space background observation, but low-altitude ice crystal layer scattering causes slight stellar image diffusion at zenith, with a limiting magnitude loss of approximately 0.4 magnitudes.
+
+Equipment Attrition:
+1. Main mirror frosting rate increased by 15%, constant temperature compensation activated.
+2. Equatorial mount bearing lubricant viscosity increased, tracking error accumulated to 0.3 arcminutes.
+3. Power consumption at 140% of standard nighttime observation.
+
+Conclusion: The phenomenon validates the interaction model between near-Earth ice crystal layers and artificial light sources under extreme low temperatures. It is recommended that subsequent research focus on the correlation between ice crystal orientation and ground-level spectral characteristics.
+
+Recording complete.

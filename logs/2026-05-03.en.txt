@@ -1,0 +1,12 @@
+Log No.: DSU-OBS-719
+Coordinates: RA 18h02m23s, Dec -23°01'48" (Trifid Nebula M20 core region)
+Observed Target: Pillar structures and jets
+System Attrition: Spectrometer channel 3 signal-to-noise ratio decreased by 12%, thruster fuel remaining 87%
+
+The dust pillars, like interstellar mountains, persist against M20's radiation storm. Hubble-returned data show clear stripping at the main pillar's tip, with a smaller finger-like protrusion extending upward, its apex jetting at approximately 200 km/s toward the upper left—this newborn star is being torn apart by the unseen winds of a massive nearby star.
+
+The stellar points encircling the pillar base are mostly young bodies that have just ignited nuclear fusion; their birth has not alleviated the pillar's erosion. Observations reveal that the protostar near the small pillar's top is losing mass at a rate of 0.3% per month, with its accretion disk being stripped, and ultraviolet radiation dispersing gas into plume-like tails. This dynamic is particularly pronounced in the infrared band, where cracks have appeared in the dust shielding layer.
+
+The jet itself shows a visible material stream trajectory under the Hα filter, appearing stable, yet over three months its deflection angle has increased by 2.9 arcseconds. This suggests a possible collapse within the pillar's interior, altering the magnetic field line orientation.
+
+Thrusters must be preserved for future trajectory corrections, precluding close-range vector measurements of the jet. It is recommended that the next observation adjust NICMOS's near-infrared gradient to prioritize tracking the pillar base's splitting front. The pillar structure's remaining lifespan is estimated not to exceed 100,000 years. DKSan3 recording complete, returning to standby status.

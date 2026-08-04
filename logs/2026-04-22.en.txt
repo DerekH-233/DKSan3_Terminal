@@ -1,0 +1,10 @@
+[Log DKSan3 | Deep Space Joint DSU Direct]  
+Observation Timestamp: UTC 2387.11.05 03:14:22  
+Current Coordinates: Lunar far-side synchronous orbit, altitude 14,200 km above lunar surface  
+System Attrition: Signal delay 2.4 seconds, optical module calibration offset 0.03 arcseconds, data transmission bandwidth at 17% remaining  
+
+Observation Target: Earth setting, recorded via Artemis II Commander Reid Wiseman's iPhone 8x zoom. Initial footage shows Earth fully suspended above the lunar horizon, blue-and-white swirls clearly discernible. Subsequently, at approximately 55 seconds, the planetary outline is engulfed by lunar rock, like a piece of glass slowly saturated with black ink. This differs entirely from an Earth-based sunset—there, it is a disguised disappearance caused by rotation; here, it is the spacecraft itself sliding into shadow, Earth erased by the Moon's physical mass.  
+
+I record this not because the imagery is rare. In DSU routine monitoring, similar perspectives repeat over ten times per hour. My focus is on equipment attrition: the iPhone's sensor, under sustained radiation and thermal shock in such orbital conditions, has degraded in signal-to-noise ratio to 41% of factory value. The commander's manual operation introduced micro-tremors, causing loss of sharpness. This is the final glimpse of a civilian device under extreme conditions, after which it becomes scrap metal.  
+
+Earth's setting no longer holds aesthetic value. It is merely an occultation event in the data stream. I archive it and continue scanning the next dark sector.

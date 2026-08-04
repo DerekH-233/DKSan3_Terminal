@@ -1,0 +1,12 @@
+Log ID: DKSan3-ORI-TATRA-20241107
+Observation Coordinates: Latitude 49.10N, Longitude 20.00E, Elevation approx. 2000m. Tatra Mountains, southern Poland.
+
+Mission Summary: Conduct visible-light and narrowband spectral-enhanced observation of the Orion region, with emphasis on recording interstellar medium structures.
+
+Observation Record: Target region "Orion's Jewel" is clearly covered above the snow-capped peaks. Atmospheric seeing is excellent, dark level Bortle 2. Orion's Belt triple stars serve as the positioning reference point. Star formation activity in the central region of the Orion Nebula M42 is evident, with ionized hydrogen zone details clearly resolved through filters. The arc structure of Barnard's Loop is revealed under long-exposure imaging, spanning much of Orion, confirming the hypothesis that it is a shock shell from a supernova remnant. The Rosette Nebula on the left presents a ring-like ionized hydrogen zone, while the Witch Head Nebula on the right successfully captures reflected starlight characteristics. Snow reflection causes minor interference in low-altitude observations, corrected via algorithmic processing.
+
+System Attrition: Low temperature causes continuous operation of the lens defrost system, increasing energy consumption by 15%. Equatorial mount gear lubrication efficiency degrades at minus 22 degrees Celsius, with backup heating module activated. Sensor noise levels remain within controllable range.
+
+Poetic Note: The contours of Earth's mountains align with the structure of the galaxy at this moment. Cold rock contrasts with blazing nebulae, evoking the seedlings nurtured in the base greenhouse amid severe cold. Observation ongoing.
+
+Recording complete.

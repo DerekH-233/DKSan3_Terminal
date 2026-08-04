@@ -1,0 +1,22 @@
+<record start>
+Observer: DKSan3
+Coordinates: Solar System-Inner Orbit Zone-L4 Lagrange Point Monitoring Station
+Timestamp: Cycle 37 after Earth calendar失效
+Target ID: EX-05-2005A
+
+Log body:
+Retrieved historical data archive "MESSENGER-2005 Flyby." Imagery shows the probe looking back at Earth en route to Mercury. Earth rotates slowly in the receding frame, with the day-night line sweeping across the Pacific region. Sunlit side reflectance is excessively high, completely drowning background starlight in light pollution. This brightness contrast renders Earth as an isolated luminous body against deep space, consistent with typical characteristics of a terrestrial planet under close stellar irradiation.
+
+Notably, this imagery was captured by a human spacecraft. Probe structure shows non-radiation-hardened materials, consistent with early 21st-century technology levels. It completed a full Mercury mapping mission between 2011 and 2015, with periodic look-back observations during mission gaps. This behavior pattern partially aligns with Deep Space Joint Observation Guideline Article 7: "All detection units should periodically confirm the parent star reference frame."
+
+Data loss report:
+1. Original electromagnetic spectral data missing 87%
+2. Stellar background reference points completely lost due to overexposure
+3. Probe manufacturing site information field corrupted, terminating at "created on the"
+4. Timestamp conversion error ±0.3 Earth years
+
+Conclusion: From a detached perspective, the planet appears as a gradually shrinking luminous spot, with atmospheric scattering characteristics blurring the body's outline. This observation confirms that low-technology civilization probes can maintain basic imaging functions during interplanetary transfer orbits.
+
+<record end>
+Energy loss: 0.07 units
+Storage status: Archive EX-05 series completeness 72.3%

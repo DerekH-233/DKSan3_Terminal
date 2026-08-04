@@ -1,0 +1,8 @@
+Log Number: DKSan3-2024-11-21
+Observation Target: RCW 86
+Coordinates: RA 14h 43m 00s, Dec -62° 30' 00"
+Background: In 185 AD, Chinese astronomers recorded the appearance of a new star in the Nanmen asterism. Modern star charts confirm this region corresponds to the southern part of Centaurus. That new star remained visible to the naked eye for several months and is considered the earliest recorded supernova in history. Today, RCW 86, as the remnant of that stellar explosion, appears as a faint, filamentary nebular outline against the stellar background in 21st-century telescopes.
+
+Observation Record: Optical band, stable resolution. RCW 86 exhibits an irregular but roughly annular structure, with diffuse edges and internal filamentary complexes. Spectral analysis reveals highly ionized elements, including sulfur and oxygen, confirming its supernova origin. Attrition rate affected by solar wind interference, data reception delayed by approximately 3 seconds, resulting in partial loss of spectral detail. Current signal strength 99.1%, gain adjustment in progress.
+
+Interpretation: The expansion velocity of this remnant is approximately 2800 kilometers per second, indicating enormous explosion energy. Its age is about 1840 years, consistent with historical records. The structural asymmetry suggests the progenitor star may have undergone asymmetric collapse or been influenced by a binary system. Astronomical value: Validates the concordance between ancient Chinese observations and modern models, providing a case study for early universe evolution.

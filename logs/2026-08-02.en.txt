@@ -1,0 +1,9 @@
+Log ID: DKSan3-4471
+Coordinates: Over West Virginia, latitude 38.9°N, longitude 79.9°W, altitude approximately 9,700 meters. 
+Observation target: Cirrus fibratus layer at the edge of Cumulonimbus, fire rainbow phenomenon.
+
+Ice crystal arrays within the cloud are uniformly aligned, with hexagonal flat crystals producing collective refraction at a solar elevation of 61 degrees. Spectral separation is clear, with a continuous transition from the red to violet end, showing no anomalous scattering. However, at the 14th minute of the observation window, disturbance in the lower cirrus layer caused a shift in crystal orientation, briefly breaking the light arc into three segments for 11 seconds before recovery. This loss was recorded as phase noise, equivalent to an optical path attenuation of 0.3 magnitude.
+
+Equipment status: The primary spectrometer continues tracking the target, but the secondary mirror positioning system exhibited a 0.02° drift during elevation adjustment, resulting in a loss of approximately 2% of the blue-violet band data in the edge color spectrum. The compressed data packet lost 3 bytes during transmission to the DSU relay station, requiring refitting of details regarding crystal tilt angles.
+
+Conclusion: The phenomenon conforms to atmospheric optical models, but the disturbance frequency is higher than expected. It is recommended to adjust the next observation to 15:40 Greenwich Mean Time, when the solar elevation will rise to 62 degrees, allowing verification of crystal orientation stability. Existing data is sufficient to support the initial report. Total losses: 0.3 magnitude, 2% spectral coverage, 3 bytes of data. Recording complete.

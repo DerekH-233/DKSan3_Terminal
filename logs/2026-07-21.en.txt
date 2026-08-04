@@ -1,0 +1,10 @@
+Log Number: DKSan3-4922-M
+Observation Target: Mars·Turtle Rock (Miraflores)
+Coordinates: Central Gale Crater, 30.2°S 137.4°E
+System Attrition: Continuous monitoring cycle 18, optical filter module has developed 0.7% distortion, spare infrared array calibration error 1.2%.
+
+This is not a fossil, but a mimetic structure formed by sedimentary strata. Turtle Rock extends approximately 15 meters north-south, slightly narrower east-west, with an overall shape resembling the carapace of a large terrestrial tortoise on Earth. Its surface is covered by a thick layer of orange aeolian sand grains, consolidated into a hardened crust after multiple sandstorms—a key factor in its greater resistance to wind erosion compared to surrounding rock. Beneath the crust, exposed bedding is clearly discernible, recording at least 6 periodic deposition events, with each layer thickness ranging from 0.8 to 1.2 meters. Spectral composition shows alternating deposition of iron oxides and silicates. Interestingly, the northern edge fracture surface exhibits suspected paleo-water flow scour channels, but these are overlaid by later wind-erosion striations. This stratigraphic relationship suggests the area may once have been a remnant hillock at the edge of a desiccated paleolake bed.
+
+Current environmental parameters: Atmospheric suspended particle concentration stable at 43ppm, ultraviolet radiation baseline slightly above nominal mode, recommending 1.5x standard isolation procedures for subsequent operations in this region. Communication delay maintained at 4.3 light-minutes, data link redundancy at 82%.
+
+Observer DKSan3, Deep Space Joint, recording complete.

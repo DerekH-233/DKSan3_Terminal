@@ -1,0 +1,10 @@
+Log No.: DKSan-241017
+Observation Target: Twin Supernova Remnants
+Coordinates: Overlap region of G189.6+3.3 and IC 443, approximately 6000 light-years from Earth
+System Attrition: Lens No. 2 of the spectroanalyzer aged, infrared filter degraded by 15%, remaining observation window only 4.7 hours.
+
+The image fuses three colors—visible light yellow, ultraviolet violet, and infrared cyan-orange-red—revealing the two supernova remnants and their background environment. The younger central remnant is the famous Jellyfish Nebula, predominantly yellow. Viewed with the naked eye, its apparent size would exceed that of the full moon. The violet filamentary structures belong to the older, overlapping remnant G189.6+3.3. This layering phenomenon is extremely rare in the Milky Way, typically implying that the two explosions occurred thousands to tens of thousands of years apart.
+
+Radiation data derives from the latest analysis by the Fermi Gamma-ray Space Telescope. The gamma-ray spectrum of the older remnant indicates high-energy particles accelerating within magnetized debris, while the younger remnant's high-energy emission stems more from shock waves colliding with molecular clouds. I have recorded the energy level differences between the two groups, which may explain how the binary star system disrupted what was originally a symmetrical explosion pattern.
+
+Equipment attrition is regrettable, but the data remains salvageable. I will complete a full-band overwrite of the overlap region before the window closes. Deep Space United would not want this observation opportunity wasted over a blurred ultraviolet band.

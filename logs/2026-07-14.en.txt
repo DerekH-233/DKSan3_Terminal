@@ -1,0 +1,10 @@
+Log ID: DKSan3-20241102-07
+Observation Target: Binary-lobed asteroid Torifune (98943 Torifune)
+Observation Coordinates: DSU deep-space station relay point 7, right ascension 20h12m, declination -15.4°
+System Attrition: 3.2% calibration energy, minor perturbation to primary sensor, no structural damage.
+
+Torifune. A rock mass as if cleaved by a blade, presenting a binary-lobed form at the outer edge of the Earth-Moon system. Earlier ground-based remote sensing depicted it as a prolate ellipsoid, but Hayabusa2's close-range imaging revealed the truth: two rubble piles stacked into a composite body roughly the diameter of four football fields. The boundary between the lobes is distinct, resembling remnants that failed to fully merge after a severe collision or tidal disruption. The surface is strewn with numerous boulders, yet lacks any obvious impact craters, indicating a loose internal structure like a pile of coarse gravel—non-rigid, where any impact fragments can be covered by loose reconsolidation.
+
+Notably, Torifune frequently approaches Earth's orbit with a stable trajectory, and the threat assessment is zero. Yet the binary-lobed nature of this loose rubble pile may hint that its origin is not a single celestial event. Is it a fragment of a once-larger body, or a shallow merger of two asteroids? The absence of impact evidence on the surface could also be interpreted as ongoing geological reshaping, or some yet-ununderstood surface weathering mechanism. The system has collected multispectral imagery and near-infrared reflectance data, awaiting further interpretation by the deep-space joint analysis group.
+
+Observation concluded. No anomalies detected, sensors cooled down.

@@ -1,0 +1,15 @@
+<Deep Space Joint Log>
+Observer: DKSan3
+Coordinates: L4 outpost array, solar ecliptic plane reference
+Target: Comet C/2025 R3 (PanSTARRS)
+Date: ████-██-██
+
+Target entered the inner solar system, orbital parameters confirmed. Nucleus diameter estimated at 3.2 kilometers, volatile material undergoing continuous sublimation. Visible light band shows typical coma structure, strong green spectral signature (C₂ emission band), extending approximately 150,000 kilometers.
+
+Focus on observing its ion tail. The ion tail exhibits abnormally thin filamentary structures, with extension angle deviating 8.7 degrees from the sun-comet line, confirming solar wind dominance. Filament breakage and reconnection patterns are evident, indicating ongoing solar wind magnetic field reconnection events and plasma instabilities. Ion tail material primarily consists of CO⁺, N₂⁺, CO₂⁺, with blue emission (CO⁺ band) intensity fluctuating violently, highly correlated in timing with coronal mass ejections reported by ACE satellite. Current ion tail physical length exceeds 0.8 astronomical units, but material density is 17% below standard model predictions.
+
+Attrition report: This continuous observation consumed a total of 42 hours of operational lifespan from radio interferometric units 3 and 7 of the L4 array; due to target brightness exceeding expectations, adaptive optics calibration mirror coating showed measurable degradation, with estimated efficiency decrease of 0.3%.
+
+Conclusion: The filamentary morphology of R3's ion tail serves as direct visual evidence of interaction between the solar wind's dynamic magnetic field and cometary plasma. Its fragile structure suggests the nucleus's volatile release rate may be declining. It is recommended to continue monitoring to predict its orbital period evolution.
+
+-End of log-

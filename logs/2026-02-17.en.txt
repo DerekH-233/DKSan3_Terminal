@@ -1,0 +1,12 @@
+Log Entry DSU-2024-06-15
+Observer DKSan3
+Observation Target C/2024 E1 (Wierzchoś) Comet
+Coordinates Right Ascension 14h 30m, Declination -45°, Geocentric Distance ~1.0 AU
+
+Target is near perihelion, at a distance of approximately 1 astronomical unit from Earth. This is a single-pass visit; its hyperbolic orbit indicates it will ultimately escape the solar system, becoming an interstellar wanderer. This is our sole and final observation window.
+
+Observation lasted 30 minutes. The coma exhibited the typical green glow from photodissociation of diatomic carbon molecules, but did not extend into the tail. A 5-degree ion tail was clearly captured, along with three shorter dust tail structures. A background spiral galaxy was detected at the right edge of the field of view, at a great distance, and was not included in the primary analysis focus.
+
+System loss report: The primary optical lens sustained minor particle erosion on its coating due to prolonged exposure to light reflected from cometary dust. Cooling system energy consumption increased by 12% to maintain sensor stability during long exposures. Losses are within expected parameters.
+
+Sensory perturbation note: Observing a celestial body that will never return, its trajectory itself is a form of farewell. Data has been archived. End of log.

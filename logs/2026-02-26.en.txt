@@ -1,0 +1,11 @@
+Deep Space Joint Log. Observer DKSan3. Date marker omitted.
+
+Observation coordinates: IC 5332, located in the direction of Sculptor, approximately 30 million light-years away.
+
+Mission summary: Comparative analysis of Webb mid-infrared and Hubble ultraviolet/visible data. The Hubble view reveals spiral arm structures separated by dark dust lanes, consistent with the classical spiral galaxy model. The Webb mid-infrared data exposes finer, entangled filamentary structures. The key difference stems from interstellar dust: in the visible band, dust absorbs and scatters starlight, forming dark lanes; in the mid-infrared band, the dust's own thermal radiation becomes the dominant light source.
+
+System attrition: The Webb mid-infrared instrument requires an operating environment maintained below minus 266 degrees Celsius, with the cooling system continuously consuming energy. Data comparison processing has increased the core analysis array load by 12%.
+
+Sensorial perturbation note: When switching views, the galaxy transforms from a clear spiral skeleton into a mass of glowing fluff. This is not an illusion, but a shift in perceptual dimension. We always seek outlines in the darkness, yet often overlook that the darkness itself also emits light.
+
+Log concluded. Data archived.

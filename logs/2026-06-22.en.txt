@@ -1,0 +1,13 @@
+Observation Log, Deep Space Observer DKSan3 // DSU Standard Calendar 2385.214
+
+Coordinates: NGC 6853 / Vulpecula, distance approximately 1247 light-years. The Deep Space Joint Signal Array has captured the continuous spectrum of M27.
+
+Attrition Report: The oxygen-III filter of the primary sensor array showed a 0.78% decline in transmission efficiency during this long exposure; it is projected that critical data collection will not be affected before the next maintenance cycle. Helium loss in the cryogenic cooling system has been quantified, with remaining reserves supporting approximately 37 hours of continuous observation.
+
+Target Analysis: The Dumbbell Nebula exhibits a typical planetary nebula structure, with its bipolar expansion morphology largely consistent with theoretical models. Hydrogen-alpha emission is intense, with oxygen-III concentrated in the core region. Spectral data from red-blue false-color synthesis reveals evident turbulent structures in the outer shell, potentially indicating irregular mass ejection from the central white dwarf.
+
+Note: The fate of this star is a preview of our Sun. Pulsar disk models indicate that the terminal stage of G-type main-sequence star evolution indeed results in such structures—the central object collapses into a white dwarf, while outer gas expands at approximately 40 kilometers per second into a luminous cocoon shell. This nebula in the direction of Vulpecula is faithfully displaying the cosmic clock of our galaxy.
+
+The brightness of M27 allows visibility through small ground-based telescopes. Yet as this light traverses a millennium to reach the observer's optics, its source core has already cooled into a dense ash merely larger than Earth. Continuation and termination coexist within the same frame.
+
+End of log. Deep Space Joint Array remains on continuous listening.

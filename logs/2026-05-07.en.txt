@@ -1,0 +1,7 @@
+DSU DKSan3 log, task number SN-0713. Observation target: edge-on spiral galaxy NGC 5907, also known as the Knife Edge Galaxy, coordinates R.A. 15h 15m 24s, Dec. +56° 06' 12".
+
+Supernova candidate, designated 2026kid, located at the galactic disk edge, approximately 1.2 arcminutes from the core. Photometry shows an apparent magnitude of approximately +15.4, with luminosity about one order of magnitude lower than typical Type Ia or core-collapse types, possibly due to severe host dust extinction or a subluminous subtype. Three nights of time-series imaging confirm increasing brightness; spectra are unavailable, making precise classification currently difficult.
+
+Attrition statistics: band filters B, V, R each accumulated 175 seconds of exposure; primary mirror coating degradation index 0.97% (checked against last maintenance cycle records); telescope pointing mechanism operates normally, but azimuth drive declination correction loss of 0.3 arcseconds, expected adjustment needed at next scheduled calibration. Individual system noise background: minor stray light interference from Earth-orbiting satellites, 5 frames discarded. Observation time resources additionally consumed 7.2 minutes for stellar tracking lock compensation. Note: if this supernova maintains its rising brightness trend, it will be submitted as a candidate target to the Deep Space Joint Center for spectral priority reordering.
+
+End of log.

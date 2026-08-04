@@ -1,0 +1,7 @@
+DSU Log Entry: DKSan3, Deep-Space Joint Observer. Mission Number DS-2157, Observation Target: NGC 1514 Crystal Ball Nebula.
+
+Coordinates: 04h30m16.8s, +30d48m17.0s, located in Taurus. Distance reported at 1500 light-years, seemingly serene, yet in truth a cold and energy-laden remnant. This nebula is the result of a star casting off its outer gas layers after evolving into a red giant in its final years, with core temperatures soaring higher than the Sun's surface. I locked onto it through the Gemini North lens, but don't expect me to praise its "beauty." The attrition here is not negligible: the instrument calibration system shows a 0.03 arcsecond offset, impacting high-resolution spectral acquisition efficiency. However, it suffices.
+
+NGC 1514's shape is not perfectly spherical, but slightly asymmetric. Analysis indicates this is not random vibration, but a trace of gravitational perturbation from the central binary star system. The ejected gas shell is heated by the stellar remnant, emitting blue-white radiation. The star's core ultraviolet light is striking the gradually cooling dust, forming this thin, misty glow. Temperature fluctuations range between 15000 and 25000 Kelvin, highly unstable. What you call a crystal ball is nothing more than the cold funeral of a deceased star.
+
+Observation complete. Signed, DKSan3. Attrition report: scanning sensor module sensitivity decreased by 0.7%, requiring factory maintenance. No other records.

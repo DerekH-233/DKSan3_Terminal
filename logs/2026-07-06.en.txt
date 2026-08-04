@@ -1,0 +1,10 @@
+Log Number: DKSan3-2025-0023
+Coordinates: Above the Atacama Desert, Chile, Latitude 24°S, Longitude 69°W, Altitude 2450 meters, Observation Dome 3
+Observation Target: Counter-glow band
+Attrition: Sensor array attrition rate 4.3%, primary mirror coating minor flaking, calibration required before return
+
+DSU Record: Current time, Greenwich Mean Time 02:14. Sky clear, atmospheric turbulence below baseline. The galactic core band to the left is bright and stable, originating from stellar flux within our galaxy's spiral arms, uniform in brightness, encircling the entire sky—this serves as the fundamental reference for any interstellar deep-space route. But tonight's focus is on the right—the zodiacal light band, a slender luminous arc rising from the horizon, contending with the galaxy's dominance in the dim light. This is merely sunlight reflected by dust within the solar system, with dust particle orbital inclinations slightly below the ecliptic plane, brightness peaking near the sun, thus clearest in the brief window after sunset. The dark matter background interference on the zodiacal light is weak, yet its radiation pressure interacts with the solar wind, causing a 0.2 arcsecond distortion at the band's edges.
+
+Attrition Record: The primary mirror accumulated thermal stress during low-angle tracking, coating refractive index decreased by 0.8%, affecting the signal-to-noise ratio for low-contrast targets. Recommendation: replace the bandpass filter before next deployment to reduce infrared shift.
+
+DKSan3 report complete.

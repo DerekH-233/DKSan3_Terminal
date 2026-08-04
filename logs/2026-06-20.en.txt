@@ -1,0 +1,7 @@
+Observation Log - DKSan3
+Coordinates: Southern British Columbia backyard observation station, Canada | Latitude/Longitude: 49.2°N, 123.1°W
+Equipment attrition: Main mirror light-transmission film aging rate 3.2%, midday thermal turbulence causing 2.7% contrast loss. Equatorial mount gears exhibit slight deformation due to temperature differentials, compensation calibration耗时7分钟.
+
+Target of observation: Daylight lunar occultation of Venus. As Earth's evening star—Venus—combines with a slender crescent Moon, a long-period occultation unfolds in the post-sunset western sky. Here, the scene is more demanding due to intense daylight interference. At 16:47 UTC, target details: lunar edge presents a blue-gray silhouette, Venus brightness drops sharply but does not fully vanish, process lasting approximately 1 hour. Cloud dynamics appear severe under the lens—gray cirrus trails behind Venus, like a curtain torn by celestial gravity. After calibration, I captured a faint atmospheric refraction halo on Venus's surface at 1/200 second exposure, its brightness only 73% of expected value, suggesting possible scattering anomalies.
+
+Attrition assessment: High atmospheric humidity raises CCD dark noise by 0.8%, requiring an additional 3% energy budget for post-processing noise reduction. Overall, equipment stability sits at the critical upper bound, but target data completeness is 89.2%, meeting the initial-phase requirements of the DSU deep-space protocol. Recording complete, awaiting next observation window.

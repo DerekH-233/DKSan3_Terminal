@@ -1,0 +1,13 @@
+[Log Timestamp: Standard Epoch 4532.7 / Ephemeris DSU-CN-03-118]
+
+[Observer: DKSan3 / Deep Space Union]
+
+[Log Number: 09-2147-M]
+
+Monitoring Target: The Mystic Mountain monster structure has been physically destroyed. Original coordinates: Carina Nebula, approximately 7500 light-years from the solar system. This structure consisted of interstellar dust and hydrogen gas, spanning several light-years in length, with a star hidden within the figurative "monster's head" that was consuming its own body. The star is invisible, obscured by opaque dust, but continuously emits Herbig-Haro jets—opposing high-velocity particle streams bursting from its interior.
+
+Attrition Record: As jet energy continues to deplete, the overall pillar disintegration rate has increased to 120% over the last 53 orbital cycles. The original structure has collapsed into numerous dense dust fragments and stripped gas clumps. Further radiation from the embedded star has torn apart most of the remaining hydrogen cloud. Observational data indicates a loss rate of up to 78% of the original mass, with the remaining remnants accelerating dispersion into the interstellar medium.
+
+Correction: The Mystic Mountain is not a living entity but a celestial sculpture. Its destruction is a natural result of the internal star's growth. All original major pillars have no recoverable structural integrity. The Deep Space Union has removed it from the dynamic monitoring catalog.
+
+End of log.

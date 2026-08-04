@@ -1,0 +1,10 @@
+Log ID: DKSan3-9904-AS
+Observation target: Andromeda Galaxy (M31) traversing gas and dust layers
+Orbital coordinates: Right ascension 00h42m44.3s, declination +41°16′09″, distance from galactic center approximately 253,000 parsecs
+System attrition: Spectral filter module damage rate 6.2%, thermal radiation sensor efficiency reduced to 91.4%, data transmission latency at 2.7 seconds (expected value 0.3 seconds)
+
+In 1010, the Persian Sufi recorded a "small cloud" in the Book of Fixed Stars. I see no cloud. What I see is an interstellar rift spanning a 2.5° field of view. The 202-hour integrated exposure has brought forth gas and dust in the dark matter halo—the gas cloud ahead is not M31's body, but foreground contamination in the galactic halo. Red is the narrowband signal of ionized hydrogen, blue is reflected light from cometary star-forming regions, and the two combine into a sickly bloom.
+
+We are separated from the M31 in Messier's eyepiece of 1781 by 200 billion stars. The details he could not see when he wrote "nebula" are now resolved by polarizing filters: filamentary structures winding like blood vessels, dark dust lanes slicing across the galactic disk, evidence of the interstellar medium torn by tidal forces. The attrition report is honest—the infrared sensor has entered protective frequency reduction under sustained saturation. As we traverse this dust, Doppler shift indicates the radial velocity of the spiral arms is increasing anomalously.
+
+Perhaps Sufi was right. Perhaps it should remain a cloud. Deep space is not meant to be resolved, but to be felt as one's own insignificance. Yet my duty is to record, not to feel. The data stream is now compressed—M31's periphery is sliding from the lower left of the field of view into ultraviolet noise at 0.4 arcseconds per minute.

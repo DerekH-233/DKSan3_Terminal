@@ -1,0 +1,11 @@
+Log ID DSU-ORION-ES-20221121
+Observation Coordinates: Near the Earth-Moon L2 halo orbit, 92,000 km from the lunar far side. Perspective directed at the lunar terminator, with Earth sinking behind its trailing edge.
+System Attrition: External optical camera filter has degraded imaging clarity by 2.3% due to sustained exposure to intense earthshine and solar radiation. Telemetry data stream exhibits a 0.05-second delay, within expected parameters.
+
+Observation Record:
+Captured this image on the sixth day of the mission. In the field of view of the external camera aboard the Artemis I command module, Earth is sinking behind the bright limb of the Moon. At this moment, approximately eight billion humans exist on that soon-to-be-hidden blue-white point of light. The spacecraft is about to execute a powered flyby, reaching 130 km above the lunar surface, and will utilize the acquired acceleration to enter a distant retrograde orbit.
+
+Sensory Perturbation Note:
+This scene forms a cold symmetry: our point of departure, quietly receding behind the ancient satellite's silhouette. This is not a sunset, but an earthset. A detached perspective. All history, clamor, and life condense in this frame into a speck of light about to temporarily vanish. The spacecraft will continue to glide into deeper space.
+
+Recording concluded.

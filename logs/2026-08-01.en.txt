@@ -1,0 +1,10 @@
+Log Number: DSU-078-09
+Coordinates: Krk Island, Croatia, 14.5 degrees East, 45.0 degrees North, altitude 212 meters.
+Observation window: From local sunset until the Deer Moon fully cleared the horizon mist, lasting approximately 47 minutes.
+Equipment attrition: Primary optical assembly filter layer exhibited slight iridescent interference under 86% humidity conditions, with calibration coefficient drift of 0.3%. Secondary mirror surface accumulated a layer of Adriatic Sea salt crystals, causing low-angle scattering readings to rise by 4.2%. Ultrasonic cleaning and re-coating are recommended prior to the next mission.
+
+The Deer Moon rose synchronously at the moment of sunset, with the lower two-thirds of the lunar disk showing an orange-copper hue, while the upper third had already shifted to gray-white. The Earth's shadow band extended in the southeast direction, with a thickness of approximately 1.7 degrees, forming a distinct dark tonal step against the mountain silhouettes. The Venus Belt was positioned above the shadow band, with color temperature measurements ranging from 2800 to 3200 Kelvin, exhibiting a pink-purple gradient, and its peak brightness point appeared about two degrees to the upper right of the lunar limb.
+
+Atmospheric turbulence index was moderate to weak, with seeing maintained at 0.7 arcseconds on the five-point scale. Background light pollution originated from the direction of Rijeka, with prominent low-pressure sodium lamp spectral peaks, but its minimal impact on this observation was attenuated to a negligible level through narrowband filtering.
+
+Conclusion: The seasonal convergence of the Deer Moon and the Venus Belt at this coordinate displays typical Mediterranean water vapor distribution characteristics. Attrition items are acceptable, requiring no urgent maintenance. It is recommended that 18 Earth days hence, at a location 11 kilometers south of this coordinate, a cross-observation of the full moon and the Delta Aquariid meteor shower be conducted.

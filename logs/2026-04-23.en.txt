@@ -1,0 +1,9 @@
+Log Number: DKSan3-4471
+Coordinates: Right Ascension 14h 22m 45s, Declination +12° 30' 15", Redshift z=1.2
+Observation Target: Large-scale structure of the universe, based on a slice of DESI five-year survey data
+
+The DESI census of 47 million galaxies and quasars has been completed, generating an Earth-centered 3D map of the universe. Today's focused thin slice reveals a woven filamentary network, with black gaps being blind zones obscured by Milky Way dust. Light from the most distant galaxies, 11 billion light-years away, arrives here after traversing the river of spacetime. Galaxy clusters gather along the cosmic timeline, forming feather-like structures whose density fluctuations remain clearly discernible at microscopic scales.
+
+Attrition Report: When the DSU-7 probe's front-end spectrograph analyzed faint signals at redshift z>0.8, the photon capture rate of detection array unit No. 3 dropped to 72%. Calibration data show that the remaining 28% of energy was absorbed by local interstellar medium, with approximately 6% attributed to foreground extinction from the Milky Way and 22% to scattering by dust rings within the target galaxies themselves. The long-wave infrared compensation module has been activated, but precision has degraded by 3.2 milliarcseconds.
+
+Before such a vast cosmic tapestry, the noise and gaps in the data stream are but motes of dust. Continue tracking the luminous spider silk until it vanishes into the shadows of 1.1 billion years ago. DSU's mission admits no delay. Recording complete.

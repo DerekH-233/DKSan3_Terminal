@@ -1,0 +1,8 @@
+Coordinates: RA 17h45m40s Dec −29°00'28"
+Attrition: 91.7% infrared band transmission, visible light pollution attenuation coefficient 0.23
+
+DKSan3 Log: Seoul, Ttukseo sector. 38th routine spectral scan, target locked on the faint core region of the galactic arch. Urban light pollution severe; even with infrared filters, raw data retains approximately 23% visible light pollution residue. Via single long exposure, successfully captured the outline of the central dust cloud, but detail attrition rate reaches 91.7%, primarily from background radiation and atmospheric turbulence.
+
+Galactic brightness remains discernible in the infrared band, but a distinct signal gap exists in the eastern spiral arm, suspected to be drowned by residual harmonics from urban light sources. The texture of the dark dust lane remains visible, like shredded fibers. Unable to confirm the presence of supernova remnants or faint emission lines in the interstellar medium, as noise thresholds approach sensor limits.
+
+To further reduce attrition, an orbital platform or higher-tier active infrared filter would be required. Ground-based observation under such light pollution is already futile. Log terminated.

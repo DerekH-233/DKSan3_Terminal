@@ -1,0 +1,7 @@
+Log Entry: DKSan3-0917
+Coordinates: Deep Space Joint Observation Station, directed at Earth's core, offset eastward, approximately 2900 kilometers below the equator, within the superplume thermal anomaly zone.
+Attrition: Quantum scanning array overload at 21%, cooling system efficiency reduced to 78% due to sustained high heat flux, estimated mission duration shortened by 6 standard hours.
+
+Today's focus is on the two anomalies within Earth's interior, known as superplumes. They are embedded like ancient scars at the mantle-core boundary. Seismic waves passing through exhibit significant distortion in velocity and direction, revealing that this is not merely inert material accumulation. One hypothesis suggests they are remnants of the cataclysm that formed the Moon 4.5 billion years ago; another posits they are the graves of ancient subducted plates. I lean toward the former—based on density anomaly gradients, these structures resemble abruptly frozen fragments rather than slowly deposited debris.
+
+Regardless of origin, these plumes appear to be creeping upward at a faint but measurable rate. I have recorded perturbations in the baseline heat flow pulses, with patterns distinct from normal mantle convection. This could affect the efficiency of the entire mantle circulation, potentially accelerating deep magmatic activity. DSU headquarters requires continuous monitoring, but the cooling system is nearing its limits at this depth. Before resuming observations, I will adjust the focal angle to bypass the hottest core, extending instrument survivability.

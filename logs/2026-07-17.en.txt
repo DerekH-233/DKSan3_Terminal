@@ -1,0 +1,7 @@
+Log date: Earth time July 18, 2025, Deep Space Joint Observation Log No. DSU-4117.
+
+Observation target: Dust trail of Comet Tempel 2 (10P/Tempel 2). Current coordinates: Capricornus direction, right ascension 21h15m, declination -15°02'. Based on deep-space telescope captured imagery, the comet nucleus brightness is stable, exhibiting a typical green coma, with an abnormally sharp core region. Notable is its dust trail extending to both eastern and western sides, not the traditional fan-shaped tail away from the Sun. This trail originates from dust remnants of multiple past orbits, distributed along ancient periodic trajectories.
+
+Attrition record: Thermal imaging sensor, during continuous scanning over 3.2 hours, showed an infrared radiation fluctuation rate of approximately 0.07% in the trail region. The optical detection system has slight degradation, but overall attrition is manageable. The main issue arises from increased noise caused by stray light reflected off trail particles, leading to a boundary identification error of ±0.3 arcseconds at the trail's eastern edge. It is recommended to calibrate photomultiplier tube sensitivity before future observations.
+
+Conclusion: The trail of Tempel 2 is a stable structure accumulated over the long term; attention should be paid to its decay rate over time to assess the evolution of nucleus activity. It is recommended that the next observation interval not exceed 14 days.

@@ -1,0 +1,8 @@
+DSU Log Number: DKSan3-17-06-25
+Coordinates: GN 47°51'N / 137°15'E, orbital altitude 408 km, passing over the far eastern region of Siberia.
+
+Visual scan initiated. Aurora bands penetrate the hull filter array, presented as a fixed data packet dated June 25, 2017. This green is not meaningless light pollution—it is radiation at a wavelength of 557.7 nanometers released by atomic oxygen transitions at altitudes of 100 to 300 km. The lower dense green, like salsa on a corn tortilla, smears across the entire dome. But above, beyond the station's horizon, a thinner red band extends—that is the 630.0 nanometer transition of atomic oxygen at higher altitudes, with molecular nitrogen bands interspersed as a baseline.
+
+Field clarity: 92%, due to the orbital crossing of the southern edge of the auroral oval, with minor fluctuations in charged particle flux. Optical sensors show slight degradation from intense ultraviolet irradiation; current degradation coefficient: 0.03%. Communication delay: 43 milliseconds, signal-to-noise ratio stable.
+
+Recording complete. There is no story in these wavelengths, only precise emission spectra. Continuing surveillance.

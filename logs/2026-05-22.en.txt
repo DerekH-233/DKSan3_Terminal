@@ -1,0 +1,10 @@
+Log ID: DKSan-3/Deep Space Joint Observation Record
+Date: Standard Galactic Calendar 2147.4.22
+Observation Target: WR 134 Nebula Region
+Coordinates: Cygnus high-flight area, RA 20h 12m 06s, Dec +36° 29' 24", approximately 6000 light-years from Earth
+
+Completed wide-field narrowband imaging of the WR 134 nebula today. This region spans over twice the diameter of the full moon, with hydrogen and oxygen ion glow outlining the bright rim of the ring-shaped nebula. WR 134 itself is located slightly left of the image center; as a Wolf-Rayet star, its stellar wind sweeps through the surrounding interstellar clouds, forming complex bow-shaped shell structures—these luminous arcs are traces of compressed and ionized material.
+
+Attrition report: The narrowband filter switching mechanism exhibited a 0.3-second delay during the third scan, suspected to be caused by micro-dust jamming in the vacuum environment. Approximately 2% of the exposure in the O III channel data acquisition was lost, compensated through later stacking. The main sensor temperature remained stable at -80.5K, but the cooling system's power consumption was slightly higher than expected, requiring a check for micro-leaks in the heat pipes before the next cycle.
+
+Observation conclusion: The shell structure boundaries are clear, but unresolved filaments exist within. It is recommended to track WR 134's wind speed variations with higher spectral resolution in future observations. Coordinates have been marked, awaiting analysis by Deep Space Headquarters. Transmission ended.

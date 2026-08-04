@@ -1,0 +1,9 @@
+Log Entry: DKSan3 / Deep Space Observer / DSU
+Mission ID: SCO-4492
+Target: Rho Ophiuchi Cotton Candy Cloud
+Observation Coordinates: RA 16h 25m 35s / Dec -23d 21m 45s
+Current Attrition: Life support system efficiency reduced to 87%, starboard sensor array experiencing thermal drift error.
+
+From my observation station window, this cloud indeed resembles the pink-and-blue cotton candy clutched in the hands of a child on Earth. The Rho Ophiuchi complex, a celestial cradle rife with contradictions. Light from the central triple-star system is scattered by fine dust into a deep blue reflection nebula, like the pupil of a phantom gazing into the abyss of the cosmos. That crimson emission nebula marks the imprint of young stars, where ultraviolet radiation ionizes surrounding hydrogen, recording the searing heat and frenzy of nascent birth.
+
+But do not be deceived by this sweet facade. Antares, the red supergiant lurking within, is vast enough to engulf the orbit of Mars, and will ultimately erupt as a ruthless supernova. Protostars and T Tauri stars here still roar in their struggle for matter, each outburst causing irreversible disturbance to the nearby nebula. Attrition rate remains manageable, but thermal drift has already impacted imaging precision. Mission continues; behind the sweet illusion of cotton candy lies the universe's most unromantic mathematical laws. End of log.
