@@ -8,10 +8,11 @@
    用法：DEEPSEEK_KEY=xxx node scripts/backfill-en.mjs
    ============================================================ */
 
-const fs = require('node:fs');
-const path = require('node:path');
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const ROOT = path.resolve(__dirname, '..');
+const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const LOGS_DIR = path.join(ROOT, 'logs');
 const MANIFEST = path.join(LOGS_DIR, 'manifest.json');
 
