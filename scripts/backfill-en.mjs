@@ -92,14 +92,11 @@ async function enLog(zhContent) {
         content: zhContent
     }], 3);
     if (t.length < 50) throw new Error('译文过短');
-    /* 只拦截真正的 Markdown 结构，避免误伤英文里的合法单字符（如 5*10、*强调*） */
+    /* 仅拦截破坏段落结构的行首标记（行内符号在纯文本渲染中无碍，
+       且英文译文中 * / _ 是常见合法字符，过度校验会误拒内容） */
     if (/^\s*#+\s/m.test(t) ||           // 行首标题
-        /^\s*[-*]\s/m.test(t) ||         // 行首列表
-        /\*\*[^*\n]+\*\*/.test(t) ||     // 加粗
-        /\*[^*\n]+\*/.test(t) ||         // 斜体
-        /__[^_\n]+__/.test(t) ||         // 下划线强调
-        /`[^`\n]+`/.test(t)) {           // 行内代码
-        throw new Error('包含 Markdown 标记');
+        /^\s*[-*]\s/m.test(t)) {         // 行首列表
+        throw new Error('包含行首 Markdown 标记');
     }
     return t;
 }
