@@ -35,7 +35,7 @@
     <div class="crt" aria-hidden="true"></div>
 
     <!-- ▸ 启动层 -->
-    <div id="boot-screen" role="dialog" aria-label="系统启动" aria-live="polite">
+    <div id="boot-screen" role="dialog" data-i18n-aria="bootAria" aria-label="系统启动" aria-live="polite">
         <div class="boot-inner">
             <pre class="boot-art" aria-hidden="true"></pre>
             <div class="boot-log" id="boot-log"></div>
@@ -61,10 +61,10 @@
         </div>
         <div class="hud-right">
             <button class="lang-btn" id="btn-lang" data-i18n="langBtn" aria-label="切换语言 / Switch language"></button>
-            <span class="hud-sig" id="hud-signal" title="信号强度">
+            <span class="hud-sig" id="hud-signal" data-i18n-title="signalTitle" title="信号强度">
                 <i></i><i></i><i></i><i></i><i></i>
             </span>
-            <span class="hud-clock" id="hud-clock" title="本地时间">--:--:--</span>
+            <span class="hud-clock" id="hud-clock" data-i18n-title="localTimeTitle" title="本地时间">--:--:--</span>
         </div>
     </header>
 
@@ -72,22 +72,22 @@
     <main class="container" id="main">
 
         <!-- 标题区 -->
-        <section class="title-block" aria-label="站点标题">
+        <section class="title-block" data-i18n-aria="siteTitleAria" aria-label="站点标题">
             <div id="typewriter" class="typewriter-text" aria-live="polite"></div>
             <h1 class="main-title">Observer<span class="main-title-accent">_DKS</span></h1>
-            <p class="main-sub">隶属于深空联合 [DSU] / 异构信息处理中心</p>
+            <p class="main-sub" data-i18n="mainSub">隶属于深空联合 [DSU] / 异构信息处理中心</p>
         </section>
 
         <!-- Hero：今日观测影像 -->
-        <section class="hero" aria-label="今日观测影像">
+        <section class="hero" data-i18n-aria="heroAria" aria-label="今日观测影像">
             <div class="hero-frame" id="hero-frame">
-                <div class="hero-media" id="hero-media" role="button" tabindex="0" aria-label="打开 NASA 今日影像页面"></div>
+                <div class="hero-media" id="hero-media" role="button" tabindex="0" data-i18n-aria="heroMediaAria" aria-label="打开 NASA 今日影像页面"></div>
                 <div class="hero-loading" id="hero-loading">
                     <span class="scan">█</span> <span data-i18n="heroLoading">UPLINK_SYNC</span> <span class="blink">▌</span>
                 </div>
                 <div class="hero-label" id="hero-label">
                     <span class="hero-tag" id="hero-date">[ ---- ]</span>
-                    <h2 class="hero-title" id="hero-title">观测信号同步中…</h2>
+                    <h2 class="hero-title" id="hero-title" data-i18n="heroInitial">观测信号同步中…</h2>
                     <span class="hero-sub" id="hero-sub" data-i18n="heroSub">NASA_APOD // DAILY_UPLINK</span>
                 </div>
             </div>
@@ -95,7 +95,7 @@
 
         <!-- 日志区 + 遥测侧栏 -->
         <div class="main-grid">
-            <section class="logs" aria-label="任务日志">
+            <section class="logs" data-i18n-aria="logsAria" aria-label="任务日志">
                 <div class="section-head">
                     <h2 class="section-title" data-i18n="sectionLogs">[ MISSION_LOGS ]</h2>
                     <div class="section-tools">
@@ -104,7 +104,7 @@
                     </div>
                 </div>
                 <div class="log-list" id="log-list" role="list" aria-live="polite">
-                    <div class="log-placeholder" id="log-placeholder"><span class="blink">▌</span> 等待信号同步…</div>
+                    <div class="log-placeholder" id="log-placeholder" data-i18n="waitingSignal"><span class="blink">▌</span> 等待信号同步…</div>
                 </div>
                 <!-- 分页器 -->
                 <div class="pager" id="pager" hidden>
@@ -114,7 +114,7 @@
                 </div>
             </section>
 
-            <aside class="telemetry" aria-label="系统遥测">
+            <aside class="telemetry" data-i18n-aria="telemetryAria" aria-label="系统遥测">
                 <div class="panel">
                     <h3 class="panel-title" data-i18n="sysTitle">SYSTEM</h3>
                     <dl class="panel-rows" id="sys-rows">
@@ -131,8 +131,8 @@
                 <div class="panel">
                     <h3 class="panel-title" data-i18n="ctlTitle">CONTROLS</h3>
                     <button class="ctl-btn" id="btn-bgm" aria-pressed="false">▶ BGM_SIGNAL</button>
-                    <button class="ctl-btn" id="btn-theme" aria-label="切换主题">◈ THEME</button>
-                    <button class="ctl-btn" id="btn-cmd" aria-label="打开命令终端">❯ TERMINAL</button>
+                    <button class="ctl-btn" id="btn-theme" data-i18n-aria="themeAria" aria-label="切换主题">◈ THEME</button>
+                    <button class="ctl-btn" id="btn-cmd" data-i18n-aria="cmdAria" aria-label="打开命令终端">❯ TERMINAL</button>
                 </div>
 
                 <div class="panel panel-links">
@@ -142,7 +142,7 @@
                 </div>
 
                 <div class="panel panel-note">
-                    <p data-i18n="panelNote">系统处于<b>自主模式</b>。日志由 AI 每日生成，本站仅为一座被抛入深空的观测哨——它传回的每一段碎碎念，都终将消失在背景噪音里。</p>
+                    <p data-i18n="panelNote">系统处于自主模式。日志由 AI 每日生成，本站仅为一座被抛入深空的观测哨——它传回的每一段碎碎念，都终将消失在背景噪音里。</p>
                 </div>
             </aside>
         </div>
@@ -154,14 +154,14 @@
     </main>
 
     <!-- ▸ 左侧时间日期链 -->
-    <nav class="timechain" id="timechain" aria-label="时间链导航">
+    <nav class="timechain" id="timechain" data-i18n-aria="tcAria" aria-label="时间链导航">
         <div class="tc-clock" id="tc-clock">--:--</div>
         <div class="tc-line"></div>
         <div class="tc-points" id="tc-points"></div>
     </nav>
 
     <!-- ▸ 日志阅读器 -->
-    <div id="reader" class="reader" role="dialog" aria-modal="true" aria-label="日志阅读" hidden>
+    <div id="reader" class="reader" role="dialog" aria-modal="true" data-i18n-aria="readerAria" aria-label="日志阅读" hidden>
         <div class="reader-inner">
             <div class="reader-head">
                 <div class="reader-meta">
@@ -185,7 +185,7 @@
     <div id="term-panel" class="term-panel" role="log" aria-label="终端输出" hidden></div>
 
     <!-- ▸ 底部命令栏 -->
-    <footer class="cmd-bar" id="cmd-bar" aria-label="命令输入">
+    <footer class="cmd-bar" id="cmd-bar" data-i18n-aria="cmdBarAria" aria-label="命令输入">
         <span class="cmd-prompt">observer@dks3:~$</span>
         <input type="text" id="cmd-input" class="cmd-input" autocomplete="off" spellcheck="false"
                data-i18n-placeholder="cmdPlaceholder" aria-label="TERMINAL INPUT">

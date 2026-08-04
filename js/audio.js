@@ -3,6 +3,8 @@
    状态持久化；自动播放策略失败时静默降级
    ============================================================ */
 
+import { t } from './i18n.js';
+
 const KEY = 'dsu_bgm_v1';
 let audio = null;
 let btn = null;
@@ -26,6 +28,9 @@ export function init() {
     } else {
         render(false);
     }
+
+    /* 语言切换时更新按钮文本 */
+    document.addEventListener('dsu:lang-change', () => render(!audio.paused));
 }
 
 export function toggle() {
@@ -43,7 +48,7 @@ export function toggle() {
 }
 
 function render(on) {
-    btn.textContent = on ? '■ BGM_SIGNAL' : '▶ BGM_SIGNAL';
+    btn.textContent = on ? t('btnBgmOn') : t('btnBgmOff');
     btn.classList.toggle('active', on);
     btn.setAttribute('aria-pressed', String(on));
 }

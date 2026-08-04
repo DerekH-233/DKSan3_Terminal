@@ -82,6 +82,8 @@ const ZH = {
     cmdLogs: '列出最近 n 条日志（默认 10）',
     cmdOpen: '打开指定日期日志，如 open 2026-08-03',
     cmdSearch: '搜索日志并聚焦结果',
+    cmdSearchName: 'search <词>',
+    cmdEchoName: 'echo <文本>',
     cmdApod: '滚动至今日观测影像',
     cmdStatus: '系统遥测状态',
     cmdTheme: '切换主题：classic/aurora/blood/ghost',
@@ -145,6 +147,23 @@ const ZH = {
     tw1: '>> 初始化深空终端...',
     tw2: '>> 识别操作员: DKSan3',
     tw3: '>> 目标锁定: 我们生而眺望',
+
+    /* 小字 */
+    mainSub: '隶属于深空联合 [DSU] / 异构信息处理中心',
+    heroInitial: '观测信号同步中…',
+    signalTitle: '信号强度',
+    localTimeTitle: '本地时间',
+    bootAria: '系统启动',
+    siteTitleAria: '站点标题',
+    heroAria: '今日观测影像',
+    heroMediaAria: '打开 NASA 今日影像页面',
+    logsAria: '任务日志',
+    telemetryAria: '系统遥测',
+    themeAria: '切换主题',
+    cmdAria: '打开命令终端',
+    tcAria: '时间链导航',
+    readerAria: '日志阅读',
+    cmdBarAria: '命令输入',
 
     /* 语言按钮 */
     langBtn: 'EN'
@@ -227,6 +246,8 @@ const EN = {
     cmdLogs: 'List recent n logs (default 10)',
     cmdOpen: 'Open a log by date, e.g. open 2026-08-03',
     cmdSearch: 'Search logs and focus results',
+    cmdSearchName: 'search <query>',
+    cmdEchoName: 'echo <text>',
     cmdApod: 'Jump to today\'s observation image',
     cmdStatus: 'System telemetry',
     cmdTheme: 'Switch theme: classic/aurora/blood/ghost',
@@ -290,6 +311,23 @@ const EN = {
     tw1: '>> INITIALIZING DEEP SPACE TERMINAL...',
     tw2: '>> OPERATOR IDENTIFIED: DKSan3',
     tw3: '>> TARGET LOCKED: WE ARE BORN TO LOOK UP',
+
+    /* 小字 */
+    mainSub: 'AFFILIATED WITH DSU // HETEROGENEOUS INFORMATION PROCESSING CENTER',
+    heroInitial: 'SYNCING OBSERVATION SIGNAL…',
+    signalTitle: 'SIGNAL STRENGTH',
+    localTimeTitle: 'LOCAL TIME',
+    bootAria: 'System boot',
+    siteTitleAria: 'Site title',
+    heroAria: 'Today\'s observation image',
+    heroMediaAria: 'Open NASA image of the day',
+    logsAria: 'Mission logs',
+    telemetryAria: 'System telemetry',
+    themeAria: 'Switch theme',
+    cmdAria: 'Open command terminal',
+    tcAria: 'Timeline navigation',
+    readerAria: 'Log reader',
+    cmdBarAria: 'Command input',
 
     /* 语言按钮 */
     langBtn: '中'

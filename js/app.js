@@ -130,10 +130,11 @@ function currentTicker() {
 }
 
 function updateHud() {
-    /* 本地时钟（用户浏览器时区）+ 日期 */
+    /* 本地时钟（用户浏览器时区）+ 日期（随界面语言） */
     const now = new Date();
-    document.getElementById('hud-clock').textContent = now.toLocaleTimeString('zh-CN', { hour12: false });
-    document.getElementById('hud-clock').title = now.toLocaleDateString('zh-CN', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+    const locale = i18n.isZh() ? 'zh-CN' : 'en-US';
+    document.getElementById('hud-clock').textContent = now.toLocaleTimeString(locale, { hour12: false });
+    document.getElementById('hud-clock').title = now.toLocaleDateString(locale, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
 
     /* 运行时长 */
     const s = Math.floor((Date.now() - START_MS) / 1000);
