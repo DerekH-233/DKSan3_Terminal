@@ -22,12 +22,12 @@ const BAD = new Set(['null', '空值', 'none', 'undefined', '']);
 
 const log = (...args) => console.log(`[backfill]`, ...args);
 
-async function deepseek(messages, retries = 2) {
+async function deepseek(messages, retries = 4) {
     if (!DEEPSEEK_KEY) throw new Error('缺少 DEEPSEEK_KEY');
     for (let attempt = 1; attempt <= retries; attempt++) {
         try {
             const ctrl = new AbortController();
-            const timer = setTimeout(() => ctrl.abort(), 30000);
+            const timer = setTimeout(() => ctrl.abort(), 45000);
             const res = await fetch('https://api.deepseek.com/v1/chat/completions', {
                 method: 'POST',
                 headers: {
@@ -43,13 +43,19 @@ async function deepseek(messages, retries = 2) {
                 signal: ctrl.signal
             });
             clearTimeout(timer);
+            /* 503/429 为暂时性过载，指数退避重试 */
+            if (res.status === 503 || res.status === 429) {
+                throw new Error(`HTTP ${res.status} (overloaded)`);
+            }
             if (!res.ok) throw new Error(`HTTP ${res.status}`);
             const data = await res.json();
             const content = data?.choices?.[0]?.message?.content;
             if (!content) throw new Error('空响应');
             return content.trim();
         } catch (err) {
-            if (attempt < retries) await new Promise(r => setTimeout(r, 3000 * attempt));
+            const delay = 5000 * attempt + Math.random() * 3000;
+            log(`API 调用失败（${attempt}/${retries}）: ${err.message}，${Math.round(delay / 1000)}s 后重试`);
+            if (attempt < retries) await new Promise(r => setTimeout(r, delay));
             if (attempt === retries) throw err;
         }
     }

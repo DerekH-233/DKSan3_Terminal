@@ -23,9 +23,11 @@ jobs:
         run: node scripts/backfill-en.mjs
 
       - name: Commit and Push
+        if: always()   # 即使回填部分失败，也提交已完成部分，下次幂等续跑
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "DSU Autonomous"
           git add logs/
           git commit -m "EN_ARCHIVE_BACKFILL: $(date +%Y-%m-%d)" || echo "No changes"
+          git pull --rebase origin main || true   # 任务期间可能有新推送，先对齐再推
           git push
