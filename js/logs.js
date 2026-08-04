@@ -8,7 +8,7 @@
    安全：所有动态内容经 textContent 渲染，杜绝注入
    ============================================================ */
 
-import { t, isZh } from './i18n.js?v=7.4';
+import { t, isZh } from './i18n.js?v=7.5';
 
 const CACHE_KEY = 'dsu_manifest_v2';
 const CACHE_TTL = 1000 * 60 * 60 * 6;   // 缓存 6 小时
@@ -107,6 +107,33 @@ function joyImageDataUri() {
         `<circle cx='106' cy='59' r='3.2' fill='${primary}' opacity='0.4'/>` +
         `</svg>`;
     return 'data:image/svg+xml,' + encodeURIComponent(svg);
+}
+
+/** 阅读器大图：特殊记录 → 愉悦星球插画；普通日志 → 当日影像；
+ *  视频/影像缺失 → SIGNAL_LOST 故障占位 */
+function buildReaderArt(log) {
+    if (!log) return null;
+    const art = document.createElement('div');
+    art.className = 'reader-art';
+
+    if (log.special) {
+        art.style.backgroundImage = `url("${joyImageDataUri()}")`;
+        return art;
+    }
+
+    const imgUrl = decodeImage(log.img);
+    if (imgUrl && !/\.(mp4|webm|mov)(\?|$)/i.test(imgUrl)) {
+        const img = new Image();
+        img.decoding = 'async';
+        img.onload = () => { art.style.backgroundImage = `url("${imgUrl}")`; };
+        img.onerror = () => art.classList.add('fail');
+        img.src = imgUrl;
+        return art;
+    }
+
+    /* 视频或影像缺失：故障占位 */
+    art.classList.add('fail');
+    return art;
 }
 
 /* ─────────────────────── 数据加载 ─────────────────────── */
@@ -388,12 +415,8 @@ export async function openLog(date, log, idx) {
     /* 正文：逐段渲染（textContent 安全） */
     const body = document.getElementById('reader-body');
     body.textContent = '';
-    if (log && log.special) {
-        const art = document.createElement('div');
-        art.className = 'reader-art';
-        art.style.backgroundImage = `url("${joyImageDataUri()}")`;
-        body.appendChild(art);
-    }
+    const art = buildReaderArt(log);
+    if (art) body.appendChild(art);
     if (fallback) {
         const note = document.createElement('div');
         note.className = 'reader-note';
