@@ -291,8 +291,9 @@ function updateManifest({ title, title_en, url, nasa_title, nasa_title_en }) {
         nasa_title_en: nasa_title_en || null
     });
 
-    /* 倒序（最新在前）+ 截断到 400 条，防止仓库无限膨胀 */
-    entries.sort((a, b) => (a.date < b.date ? 1 : -1));
+    /* 倒序（最新在前）+ 截断到 400 条，防止仓库无限膨胀；
+       同日多条目保持相对顺序（special 在前），比较函数需对相等返回 0 */
+    entries.sort((a, b) => (a.date < b.date ? 1 : (a.date > b.date ? -1 : 0)));
     entries = entries.slice(0, 400);
 
     fs.writeFileSync(MANIFEST, JSON.stringify(entries, null, 2) + '\n', 'utf8');
