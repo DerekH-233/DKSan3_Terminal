@@ -4,7 +4,7 @@
    支持：图片 / 视频 / 降级占位；标题随界面语言切换
    ============================================================ */
 
-import { t, isZh } from './i18n.js?v=7.6';
+import { t, isZh } from './i18n.js?v=7.7';
 
 const frame = document.getElementById('hero-frame');
 const media = document.getElementById('hero-media');
@@ -57,12 +57,8 @@ export function init(manifestData) {
         img.src = entry.img;
     }
 
-    /* 点击 → NASA APOD 当天详情页（apYYMMDD.html），日期异常时回退官网首页 */
-    const dateKey = (entry.date || '').replace(/-/g, '').slice(2);   // 2026-08-03 → 260803
-    const pageUrl = /^\d{6}$/.test(dateKey)
-        ? `https://apod.nasa.gov/apod/ap${dateKey}.html`
-        : 'https://apod.nasa.gov/apod/';
-    const openNasa = () => window.open(pageUrl, '_blank', 'noopener');
+    /* 点击 → NASA APOD 官网主页 */
+    const openNasa = () => window.open('https://apod.nasa.gov/apod/', '_blank', 'noopener');
     media.addEventListener('click', openNasa);
     media.addEventListener('keydown', e => {
         if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openNasa(); }
