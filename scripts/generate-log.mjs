@@ -299,20 +299,21 @@ async function main() {
     log(`DSU 日志生成器 v2 启动 | 日期 ${DATE}`);
 
     /* 防覆盖：当日已有有效日志（如人工纪念记录）则跳过文字生成，保留现有记录；
-       但今日影像仍照常归档（图片归当日，文字保留） */
+       但今日 NASA 图文仍照常归档：影像 + NASA 原标题（nasa_title），供 hero 今日影像区显示 */
     const existingFile = path.join(LOGS_DIR, `${DATE}.txt`);
     const existing = fs.existsSync(existingFile) ? fs.readFileSync(existingFile, 'utf8').trim() : '';
     if (existing && existing !== 'null' && existing.length >= 5) {
-        log(`当日日志已存在（${DATE}.txt），保留现有记录，仅归档今日影像`);
+        log(`当日日志已存在（${DATE}.txt），保留现有记录，归档今日 NASA 图文`);
         const apod = await fetchApod();
         if (apod?.url) {
             const entries = JSON.parse(fs.readFileSync(MANIFEST, 'utf8'));
             const hit = entries.find(e => e && e.date === DATE);
             if (hit) {
                 hit.img = apod.url;
-                hit.title_en = hit.title_en || apod.title_en || null;
+                hit.nasa_title_en = apod.title_en || null;
+                hit.nasa_title = apod.title_en ? await translateTitle(apod.title_en) : null;
                 fs.writeFileSync(MANIFEST, JSON.stringify(entries, null, 2) + '\n', 'utf8');
-                log(`今日影像已归档至 ${DATE}：${apod.url}`);
+                log(`今日图文已归档至 ${DATE}：${apod.title_en}（${hit.nasa_title}）`);
             }
         }
         return;

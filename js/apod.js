@@ -4,7 +4,7 @@
    支持：图片 / 视频 / 降级占位；标题随界面语言切换
    ============================================================ */
 
-import { t, isZh } from './i18n.js?v=7.7';
+import { t, isZh } from './i18n.js?v=7.8';
 
 const frame = document.getElementById('hero-frame');
 const media = document.getElementById('hero-media');
@@ -65,10 +65,16 @@ export function init(manifestData) {
     });
 }
 
+/**
+ * hero 标题：今日影像区与 NASA 同步 —— 优先显示 NASA 今日标题（nasa_title，
+ * AI 重构中文版 / NASA 原题英文版），无 NASA 文案时回退条目自身标题。
+ */
 function heroTitle(entry) {
-    if (isZh()) return entry.title || t('heroFallback');
-    return (entry.title_en && entry.title_en !== 'null') ? entry.title_en
+    if (isZh()) return (entry.nasa_title && entry.nasa_title !== 'null') ? entry.nasa_title
         : (entry.title || t('heroFallback'));
+    return (entry.nasa_title_en && entry.nasa_title_en !== 'null') ? entry.nasa_title_en
+        : ((entry.title_en && entry.title_en !== 'null') ? entry.title_en
+            : (entry.title || t('heroFallback')));
 }
 
 function finish() {
