@@ -8,7 +8,7 @@
    安全：所有动态内容经 textContent 渲染，杜绝注入
    ============================================================ */
 
-import { t, isZh } from './i18n.js?v=7.3';
+import { t, isZh } from './i18n.js?v=7.4';
 
 const CACHE_KEY = 'dsu_manifest_v2';
 const CACHE_TTL = 1000 * 60 * 60 * 6;   // 缓存 6 小时
@@ -67,6 +67,46 @@ export function decodeImage(img) {
     const yt = img.match(/youtube\.com\/embed\/([\w-]+)|youtu\.be\/([\w-]+)/i);
     if (yt) return `https://img.youtube.com/vi/${yt[1] || yt[2]}/hqdefault.jpg`;
     return img;
+}
+
+/* ─────────────────────── 特殊记录：愉悦星球插画（SVG 数据 URI，颜色跟随主题） ─────────────────────── */
+
+function joyImageDataUri() {
+    const primary = getComputedStyle(document.documentElement).getPropertyValue('--c-primary').trim() || '#ff5a09';
+    const accent = getComputedStyle(document.documentElement).getPropertyValue('--c-accent').trim() || '#00f0ff';
+    const stars = (() => {
+        const pts = [[20,18,1.2],[42,12,0.9],[150,14,1.1],[162,40,0.8],[12,55,0.8],[140,84,1],[34,30,0.7],[120,22,1.3]];
+        return pts.map(([x, y, r]) => `<circle cx='${x}' cy='${y}' r='${r}' fill='#fff' opacity='0.75'/>`).join('');
+    })();
+    const sparkles = (() => {
+        const pts = [[118,26],[156,64],[24,78],[64,12]];
+        return pts.map(([x, y]) =>
+            `<path d='M${x} ${y} l1.6 3.2 3.2 1.6 -3.2 1.6 -1.6 3.2 -1.6 -3.2 -3.2 -1.6 3.2 -1.6z' fill='${accent}' opacity='0.85'/>`
+        ).join('');
+    })();
+    const svg =
+        `<svg xmlns='http://www.w3.org/2000/svg' width='352' height='224' viewBox='0 0 176 112'>` +
+        `<rect width='176' height='112' fill='#05080c'/>` +
+        stars + sparkles +
+        /* 网格地平线 */
+        `<path d='M0 88 H176' stroke='${primary}' stroke-opacity='0.4' stroke-width='0.8'/>` +
+        `<path d='M0 94 H176' stroke='${primary}' stroke-opacity='0.25' stroke-width='0.8'/>` +
+        `<path d='M16 88 L26 100 M52 88 L62 100 M88 88 L98 100 M124 88 L134 100 M160 88 L170 100' stroke='${primary}' stroke-opacity='0.3' stroke-width='0.8'/>` +
+        /* 轨道 */
+        `<ellipse cx='88' cy='52' rx='42' ry='12' fill='none' stroke='${accent}' stroke-opacity='0.35' stroke-dasharray='3 4' transform='rotate(-14 88 52)'/>` +
+        /* 微笑星球本体 */
+        `<circle cx='88' cy='52' r='28' fill='#0d1520' stroke='${primary}' stroke-width='1.6'/>` +
+        `<circle cx='80' cy='42' r='6' fill='#fff' opacity='0.06'/>` +
+        /* 眯眼（愉悦的弧线眼睛） */
+        `<path d='M74 46 Q78 41 82 46' stroke='${accent}' stroke-width='2.2' fill='none' stroke-linecap='round'/>` +
+        `<path d='M94 46 Q98 41 102 46' stroke='${accent}' stroke-width='2.2' fill='none' stroke-linecap='round'/>` +
+        /* 微笑 */
+        `<path d='M75 57 Q88 71 101 57' stroke='${primary}' stroke-width='2.2' fill='none' stroke-linecap='round'/>` +
+        /* 腮红 */
+        `<circle cx='70' cy='59' r='3.2' fill='${primary}' opacity='0.4'/>` +
+        `<circle cx='106' cy='59' r='3.2' fill='${primary}' opacity='0.4'/>` +
+        `</svg>`;
+    return 'data:image/svg+xml,' + encodeURIComponent(svg);
 }
 
 /* ─────────────────────── 数据加载 ─────────────────────── */
@@ -141,15 +181,16 @@ function renderPage() {
 }
 
 function buildItem(log, idx, today) {
+    const isSpecial = !!log.special;
     const item = document.createElement('div');
-    item.className = 'log-item' + (log.date === today ? ' log-new' : '');
+    item.className = 'log-item' + (log.date === today ? ' log-new' : '') + (isSpecial ? ' log-special' : '');
     item.setAttribute('role', 'listitem');
     item.dataset.date = log.date;
     item.tabIndex = 0;
 
-    /* 当日影像缩略图 */
+    /* 当日影像缩略图（特殊记录使用愉悦星球插画，颜色跟随主题） */
     const thumb = document.createElement('div');
-    thumb.className = 'log-thumb';
+    thumb.className = 'log-thumb' + (isSpecial ? ' joy' : '');
     const imgUrl = decodeImage(log.img);
     if (imgUrl) {
         const img = new Image();
@@ -157,8 +198,18 @@ function buildItem(log, idx, today) {
         img.onload = () => { thumb.style.backgroundImage = `url("${imgUrl}")`; };
         img.onerror = () => thumb.classList.add('fail');
         img.src = imgUrl;
+    } else if (isSpecial) {
+        thumb.style.backgroundImage = `url("${joyImageDataUri()}")`;
     } else {
         thumb.classList.add('fail');
+    }
+
+    /* 特殊记录角标 */
+    if (isSpecial) {
+        const badge = document.createElement('span');
+        badge.className = 'log-special-badge';
+        badge.textContent = isZh() ? 'SPECIAL' : 'SPECIAL';
+        item.appendChild(badge);
     }
 
     const idxEl = document.createElement('span');
@@ -337,6 +388,12 @@ export async function openLog(date, log, idx) {
     /* 正文：逐段渲染（textContent 安全） */
     const body = document.getElementById('reader-body');
     body.textContent = '';
+    if (log && log.special) {
+        const art = document.createElement('div');
+        art.className = 'reader-art';
+        art.style.backgroundImage = `url("${joyImageDataUri()}")`;
+        body.appendChild(art);
+    }
     if (fallback) {
         const note = document.createElement('div');
         note.className = 'reader-note';
@@ -383,6 +440,15 @@ function stepReader(dir) {
 document.addEventListener('dsu:lang-change', () => {
     renderPage();
     if (!reader.hidden && readerIndex >= 0 && filtered[readerIndex]) {
+        const log = filtered[readerIndex];
+        openLog(log.date, log, readerIndex);
+    }
+});
+
+/* 主题切换：重绘列表（愉悦星球插画颜色跟随主题色） */
+document.addEventListener('dsu:theme-change', () => {
+    renderPage();
+    if (!reader.hidden && readerIndex >= 0 && filtered[readerIndex] && filtered[readerIndex].special) {
         const log = filtered[readerIndex];
         openLog(log.date, log, readerIndex);
     }

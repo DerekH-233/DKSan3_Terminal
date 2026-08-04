@@ -15,6 +15,8 @@ export function set(name) {
     current = t;
     document.documentElement.dataset.theme = t;
     try { localStorage.setItem(STORE_KEY, t); } catch (_) { /* 隐私模式忽略 */ }
+    /* 广播主题变更，供依赖主题色的动态内容（愉悦星球插画等）重绘 */
+    document.dispatchEvent(new CustomEvent('dsu:theme-change'));
 }
 
 /** 循环到下一套主题 */

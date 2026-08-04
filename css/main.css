@@ -767,6 +767,72 @@ body::after {
 /* 信号失真标题 */
 .log-title.degraded { color: var(--c-danger); font-style: normal; opacity: 0.9; }
 
+/* ── 特殊记录卡片：主题色填充 + 文字自适应 ── */
+.log-item.log-special {
+    background: linear-gradient(90deg,
+        var(--c-primary) 0%,
+        color-mix(in srgb, var(--c-primary) 82%, transparent) 62%,
+        color-mix(in srgb, var(--c-primary) 45%, transparent) 100%);
+    border-color: var(--c-primary);
+    box-shadow: 0 0 22px var(--c-glow), inset 0 0 30px rgba(0, 0, 0, 0.12);
+}
+
+.log-item.log-special:hover {
+    border-color: var(--c-primary);
+    box-shadow: 0 0 34px var(--c-glow);
+    transform: translateX(4px);
+}
+
+.log-item.log-special .log-index {
+    color: rgba(0, 0, 0, 0.72);
+    border-right-color: rgba(0, 0, 0, 0.35);
+}
+
+.log-item.log-special .log-date { color: rgba(0, 0, 0, 0.78); }
+.log-item.log-special .log-title { color: #000; font-weight: 700; }
+.log-item.log-special:hover .log-title { color: #000; }
+.log-item.log-special .log-arrow { color: #000; opacity: 1; transform: translateX(0); }
+
+.log-item.log-special .log-thumb {
+    border-color: rgba(0, 0, 0, 0.45);
+    filter: none;
+}
+
+.log-item.log-special.log-new .log-date::after {
+    color: #000;
+    border-color: #000;
+    animation: none;
+    opacity: 0.85;
+}
+
+/* 特殊角标 */
+.log-special-badge {
+    position: absolute;
+    top: 6px;
+    right: 8px;
+    background: #000;
+    color: var(--c-primary);
+    font-size: 8px;
+    letter-spacing: 1.5px;
+    padding: 2px 6px;
+    opacity: 0.9;
+    pointer-events: none;
+}
+
+/* 特殊记录缩略图：愉悦星球 */
+.log-thumb.joy::after { display: none; }
+
+/* 阅读器插画 */
+.reader-art {
+    width: 100%;
+    height: 210px;
+    background-size: cover;
+    background-position: center;
+    border: 1px solid var(--c-border-strong);
+    margin-bottom: 24px;
+    box-shadow: 0 0 30px var(--c-glow);
+}
+
 .log-more { text-align: center; color: var(--c-text-dim); font-size: 11px; padding: 10px 0; letter-spacing: 2px; }
 .log-more.hidden { display: none; }
 
