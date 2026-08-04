@@ -1,249 +1,204 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-theme="classic">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="DKSan3 深空终端 — 隶属于深空联合 [DSU]，每日同步 NASA 深空影像，记录一段 AI 生成的观测日志。">
+    <meta name="theme-color" content="#030303">
+    <meta name="color-scheme" content="dark">
     <title>DKSan3 // DEEP_SPACE_UNION</title>
-    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <style>
-        :root {
-            --primary: #ff5a09;
-            --accent: #00f0ff;
-            --bg: #030303;
-            --text: #c0c0c0;
-            --border: rgba(255, 90, 9, 0.2);
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%23030303'/%3E%3Cpath d='M3 13V3h10v10H3zm1-1h8V4H4v8z' fill='%23ff5a09'/%3E%3Cpath d='M6 9.5L8 6l2 3.5z' fill='%2300f0ff'/%3E%3C/svg%3E">
+
+    <!-- 字体：Share Tech Mono（拉丁）+ Noto Sans SC（中文） -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Noto+Sans+SC:wght@300;400;500;700&display=swap">
+
+    <!-- Three.js ES Module -->
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Share Tech Mono', monospace; }
-        body { background-color: var(--bg); color: var(--text); overflow-x: hidden; line-height: 1.6; }
-        #three-canvas { position: fixed; inset: 0; z-index: -1; pointer-events: none; }
-        body::after { content: ""; position: fixed; inset: 0; background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%); background-size: 100% 4px; z-index: 2000; pointer-events: none; opacity: 0.2; }
-        #init-screen { position: fixed; inset: 0; background: #000; z-index: 9999; display: flex; flex-direction: column; justify-content: center; align-items: center; }
-        .init-btn { padding: 15px 40px; border: 1px solid var(--primary); color: var(--primary); background: none; font-size: 1.2rem; cursor: pointer; transition: 0.3s; }
-        .init-btn:hover { background: var(--primary); color: #000; box-shadow: 0 0 30px var(--primary); }
-        .container { max-width: 1000px; margin: 0 auto; padding: 0 40px; position: relative; z-index: 10; }
-        nav { position: fixed; top: 0; width: 100%; padding: 25px 40px; display: flex; justify-content: space-between; z-index: 1000; background: linear-gradient(to bottom, #000, transparent); }
-        header { padding: 160px 0 60px; }
-        .main-title { font-size: clamp(2.5rem, 8vw, 5rem); color: #fff; text-transform: uppercase; line-height: 0.8; }
-        .typewriter-text { color: var(--primary); font-size: 0.9rem; margin-bottom: 10px; min-height: 2em; }
-        .hero-img { width: 100%; height: 400px; border: 1px solid var(--border); background-size: cover; background-position: center; filter: grayscale(1); margin-bottom: 60px; cursor: pointer; transition: filter 0.3s ease; }
-        .hero-img:hover { filter: grayscale(0.5) contrast(1.1); }
-        .article-card { border: 1px solid var(--border); padding: 20px; margin-bottom: 20px; background: rgba(10,10,10,0.8); cursor: pointer; transition: 0.3s; }
-        .article-card:hover { border-color: var(--accent); background: rgba(0,240,255,0.05); transform: translateX(5px); }
-        .article-card h3 { color: #fff; margin-top: 5px; }
-        .hud-bracket { position: fixed; width: 60px; height: 60px; border: 1px solid var(--border); z-index: 500; opacity: 0.3; pointer-events: none; }
-        .top-left { top: 20px; left: 20px; border-right: none; border-bottom: none; }
-        .top-right { top: 20px; right: 20px; border-left: none; border-bottom: none; }
-        .bottom-left { bottom: 20px; left: 20px; border-right: none; border-top: none; }
-        .bottom-right { bottom: 20px; right: 20px; border-left: none; border-top: none; }
-        #reader { position: fixed; inset: 0; background: rgba(0,5,10,0.98); z-index: 3000; display: none; padding: 60px; overflow-y: auto; }
-        .reader-inner { max-width: 800px; margin: 0 auto; color: var(--accent); }
-        footer { margin-top: 80px; padding: 60px 0; border-top: 1px solid var(--border); text-align: center; font-size: 10px; }
-        footer a { color: var(--primary); text-decoration: none; border: 1px solid var(--primary); padding: 5px 15px; }
-        @media (max-width: 768px) {
-            .container { padding: 0 20px; }
-            #reader { padding: 40px 20px; }
-        }
-    </style>
+    }
+    </script>
+
+    <link rel="stylesheet" href="css/main.css">
+    <script type="module" src="js/app.js" defer></script>
 </head>
 <body>
-    <div id="init-screen">
-        <div style="color:var(--primary); font-size: 10px; margin-bottom: 20px;">[ DEEP_SPACE_UNION_BOOT ]</div>
-        <button class="init-btn" onclick="boot()">INITIALIZE</button>
+
+    <!-- ▸ 3D 背景 -->
+    <canvas id="scene-canvas" aria-hidden="true"></canvas>
+
+    <!-- ▸ CRT 覆盖层：扫描线 + 噪点 -->
+    <div class="crt" aria-hidden="true"></div>
+
+    <!-- ▸ 启动层 -->
+    <div id="boot-screen" role="dialog" aria-label="系统启动" aria-live="polite">
+        <div class="boot-inner">
+            <pre class="boot-art" aria-hidden="true"></pre>
+            <div class="boot-log" id="boot-log"></div>
+            <div class="boot-bar"><div class="boot-bar-fill" id="boot-bar-fill"></div></div>
+            <div class="boot-hint" id="boot-hint"></div>
+        </div>
     </div>
-    <canvas id="three-canvas"></canvas>
-    <div class="hud-bracket top-left"></div><div class="hud-bracket top-right"></div>
-    <div class="hud-bracket bottom-left"></div><div class="hud-bracket bottom-right"></div>
-    <nav>
-        <div style="color:var(--primary); font-weight:bold;">DSU // DKSan3</div>
-        <div style="font-size: 10px; opacity:0.6;">NODE: STABLE // <span id="current-date"></span></div>
-    </nav>
-    <div class="container">
-        <header>
-            <div id="typewriter" class="typewriter-text"></div>
-            <h1 class="main-title">Observer_DKS</h1>
-            <p style="opacity:0.5; font-size:12px; margin-top:10px;">隶属于深空联合[DSU] / 异构信息处理中心</p>
-        </header>
-        <div class="hero-img" id="daily-img"></div>
-        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 40px;" id="main-grid">
-            <section>
-                <h2 style="color:var(--primary); font-size:1rem; margin-bottom:20px;">[ MISSION_LOGS ]</h2>
-                <div id="article-list"></div>
+
+    <!-- ▸ HUD 框架：四角括号 -->
+    <div class="hud-corner tl" aria-hidden="true"></div>
+    <div class="hud-corner tr" aria-hidden="true"></div>
+    <div class="hud-corner bl" aria-hidden="true"></div>
+    <div class="hud-corner br" aria-hidden="true"></div>
+
+    <!-- ▸ 顶部状态栏 -->
+    <header class="hud-top" id="hud-top">
+        <div class="hud-left">
+            <span class="hud-badge">DSU</span>
+            <span class="hud-id">// DKSan3</span>
+        </div>
+        <div class="hud-center" aria-hidden="true">
+            <span class="hud-ticker" id="hud-ticker"></span>
+        </div>
+        <div class="hud-right">
+            <span class="hud-sig" id="hud-signal" title="信号强度">
+                <i></i><i></i><i></i><i></i><i></i>
+            </span>
+            <span class="hud-clock" id="hud-clock" title="本地时间">--:--:--</span>
+        </div>
+    </header>
+
+    <!-- ▸ 主内容 -->
+    <main class="container" id="main">
+
+        <!-- 标题区 -->
+        <section class="title-block" aria-label="站点标题">
+            <div id="typewriter" class="typewriter-text" aria-live="polite"></div>
+            <h1 class="main-title">Observer<span class="main-title-accent">_DKS</span></h1>
+            <p class="main-sub">隶属于深空联合 [DSU] / 异构信息处理中心</p>
+        </section>
+
+        <!-- Hero：今日观测影像 -->
+        <section class="hero" aria-label="今日观测影像">
+            <div class="hero-frame" id="hero-frame">
+                <div class="hero-media" id="hero-media" role="button" tabindex="0" aria-label="打开 NASA 今日影像页面"></div>
+                <div class="hero-loading" id="hero-loading">
+                    <span class="scan">█</span> UPLINK_SYNC <span class="blink">▌</span>
+                </div>
+                <div class="hero-label" id="hero-label">
+                    <span class="hero-tag" id="hero-date">[ ---- ]</span>
+                    <h2 class="hero-title" id="hero-title">观测信号同步中…</h2>
+                    <span class="hero-sub" id="hero-sub">NASA_APOD // DAILY_UPLINK</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 日志区 + 遥测侧栏 -->
+        <div class="main-grid">
+            <section class="logs" aria-label="任务日志">
+                <div class="section-head">
+                    <h2 class="section-title">[ MISSION_LOGS ]</h2>
+                    <div class="section-tools">
+                        <span class="log-count" id="log-count">0 RECORDS</span>
+                        <input type="search" id="log-search" class="log-search" placeholder="SEARCH / 查找" aria-label="搜索日志">
+                    </div>
+                </div>
+                <div class="log-list" id="log-list" role="list" aria-live="polite">
+                    <div class="log-placeholder" id="log-placeholder"><span class="blink">▌</span> 等待信号同步…</div>
+                </div>
+                <!-- 分页器 -->
+                <div class="pager" id="pager" hidden>
+                    <button class="pager-btn" id="pager-prev" aria-label="上一页">◄ PREV</button>
+                    <div class="pager-pages" id="pager-pages"></div>
+                    <button class="pager-btn" id="pager-next" aria-label="下一页">NEXT ►</button>
+                </div>
             </section>
-            <aside>
-                <div style="border: 1px solid var(--border); padding: 20px; background: rgba(0,0,0,0.5); font-size: 11px;">
-                    <h3 style="color:var(--accent); margin-bottom:10px;">SYSTEM</h3>
-                    <p>>> 状态: 稳定自持<br>>> 任务: When Stars Align in Our Eyes<br>>> 协议: AI_AUTONOMOUS</p>
+
+            <aside class="telemetry" aria-label="系统遥测">
+                <div class="panel">
+                    <h3 class="panel-title">SYSTEM</h3>
+                    <dl class="panel-rows" id="sys-rows">
+                        <div class="row"><dt>NODE</dt><dd class="ok">STABLE</dd></div>
+                        <div class="row"><dt>MISSION</dt><dd>WHEN STARS ALIGN</dd></div>
+                        <div class="row"><dt>PROTOCOL</dt><dd>AI_AUTONOMOUS</dd></div>
+                        <div class="row"><dt>UPTIME</dt><dd id="sys-uptime">--:--:--</dd></div>
+                        <div class="row"><dt>LOGS</dt><dd id="sys-logs">0</dd></div>
+                        <div class="row"><dt>LAST_SYNC</dt><dd id="sys-sync">--</dd></div>
+                    </dl>
+                </div>
+
+                <div class="panel">
+                    <h3 class="panel-title">CONTROLS</h3>
+                    <button class="ctl-btn" id="btn-bgm" aria-pressed="false">▶ BGM_SIGNAL</button>
+                    <button class="ctl-btn" id="btn-theme" aria-label="切换主题">◈ THEME</button>
+                    <button class="ctl-btn" id="btn-cmd" aria-label="打开命令终端">❯ TERMINAL</button>
+                </div>
+
+                <div class="panel panel-links">
+                    <h3 class="panel-title">UPLINKS</h3>
+                    <a class="ctl-link" href="https://github.com/DerekH-233/DKSan3_Terminal" target="_blank" rel="noopener">◈ SOURCE_CODE</a>
+                    <a class="ctl-link" href="https://apod.nasa.gov/apod/astropix.html" target="_blank" rel="noopener">◈ NASA_APOD</a>
+                </div>
+
+                <div class="panel panel-note">
+                    <p>系统处于<b>自主模式</b>。日志由 AI 每日生成，本站仅为一座被抛入深空的观测哨——它传回的每一段碎碎念，都终将消失在背景噪音里。</p>
                 </div>
             </aside>
         </div>
-        <footer style="margin-top:100px; padding:60px 0; border-top:1px solid var(--border); text-align:center;">
-            <div style="margin-bottom:20px; opacity:0.3;">&copy; 2026 TERMINAL_SYSTEM // DKSan3</div>
-            <a href="https://github.com/DerekH-233/DKSan3_Terminal" target="_blank">VIEW_SOURCE_CODE</a>
+
+        <footer class="page-footer">
+            <div class="foot-line">© 2026 TERMINAL_SYSTEM // DKSan3</div>
+            <div class="foot-line foot-sub">DEEP_SPACE_UNION // 工业机能美学 // WE ARE BORN TO LOOK UP</div>
         </footer>
-    </div>
-    <div id="reader"></div>
-    <audio id="bgm" loop><source src="https://lftheworld.dks3.net/Leaving%20the%20World%20Behind.mp3" type="audio/mpeg"></audio>
-    <script>
-        // --- 1. 系统启动与核心控制 ---
-        const boot = () => {
-            document.getElementById('init-screen').remove();
-            document.getElementById('bgm').play();
-            document.getElementById('current-date').innerText = new Date().toLocaleDateString();
-            
-            // 设置大图背景
-            const dailyImg = document.getElementById('daily-img');
-            dailyImg.style.backgroundImage = "url('https://apod.as93.net/image')";
-            
-            // --- 新增：点击图片在新窗口打开 NASA 原图 ---
-            dailyImg.onclick = () => {
-                window.open('https://apod.nasa.gov/apod/', '_blank');
-            };
-            
-            initThree();
-            fetchLogs();
-            typeWriter();
-        };
+    </main>
 
-        // --- 2. 3D 背景 (Three.js) ---
-// --- 虚幻蓝图风 3D 背景 (DSU_V13_BLUEPRINT) ---
-        function initThree() {
-            const scene = new THREE.Scene();
-            const camera = new THREE.PerspectiveCamera(90, window.innerWidth/window.innerHeight, 0.1, 1000);
-            const renderer = new THREE.WebGLRenderer({ 
-                canvas: document.getElementById('three-canvas'), 
-                alpha: true,
-                antialias: true 
-            });
-            renderer.setSize(window.innerWidth, window.innerHeight);
+    <!-- ▸ 左侧时间日期链 -->
+    <nav class="timechain" id="timechain" aria-label="时间链导航">
+        <div class="tc-clock" id="tc-clock">--:--</div>
+        <div class="tc-line"></div>
+        <div class="tc-points" id="tc-points"></div>
+    </nav>
 
-            // 1. 无限延伸的蓝图网格 (Blueprint Grid)
-            // 使用极淡的青色，营造制图板的感觉
-            const grid = new THREE.GridHelper(500, 50, 0xFFFFFF, 0x111111);
-            grid.position.y = -8;
-            grid.material.opacity = 0.15;
-            grid.material.transparent = true;
-            scene.add(grid);
-
-            // 2. 虚幻蓝图球体 (The Observer Sphere)
-            // 使用高细分度的经纬线，但不显示实体表面
-            const sphereGeo = new THREE.SphereGeometry(100, 40, 40); 
-            const wireframe = new THREE.WireframeGeometry(sphereGeo);
-            // 建议将线框材质的透明度调低到 0.03 - 0.05 之间
-            const lineMat = new THREE.LineBasicMaterial({ 
-                color: 0xFFFFFF, 
-                transparent: true, 
-                opacity: 0.1, // 极低透明度，营造一种“空气中浮现的UI”感
-                depthWrite: false // 防止线条互相遮挡造成的视觉闪烁
-            });
-            const lineSegment = new THREE.LineSegments(wireframe, lineMat);
-            scene.add(lineSegment);
-
-            // 3. 背景尘埃粒子 (保留并优化)
-            const particlesGeo = new THREE.BufferGeometry();
-            const pCount = 1200;
-            const posArray = new Float32Array(pCount * 3);
-            for(let i=0; i<pCount*3; i++) { 
-                posArray[i] = (Math.random() - 0.5) * 100; 
-            }
-            particlesGeo.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-            const particlesMat = new THREE.PointsMaterial({ 
-                size: 0.03, 
-                color: 0x00f0ff,
-                transparent: true,
-                opacity: 0.4
-            });
-            const particles = new THREE.Points(particlesGeo, particlesMat);
-            scene.add(particles);
-
-            // 4. 坐标轴指示器 (辅助蓝图感)
-            const axesHelper = new THREE.AxesHelper(5);
-            axesHelper.position.y = -7.9;
-            axesHelper.material.opacity = 0;
-            axesHelper.material.transparent = true;
-            scene.add(axesHelper);
-
-            camera.position.z = 25;
-            camera.position.y = 4;
-
-            function animate() {
-                requestAnimationFrame(animate);
-                
-                // 地面网格缓慢移动
-                grid.position.z += 0.02;
-                if(grid.position.z > 2.5) grid.position.z = 0;
-
-                // 球体极慢旋转，模拟星球自转或雷达扫描
-                lineSegment.rotation.y += 0.0005;
-                lineSegment.rotation.x += 0.0002;
-
-                // 尘埃粒子漂浮
-                particles.rotation.y -= 0.0003;
-                
-                renderer.render(scene, camera);
-            }
-            animate();
-
-            window.addEventListener('resize', () => {
-                camera.aspect = window.innerWidth / window.innerHeight;
-                camera.updateProjectionMatrix();
-                renderer.setSize(window.innerWidth, window.innerHeight);
-            });
-        }
-
-        // --- 3. AI 日志抓取与清单渲染 ---
-        async function fetchLogs() {
-            const list = document.getElementById('article-list');
-            try {
-                const res = await fetch('logs/manifest.json?t=' + new Date().getTime());
-                const logs = await res.json();
-                list.innerHTML = "";
-                logs.forEach(log => {
-                    const div = document.createElement('div');
-                    div.className = 'article-card';
-                    div.innerHTML = `<small>${log.date}</small><h3>${log.title}</h3>`;
-                    div.onclick = () => loadPost(log.date, log.title);
-                    list.appendChild(div);
-                });
-            } catch (e) {
-                list.innerHTML = "<p>等待信号同步...</p>";
-            }
-        }
-
-        async function loadPost(date, title) {
-            const res = await fetch(`logs/${date}.txt`);
-            const text = await res.text();
-            const reader = document.getElementById('reader');
-            reader.innerHTML = `
-                <div class="reader-inner">
-                    <button onclick="closeReader()" style="position:fixed; top:30px; right:40px; background:none; border:1px solid var(--primary); color:var(--primary); padding:10px; cursor:pointer;">[X] CLOSE</button>
-                    <h1 style="color:var(--primary); margin-bottom:20px;">${title}</h1>
-                    <div style="white-space:pre-wrap; line-height:1.8;">${text}</div>
-                    <button onclick="closeReader()" style="margin-top:40px; background:none; border:1px solid var(--primary); color:var(--primary); padding:10px 40px; cursor:pointer; width:100%;">RETURN</button>
+    <!-- ▸ 日志阅读器 -->
+    <div id="reader" class="reader" role="dialog" aria-modal="true" aria-label="日志阅读" hidden>
+        <div class="reader-inner">
+            <div class="reader-head">
+                <div class="reader-meta">
+                    <span class="reader-tag" id="reader-date">[ -- ]</span>
+                    <span class="reader-tag">LOG_RECORD</span>
                 </div>
-            `;
-            reader.style.display = 'block';
-            document.body.style.overflow = '';
-        }
+                <button class="reader-close" id="reader-close" aria-label="关闭">[X] CLOSE</button>
+            </div>
+            <h1 class="reader-title" id="reader-title"></h1>
+            <div class="reader-body" id="reader-body" tabindex="0"></div>
+            <div class="reader-foot">
+                <button class="reader-nav" id="reader-prev" aria-label="上一条">◄ PREV</button>
+                <span class="reader-pos" id="reader-pos">1 / 1</span>
+                <button class="reader-nav" id="reader-next" aria-label="下一条">NEXT ►</button>
+            </div>
+            <div class="reader-progress" aria-hidden="true"><i id="reader-progress-fill"></i></div>
+        </div>
+    </div>
 
-        function closeReader() {
-            document.getElementById('reader').style.display = 'none';
-            document.body.style.overflow = '';
-        }
+    <!-- ▸ 终端输出面板 -->
+    <div id="term-panel" class="term-panel" role="log" aria-label="终端输出" hidden></div>
 
-        // --- 4. 打字机 ---
-        function typeWriter() {
-            const text = ">> 初始化深空终端...\n>> 识别操作员: DKSan3\n>> 目标锁定: 我们生而眺望";
-            let i = 0;
-            const el = document.getElementById('typewriter');
-            function type() {
-                if (i < text.length) {
-                    el.innerHTML += text.charAt(i) === '\n' ? '<br>' : text.charAt(i);
-                    i++; setTimeout(type, 40);
-                }
-            }
-            type();
-        }
-    </script>
+    <!-- ▸ 底部命令栏 -->
+    <footer class="cmd-bar" id="cmd-bar" aria-label="命令输入">
+        <span class="cmd-prompt">observer@dks3:~$</span>
+        <input type="text" id="cmd-input" class="cmd-input" autocomplete="off" spellcheck="false"
+               placeholder="输入命令，键入 help 查看指令集…" aria-label="终端输入">
+        <span class="cmd-key" aria-hidden="true">`</span>
+    </footer>
+
+    <!-- ▸ 背景音乐 -->
+    <audio id="bgm" loop preload="none">
+        <source src="https://lftheworld.dks3.net/Leaving%20the%20World%20Behind.mp3" type="audio/mpeg">
+    </audio>
+
+    <noscript>
+        <div style="position:fixed;inset:0;background:#000;color:#ff5a09;display:flex;align-items:center;justify-content:center;font-family:monospace;">
+            [ 错误 ] 此终端需要 JavaScript 才能维持信号。请启用后重试。
+        </div>
+    </noscript>
 </body>
 </html>
