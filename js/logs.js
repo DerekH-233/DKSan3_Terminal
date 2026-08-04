@@ -8,7 +8,7 @@
    安全：所有动态内容经 textContent 渲染，杜绝注入
    ============================================================ */
 
-import { t, isZh } from './i18n.js?v=7.2';
+import { t, isZh } from './i18n.js?v=7.3';
 
 const CACHE_KEY = 'dsu_manifest_v2';
 const CACHE_TTL = 1000 * 60 * 60 * 6;   // 缓存 6 小时
@@ -280,25 +280,48 @@ function openLogAt(idx) {
     openLog(log.date, log, idx);
 }
 
-/** 读取日志：英文界面优先 .en.txt，缺失则回退中文原文并提示 */
+/**
+ * 读取日志正文。
+ * 安全防线：CF Pages 对不存在的路径会返回 200 + index.html（SPA fallback），
+ * 因此除状态码外还必须校验 content-type 为 text/plain，防止 HTML 源码混入正文；
+ * 内容为 "null"/过短（采集失败）时，替换为信号失真的科幻文案。
+ */
 async function fetchLogText(date) {
+    const fetchTxt = async (name) => {
+        const res = await fetch(`logs/${name}`, { cache: 'no-cache' });
+        if (!res.ok) return null;
+        const ct = (res.headers.get('content-type') || '').toLowerCase();
+        if (!ct.includes('text/plain')) return null;
+        return await res.text();
+    };
+
+    const sanitize = (raw) => {
+        const text = (raw || '').trim();
+        if (!text || text === 'null' || text.length < 5) return null;
+        return text;
+    };
+
+    let raw;
     if (!isZh()) {
-        try {
-            const res = await fetch(`logs/${date}.en.txt`, { cache: 'no-cache' });
-            if (res.ok) return { text: await res.text(), fallback: false };
-        } catch (_) { /* 网络错误，尝试回退 */ }
-        try {
-            const res = await fetch(`logs/${date}.txt`, { cache: 'no-cache' });
-            if (res.ok) return { text: await res.text(), fallback: true };
-        } catch (_) { /* 双重失败 */ }
+        raw = await fetchTxt(`${date}.en.txt`).catch(() => null);
+        if (raw !== null) {
+            const ok = sanitize(raw);
+            return { text: ok ?? t('readerCorrupt'), fallback: ok === null };
+        }
+        raw = await fetchTxt(`${date}.txt`).catch(() => null);
+        if (raw !== null) {
+            const ok = sanitize(raw);
+            return { text: ok ?? t('readerCorrupt'), fallback: true };
+        }
         return { text: t('readerLinkDown'), fallback: false };
     }
-    try {
-        const res = await fetch(`logs/${date}.txt`, { cache: 'no-cache' });
-        return { text: res.ok ? await res.text() : t('readerMissing'), fallback: false };
-    } catch (_) {
-        return { text: t('readerLinkDown'), fallback: false };
+
+    raw = await fetchTxt(`${date}.txt`).catch(() => null);
+    if (raw !== null) {
+        const ok = sanitize(raw);
+        return { text: ok ?? t('readerCorrupt'), fallback: false };
     }
+    return { text: t('readerLinkDown'), fallback: false };
 }
 
 export async function openLog(date, log, idx) {

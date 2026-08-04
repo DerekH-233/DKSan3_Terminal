@@ -50,6 +50,7 @@ const ZH = {
     next: 'NEXT ►',
     readerMissing: '[ 记录缺失：该日志段未能归档。 ]',
     readerLinkDown: '[ 上行链路中断：无法取回记录段。 ]',
+    readerCorrupt: '【 信号失真 】本周期观测数据未能归档。',
     enNotAvailable: '[ NOTE ] 该档案尚无英文副本，以下为原始记录。',
 
     /* 侧栏 */
@@ -214,6 +215,7 @@ const EN = {
     next: 'NEXT ►',
     readerMissing: '[ RECORD MISSING: THIS LOG SEGMENT WAS NEVER ARCHIVED. ]',
     readerLinkDown: '[ UPLINK SEVERED: RECORD SEGMENT UNRETRIEVABLE. ]',
+    readerCorrupt: '[ SIGNAL DISTORTED ] THIS CYCLE OBSERVATION DATA WAS NOT ARCHIVED.',
     enNotAvailable: '[ NOTE ] NO ENGLISH ARCHIVE YET — SHOWING ORIGINAL RECORD.',
 
     /* 侧栏 */
