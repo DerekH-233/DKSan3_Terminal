@@ -8,7 +8,7 @@
    安全：所有动态内容经 textContent 渲染，杜绝注入
    ============================================================ */
 
-import { t, isZh } from './i18n.js?v=7.15';
+import { t, isZh } from './i18n.js?v=7.16';
 
 const CACHE_KEY = 'dsu_manifest_v2';
 const CACHE_TTL = 1000 * 60 * 60 * 6;   // 缓存 6 小时
@@ -346,3 +346,11 @@ export function gotoIndex(idx) {
         });
     });
 }
+
+/* ─────────────────────── 语言 / 主题切换联动 ─────────────────────── */
+
+/* 语言切换：重绘列表（标题/占位随语言切换） */
+document.addEventListener('dsu:lang-change', () => renderPage());
+
+/* 主题切换：重绘列表（愉悦星球插画颜色跟随主题色） */
+document.addEventListener('dsu:theme-change', () => renderPage());

@@ -5,9 +5,9 @@
    双语：标题/正文随界面语言；数据异常科幻化处理
    ============================================================ */
 
-import * as theme from './theme.js?v=7.15';
-import * as i18n from './i18n.js?v=7.15';
-import { joyImageDataUri } from './logs.js?v=7.15';
+import * as theme from './theme.js?v=7.16';
+import * as i18n from './i18n.js?v=7.16';
+import { joyImageDataUri } from './logs.js?v=7.16';
 
 const CACHE_KEY = 'dsu_manifest_v2';
 
