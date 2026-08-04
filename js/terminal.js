@@ -4,10 +4,10 @@
    快捷键：` 聚焦 / Esc 关闭
    ============================================================ */
 
-import { openLog, getLogs, getCount, focusSearch, decodeTitle } from './logs.js?v=7.1';
-import { cycle, set, get as getTheme } from './theme.js?v=7.1';
-import { toggle as toggleBgm, isPlaying } from './audio.js?v=7.1';
-import { t, isZh } from './i18n.js?v=7.1';
+import { openLog, getLogs, getCount, focusSearch, decodeTitle } from './logs.js?v=7.2';
+import { cycle, set, get as getTheme } from './theme.js?v=7.2';
+import { toggle as toggleBgm, isPlaying } from './audio.js?v=7.2';
+import { t, isZh } from './i18n.js?v=7.2';
 
 const input = document.getElementById('cmd-input');
 const bar = document.getElementById('cmd-bar');

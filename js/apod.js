@@ -4,7 +4,7 @@
    支持：图片 / 视频 / 降级占位；标题随界面语言切换
    ============================================================ */
 
-import { t, isZh } from './i18n.js?v=7.1';
+import { t, isZh } from './i18n.js?v=7.2';
 
 const frame = document.getElementById('hero-frame');
 const media = document.getElementById('hero-media');

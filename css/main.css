@@ -312,13 +312,14 @@ body::after {
 
 /* 语言切换按钮 */
 .lang-btn {
-    background: none;
-    border: 1px solid var(--c-border);
-    color: var(--c-text-dim);
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--c-border-strong);
+    color: var(--c-text);
     font-family: inherit;
-    font-size: 10px;
+    font-size: 11px;
+    font-weight: bold;
     letter-spacing: 1px;
-    padding: 3px 9px;
+    padding: 4px 12px;
     cursor: pointer;
     transition: all var(--t-fast) var(--ease);
 }
@@ -326,7 +327,7 @@ body::after {
 .lang-btn:hover {
     border-color: var(--c-accent);
     color: var(--c-accent);
-    box-shadow: 0 0 10px var(--c-glow-accent);
+    box-shadow: 0 0 12px var(--c-glow-accent);
 }
 
 .hud-clock { color: var(--c-accent); text-shadow: 0 0 6px var(--c-glow-accent); font-variant-numeric: tabular-nums; }
