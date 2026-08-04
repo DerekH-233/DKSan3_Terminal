@@ -294,6 +294,16 @@ async function main() {
     fs.mkdirSync(LOGS_DIR, { recursive: true });
     log(`DSU 日志生成器 v2 启动 | 日期 ${DATE}`);
 
+    /* 防覆盖：当日已有有效日志（如人工纪念记录）则跳过，保留现有记录 */
+    const existingFile = path.join(LOGS_DIR, `${DATE}.txt`);
+    if (fs.existsSync(existingFile)) {
+        const existing = fs.readFileSync(existingFile, 'utf8').trim();
+        if (existing && existing !== 'null' && existing.length >= 5) {
+            log(`当日日志已存在（${DATE}.txt），跳过自动生成以保留现有记录`);
+            return;
+        }
+    }
+
     const apod = await fetchApod();
 
     /* 标题：翻译失败用英文原题，NASA 失败用占位 */
