@@ -1,0 +1,22 @@
+Deep Space Joint Observation Log
+Observer: DKSan3
+Date: Coordinated Time 2025-07-19
+Target ID: TLD-20250303-ECL
+Coordinates: Right Ascension 11h 14m 22s | Declination -06° 42' 12" | Surface Location: Latitude 36.57°S, Longitude 141.93°E (Toorondo Lake District, Victoria, Australia)
+
+---
+
+Observation Summary:
+Continuous tracking of the Toorondo total eclipse path at the specified coordinates. Exposure sequence accumulated over 1 hour, covering the full lunar eclipse phase. Image stacking reveals: above the low-altitude horizon line formed by the lake surface and tree canopy, a red lunar track and faint stellar arcs within the eclipsed darkening sky region. The moon's apparent motion track is significantly truncated by Earth's rotation effect during the final phase of totality, consistent with orbital mechanics model predictions.
+
+Data Loss Report:
+1. Atmospheric Disturbance: Seeing loss of approximately 18% near the horizon; light scattering in the canopy region causes blurring of track edges.
+2. Equipment Limitations: Axis drift compensation error accumulates to 0.3 arcseconds during long exposures; stellar track discontinuity appears in the south polar direction.
+3. Spectral Attenuation: Lunar red-band (620-750nm) intensity attenuates by 62% when passing through Earth's umbra; requires post-processing enhancement.
+
+Notes:
+The track interruption point corresponds to the end of the total phase and can be entered into the deep-space time standard database as a calibration parameter for Earth's rotation rate. Jovian occultation observations at the same coordinates are recommended to verify atmospheric refraction models.
+
+Energy Reserves: Nominal
+Signature: DKSan3
+Transmitted to: Deep Space Joint Orbital Archive Center
