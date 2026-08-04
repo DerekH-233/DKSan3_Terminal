@@ -92,12 +92,8 @@ async function enLog(zhContent) {
         content: zhContent
     }], 3);
     if (t.length < 50) throw new Error('译文过短');
-    /* 仅拦截破坏段落结构的行首标记（行内符号在纯文本渲染中无碍，
-       且英文译文中 * / _ 是常见合法字符，过度校验会误拒内容） */
-    if (/^\s*#+\s/m.test(t) ||           // 行首标题
-        /^\s*[-*]\s/m.test(t)) {         // 行首列表
-        throw new Error('包含行首 Markdown 标记');
-    }
+    /* 翻译任务忠实原文：历史日志本身可能含 Markdown 结构（过渡期格式），
+       不拦截，保持与原版一致；纯文本规范只约束新内容生成（generate-log.mjs） */
     return t;
 }
 
