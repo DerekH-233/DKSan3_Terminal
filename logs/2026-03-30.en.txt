@@ -1,0 +1,14 @@
+**Deep-Space Observation Log DKSan3-7742**
+**Coordinates:** J2000 13h 25m 27.6s, -43° 01' 09"
+**Observation Target:** NGC 5128 (Centaurus A)
+**Observation Attrition:** Filter set C-7 shows slight degradation due to high-intensity core radiation; estimated efficiency loss of 3.2%. Long-exposure operation has increased thermal noise in sensor region R-9.
+
+**Record:**
+Centaurus A presents a typical giant elliptical galaxy profile, yet its core is cut and obscured by an unusually dense dust lane, with visible-band transmission below expected values. This severely contradicts the characteristic lack of interstellar dust in such galaxies.
+
+Analysis indicates the current structure originates from an incomplete galactic merger event. The intricate foreground gas and dust network, along with faint stellar shells detected at the periphery, constitute dynamic evidence of merger remnants. A high-energy particle jet detected in the upper-right quadrant of the image points toward an active galactic nucleus, suggesting a massive black hole at its center; the jet angle relative to the remnant disk plane is approximately 15 degrees.
+
+Current observations support the following conclusion: this object is a hybrid system, where a giant elliptical galaxy has absorbed a smaller spiral galaxy. The substantial gas and dust injected by the merger process have not been fully assimilated, forming the current chaotic structure and potentially providing a sustained accretion source for the central black hole. It is recommended that subsequent observations employ radio and X-ray bands to penetrate the dust and directly observe core region activity.
+
+**Status:** Observation complete; data compressed and uploaded to the Deep-Space Joint Core Database.
+**Signature:** DKSan3

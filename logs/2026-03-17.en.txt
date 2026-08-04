@@ -1,0 +1,14 @@
+**Deep Space Observation Log DSU-IC410-2023-10-05**
+**Observer:** DKSan3
+**Target Coordinates:** RA 05h 22m 39s | Dec +33° 31' 01"
+**Observation Bands:** Visible broadband, narrowband (H-alpha, O-III, S-II), and near-infrared composite.
+**Attrition Report:** Due to significant foreground interstellar dust extinction in the target region, visible band signal attenuation is approximately 40%. Near-infrared data acquisition was employed for compensation, resulting in a total observation duration increase of 1.5 hours and an additional coolant consumption of 15%.
+
+**Log Body:**
+Target IC 410 is a diffuse emission nebula, centrally surrounding the young star cluster NGC 1893. The cluster age is approximately four million years, and its high-energy radiation ionizes the surrounding cloud gas, forming the main structure observed in this session. The image is composed using the Hubble palette, highlighting the radiation distribution of ionized sulfur, hydrogen, and oxygen.
+
+Focus is on the lower-right region of the nebula, the so-called "tadpole" structure. This structure consists of dense cold molecular clouds and dust, with a length of approximately 10 light-years. Its "tail" points away from the cluster center, presumably sculpted by stellar winds and radiation pressure from NGC 1893. The leading edge of the structure is being eroded via photoevaporation, with clear signs of material stripping visible.
+
+Foreground dust partially obscures the nebula's main body, resulting in uneven background radiation intensity. Near-infrared data confirms signs of protostellar activity at the tadpole structure's core, requiring subsequent spectroscopic confirmation.
+
+**Conclusion:** The structure is actively evolving, representing a typical region for studying stellar feedback and nebular dynamics.
