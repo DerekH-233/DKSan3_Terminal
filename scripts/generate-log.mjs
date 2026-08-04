@@ -48,15 +48,16 @@ async function fetchJSON(url, opts = {}, retries = 3) {
 
 async function fetchApod() {
     try {
-        const data = await fetchJSON(
-            `https://api.nasa.gov/planetary/apod?api_key=${encodeURIComponent(NASA_KEY)}`
-        );
-        return {
-            title: String(data.title || '').trim(),
-            explanation: String(data.explanation || '').trim().slice(0, 600),
-            url: String(data.url || '').trim(),
-            date: String(data.date || DATE)
-        };
+    const data = await fetchJSON(
+        `https://api.nasa.gov/planetary/apod?api_key=${encodeURIComponent(NASA_KEY)}`
+    );
+    return {
+        title: String(data.title || '').trim(),
+        title_en: String(data.title || '').trim(),   // APOD 原标题即英文标题
+        explanation: String(data.explanation || '').trim().slice(0, 600),
+        url: String(data.url || '').trim(),
+        date: String(data.date || DATE)
+    };
     } catch (err) {
         log(`NASA APOD 拉取失败：${err.message}（本轮沿用缓存影像）`);
         return null;
@@ -182,6 +183,31 @@ function personaUpgradeNote(now) {
     ].join('');
 }
 
+/* ─────────── 英文版日志生成（从中文版转写，保持结构与风格） ─────────── */
+
+async function generateEnLog(zhContent) {
+    try {
+        return await deepseek([{
+            role: 'system',
+            content: [
+                'You are the translation module of DSU deep-space station DKSan3.',
+                'Convert the observer\'s Chinese log into English, preserving:',
+                '1) the exact 4-paragraph structure (coordinates & attrition / observation target / correction / poetic note),',
+                '2) the detached, data-first tone — "a duty log stitched with a poetry anthology",',
+                '3) all specific numbers and scientific terms verbatim.',
+                'Rules: plain text only, no Markdown, same paragraph count,',
+                'no added commentary. Output the English log only.'
+            ].join('\n')
+        }, {
+            role: 'user',
+            content: zhContent
+        }], 2);
+    } catch (err) {
+        log(`英文版生成失败（本轮跳过英文副本）: ${err.message}`);
+        return null;
+    }
+}
+
 /* ─────────── 标准纪年换算（2026 基准偏移） ─────────── */
 
 const EPOCH_BASE = 7742.129; // 校准：2026-01-20 = 标准纪年 7742.181（与历史日志一致）
@@ -241,7 +267,7 @@ async function generateLog(title, explanation) {
 
 /* ─────────────── 4. manifest 安全更新 ─────────────── */
 
-function updateManifest({ title, url }) {
+function updateManifest({ title, title_en, url }) {
     let entries = [];
     if (fs.existsSync(MANIFEST)) {
         try { entries = JSON.parse(fs.readFileSync(MANIFEST, 'utf8')); } catch (_) { entries = []; }
@@ -251,7 +277,7 @@ function updateManifest({ title, url }) {
     /* 去重：以日期为准 */
     entries = entries.filter(e => e && e.date !== DATE);
 
-    entries.push({ date: DATE, title, img: url || null });
+    entries.push({ date: DATE, title, title_en: title_en || null, img: url || null });
 
     /* 倒序（最新在前）+ 截断到 400 条，防止仓库无限膨胀 */
     entries.sort((a, b) => (a.date < b.date ? 1 : -1));
@@ -287,8 +313,16 @@ async function main() {
     fs.writeFileSync(file, content + '\n', 'utf8');
     log(`已写入 ${DATE}.txt（${content.length} 字）`);
 
+    /* 英文版：失败不阻断主流程 */
+    const enContent = await generateEnLog(content);
+    if (enContent) {
+        const enFile = path.join(LOGS_DIR, `${DATE}.en.txt`);
+        fs.writeFileSync(enFile, enContent + '\n', 'utf8');
+        log(`已写入 ${DATE}.en.txt（${enContent.length} 字符）`);
+    }
+
     /* 更新清单 */
-    updateManifest({ title, url: apod?.url });
+    updateManifest({ title, title_en: apod?.title_en, url: apod?.url });
 
     log('完成。系统进入自主待机。');
 }

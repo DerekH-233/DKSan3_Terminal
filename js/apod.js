@@ -1,8 +1,10 @@
 /* ============================================================
    DSU Terminal — 今日观测影像（NASA APOD）
    数据直接取自 manifest.json 最新条目（无需额外 API 调用）
-   支持：图片 / 视频 / 降级占位
+   支持：图片 / 视频 / 降级占位；标题随界面语言切换
    ============================================================ */
+
+import { t, isZh } from './i18n.js';
 
 const frame = document.getElementById('hero-frame');
 const media = document.getElementById('hero-media');
@@ -24,8 +26,13 @@ export function init(manifestData) {
     }
 
     labelDate.textContent = `[ ${entry.date || '----'} ]`;
-    labelTitle.textContent = entry.title || '未知天体';
-    labelSub.textContent = 'NASA_APOD // DAILY_UPLINK';
+    labelTitle.textContent = heroTitle(entry);
+    labelSub.textContent = t('heroSub');
+
+    /* 语言切换时刷新标题 */
+    document.addEventListener('dsu:lang-change', () => {
+        labelTitle.textContent = heroTitle(entry);
+    });
 
     if (isVideo(entry.img)) {
         /* 视频影像：背景播放 + 点击外链 */
@@ -58,6 +65,12 @@ export function init(manifestData) {
     });
 }
 
+function heroTitle(entry) {
+    if (isZh()) return entry.title || t('heroFallback');
+    return (entry.title_en && entry.title_en !== 'null') ? entry.title_en
+        : (entry.title || t('heroFallback'));
+}
+
 function finish() {
     loading.classList.add('done');
     labelTitle.style.opacity = '1';
@@ -67,7 +80,7 @@ function fail(msg) {
     loading.classList.add('done');
     media.style.background = 'radial-gradient(ellipse at 30% 20%, #0d1520 0%, #05080c 60%, #000 100%)';
     labelDate.textContent = '[ ---- ]';
-    labelTitle.textContent = '信号失真 // 影像无法同步';
+    labelTitle.textContent = t('heroFallback');
     labelSub.textContent = `ERR:${msg}`;
 }
 

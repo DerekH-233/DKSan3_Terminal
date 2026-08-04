@@ -4,6 +4,7 @@
    ============================================================ */
 
 import * as theme from './theme.js';
+import * as i18n from './i18n.js';
 import { init as initScene } from './scene.js';
 import { init as initLogs } from './logs.js';
 import { init as initApod } from './apod.js';
@@ -32,16 +33,16 @@ const BOOT_ART = `
 
 const BOOT_LINES = [
     ['> DSU BIOS v7.0.0 ...............', 'OK'],
-    ['> MEMORY CHECK ..................', '1.2GB OK'],
-    ['> OPTICAL ARRAY .................', 'CALIBRATED'],
-    ['> SPECTRAL LENS .................', 'FOCUSED'],
-    ['> DSU UPLINK ....................', 'HANDSHAKE'],
-    ['> PERSONA FIRMWARE ..............', 'DKSan3 v7.0'],
-    ['> NEURAL CORE ...................', 'ONLINE'],
-    ['> NASA APOD SYNC ................', 'STANDBY'],
-    ['> OBSERVATION GRID ..............', 'ENGAGED'],
-    ['> SCANLINE FILTER ...............', 'ACTIVE'],
-    ['> BGM RELAY .....................', 'STANDBY'],
+    ['> {boot.mem} ..................', '1.2GB OK'],
+    ['> {boot.optical} .................', 'CALIBRATED'],
+    ['> {boot.lens} .................', 'FOCUSED'],
+    ['> {boot.uplink} ....................', 'HANDSHAKE'],
+    ['> {boot.persona} ..............', 'DKSan3 v7.0'],
+    ['> {boot.core} ...................', 'ONLINE'],
+    ['> {boot.apod} ................', 'STANDBY'],
+    ['> {boot.grid} ..............', 'ENGAGED'],
+    ['> {boot.scan} ...............', 'ACTIVE'],
+    ['> {boot.bgm} .....................', 'STANDBY'],
 ];
 
 function runBoot() {
@@ -55,7 +56,7 @@ function runBoot() {
         const line = document.createElement('div');
         line.className = 'term-line';
         line.style.animation = 'none';
-        line.innerHTML = `${label} <span class="ok">${status}</span>`;
+        line.innerHTML = `${i18n.t(label)} <span class="ok">${status}</span>`;
         bootLog.appendChild(line);
         bootLog.scrollTop = bootLog.scrollHeight;
 
@@ -70,7 +71,7 @@ function runBoot() {
 
 function finishBoot() {
     bootFill.style.width = '100%';
-    bootHint.innerHTML = '欢迎，观察员。系统已就绪。按 <span class="blink">[ ENTER ]</span> 进入观测哨';
+    bootHint.innerHTML = i18n.t('bootEnter').replace('[ ENTER ]', '<span class="blink">[ ENTER ]</span>');
     bootHint.style.cursor = 'default';
 
     let entered = false;
@@ -107,7 +108,7 @@ async function enterMain() {
 
 /* 打字机：原版交互保留，节奏更克制 */
 function typeWriter() {
-    const text = '>> 初始化深空终端...\n>> 识别操作员: DKSan3\n>> 目标锁定: 我们生而眺望';
+    const text = [i18n.t('tw1'), i18n.t('tw2'), i18n.t('tw3')].join('\n');
     const el = document.getElementById('typewriter');
     let i = 0;
     (function type() {
@@ -120,14 +121,13 @@ function typeWriter() {
 
 /* ─────────────────────── HUD ─────────────────────── */
 
-const TICKER_LINES = [
-    'WE ARE BORN TO LOOK UP // 我们生而眺望',
-    'NODE: STABLE // MISSION: WHEN STARS ALIGN IN OUR EYES',
-    'AUTONOMOUS MODE // 每日日志由 AI 生成，直至信号消失',
-    'SIGNAL LOST IN THE BACKGROUND NOISE // SOON',
-];
+const TICKER_KEYS = ['ticker1', 'ticker2', 'ticker3', 'ticker4'];
 
 let tickerIdx = 0;
+
+function currentTicker() {
+    return i18n.t(TICKER_KEYS[tickerIdx]);
+}
 
 function updateHud() {
     /* 本地时钟（用户浏览器时区）+ 日期 */
@@ -146,10 +146,10 @@ function updateHud() {
 
 function setupTicker() {
     const el = document.getElementById('hud-ticker');
-    el.textContent = TICKER_LINES[0];
+    el.textContent = currentTicker();
     setInterval(() => {
-        tickerIdx = (tickerIdx + 1) % TICKER_LINES.length;
-        el.textContent = TICKER_LINES[tickerIdx];
+        tickerIdx = (tickerIdx + 1) % TICKER_KEYS.length;
+        el.textContent = currentTicker();
     }, 26000);
 }
 
@@ -193,6 +193,17 @@ function flashHud(el, text) {
     setTimeout(() => { el.textContent = prev; el.classList.remove('active'); }, 1400);
 }
 
+/* 语言切换按钮：显示目标语言；切换后刷新 ticker（字典已由 i18n 应用） */
+function setupLangButton() {
+    const btn = document.getElementById('btn-lang');
+    if (!btn) return;
+    btn.addEventListener('click', () => {
+        i18n.toggleLang();
+        const el = document.getElementById('hud-ticker');
+        if (el) el.textContent = currentTicker();
+    });
+}
+
 function setupScrollState() {
     const top = document.getElementById('hud-top');
     const onScroll = () => top.classList.toggle('scrolled', window.scrollY > 10);
@@ -203,12 +214,14 @@ function setupScrollState() {
 /* ─────────────────────── 启动 ─────────────────────── */
 
 function main() {
+    i18n.init();       /* 语言检测必须最先执行 */
     theme.init();
     document.querySelector('.boot-art').textContent = BOOT_ART;
     setupTicker();
     setupSignal();
     setupShortcuts();
     setupScrollState();
+    setupLangButton();
 
     initScene();
 

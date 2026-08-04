@@ -310,6 +310,25 @@ body::after {
 
 .hud-right { display: flex; align-items: center; gap: 14px; }
 
+/* 语言切换按钮 */
+.lang-btn {
+    background: none;
+    border: 1px solid var(--c-border);
+    color: var(--c-text-dim);
+    font-family: inherit;
+    font-size: 10px;
+    letter-spacing: 1px;
+    padding: 3px 9px;
+    cursor: pointer;
+    transition: all var(--t-fast) var(--ease);
+}
+
+.lang-btn:hover {
+    border-color: var(--c-accent);
+    color: var(--c-accent);
+    box-shadow: 0 0 10px var(--c-glow-accent);
+}
+
 .hud-clock { color: var(--c-accent); text-shadow: 0 0 6px var(--c-glow-accent); font-variant-numeric: tabular-nums; }
 
 /* 信号条 */
@@ -916,6 +935,18 @@ body::after {
 }
 
 .reader-body > div { animation: para-in 0.5s var(--ease) both; }
+
+/* 英文副本缺失提示 */
+.reader-note {
+    color: var(--c-warn);
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    border: 1px solid var(--c-border);
+    border-left: 3px solid var(--c-warn);
+    padding: 10px 14px;
+    margin-bottom: 18px;
+}
 
 @keyframes para-in {
     from { opacity: 0; transform: translateY(8px); }

@@ -7,6 +7,7 @@
 import { openLog, getLogs, getCount, focusSearch, decodeTitle } from './logs.js';
 import { cycle, set, get as getTheme } from './theme.js';
 import { toggle as toggleBgm, isPlaying } from './audio.js';
+import { t, isZh } from './i18n.js';
 
 const input = document.getElementById('cmd-input');
 const bar = document.getElementById('cmd-bar');
@@ -19,25 +20,25 @@ let historyPos = -1;
 
 const COMMANDS = {
     help() {
-        out('命令集 [ COMMANDS ]', 'head');
+        out(t('termHelpHead'), 'head');
         const table = document.createElement('div');
         table.className = 'term-table';
         [
-            ['help', '显示本帮助'],
-            ['logs [n]', '列出最近 n 条日志（默认 10）'],
-            ['open <date>', '打开指定日期日志，如 open 2026-08-03'],
-            ['search <词>', '搜索日志并聚焦结果'],
-            ['apod', '滚动至今日观测影像'],
-            ['status', '系统遥测状态'],
-            ['theme [name]', '切换主题：classic/aurora/blood/ghost'],
-            ['bgm', '切换背景音乐'],
-            ['whoami', '操作员身份'],
-            ['ping', '链路延迟测试'],
-            ['date / uptime', '时间 / 运行时长'],
-            ['echo <文本>', '终端回显'],
-            ['history', '命令历史'],
-            ['clear', '清空终端输出'],
-            ['about / links', '关于与外部链路'],
+            ['help', t('cmdHelp')],
+            ['logs [n]', t('cmdLogs')],
+            ['open <date>', t('cmdOpen')],
+            ['search <词>', t('cmdSearch')],
+            ['apod', t('cmdApod')],
+            ['status', t('cmdStatus')],
+            ['theme [name]', t('cmdTheme')],
+            ['bgm', t('cmdBgm')],
+            ['whoami', t('cmdWhoami')],
+            ['ping', t('cmdPing')],
+            ['date / uptime', t('cmdDate')],
+            ['echo <文本>', t('cmdEcho')],
+            ['history', t('cmdHistory')],
+            ['clear', t('cmdClear')],
+            ['about / links', t('cmdAbout')],
         ].forEach(([k, d]) => {
             const kEl = document.createElement('span');
             kEl.className = 'k';
@@ -48,36 +49,36 @@ const COMMANDS = {
             table.append(kEl, dEl);
         });
         panel.appendChild(table);
-        out('提示：输入时按 TAB 可自动补全', 'dim');
+        out(t('termHelpTip'), 'dim');
     },
 
     logs(args) {
         const all = getLogs();
         const n = Math.min(parseInt(args[0], 10) || 10, 30);
-        out(`最近 ${n} 条观测记录 [ 共 ${getCount()} 条 ]`, 'head');
+        out(t('termLogsHead', { n, total: getCount() }), 'head');
         all.slice(0, n).forEach(l => {
-            out(`${l.date}  ${decodeTitle(l.title)}`, 'dim');
+            out(`${l.date}  ${decodeTitle(l)}`, 'dim');
         });
-        out('使用 open <date> 读取完整记录。', 'dim');
+        out(t('termLogsTip'), 'dim');
     },
 
     open(args) {
-        if (!args[0]) return out('用法：open <date>，如 open 2026-08-03', 'err');
+        if (!args[0]) return out(t('termUsageOpen'), 'err');
         const all = getLogs();
         const hit = all.find(l => l.date === args[0]);
-        if (!hit) return out(`未找到记录：${args[0]}`, 'err');
-        openLog(hit.date, hit.title);
-        out(`正在读取 ${args[0]} …`, 'ok');
+        if (!hit) return out(t('termNotFound', { date: args[0] }), 'err');
+        openLog(hit.date, hit);
+        out(t('termReading', { date: args[0] }), 'ok');
     },
 
     search(args) {
         const q = (args.join(' ') || '').trim();
-        if (!q) return out('用法：search <关键词>', 'err');
+        if (!q) return out(t('termUsageSearch'), 'err');
         const input = document.getElementById('log-search');
         input.value = q;
         input.dispatchEvent(new Event('input'));
         focusSearch();
-        out(`搜索 "${q}"：命中 ${getLogs().length} 条`, 'ok');
+        out(t('termSearchHit', { q, n: getLogs().length }), 'ok');
     },
 
     apod() {
@@ -85,7 +86,7 @@ const COMMANDS = {
         const frame = document.getElementById('hero-frame');
         frame.classList.add('flash');
         setTimeout(() => frame.classList.remove('flash'), 1600);
-        out('已定位至今日影像上行区。', 'ok');
+        out(t('termApodLoc'), 'ok');
     },
 
     status() {
@@ -93,52 +94,52 @@ const COMMANDS = {
         const mem = (navigator.deviceMemory || '?') + 'GB';
         const cores = navigator.hardwareConcurrency || '?';
         setTimeout(() => {
-            out('—— 系统遥测 [ STATUS ] ——', 'head');
-            out(`节点      : DKSan3 // DEEP_SPACE_UNION`, 'ok');
-            out(`协议      : AI_AUTONOMOUS (v7.0)`, 'ok');
-            out(`人格固件  : DKSan3_PERSONA v7.0.0 [STABLE]`, 'ok');
-            out(`链路      : ${navigator.onLine ? 'UPLINK OK' : 'OFFLINE'}`, navigator.onLine ? 'ok' : 'err');
-            out(`日志归档  : ${getCount()} 条`, 'ok');
-            out(`设备内存  : ${mem} / 核心 ${cores}`, 'dim');
-            out(`渲染响应  : ${Math.round(performance.now() - t0)}ms`, 'dim');
+            out(t('termStatusHead'), 'head');
+            out(`${t('termStatusNode')}      : DKSan3 // DEEP_SPACE_UNION`, 'ok');
+            out(`${t('termStatusProtocol')}  : AI_AUTONOMOUS (v7.0)`, 'ok');
+            out(`${t('termStatusPersona')}  : DKSan3_PERSONA v7.0.0 [STABLE]`, 'ok');
+            out(`${t('termStatusLink')}      : ${navigator.onLine ? t('termStatusUp') : t('termStatusDown')}`, navigator.onLine ? 'ok' : 'err');
+            out(`${t('termStatusLogs')}  : ${getCount()}`, 'ok');
+            out(`${t('termStatusMem')}  : ${mem} / ${cores} CORES`, 'dim');
+            out(`${t('termStatusRender')}  : ${Math.round(performance.now() - t0)}ms`, 'dim');
         }, 220);
     },
 
     theme(args) {
         if (args[0]) {
             set(args[0]);
-            out(`主题已切换：${getTheme()}`, 'ok');
+            out(t('termThemeSet', { t: getTheme() }), 'ok');
         } else {
-            out(`当前主题：${getTheme()}（可用：classic / aurora / blood / ghost）`, 'dim');
+            out(t('termThemeCur', { t: getTheme() }), 'dim');
         }
     },
 
     bgm() {
         toggleBgm();
-        out(`BGM 信号：${isPlaying() ? '已接入' : '已切断'}`, 'ok');
+        out(t('termBgm', { s: isPlaying() ? t('termBgmOn') : t('termBgmOff') }), 'ok');
     },
 
     whoami() {
-        out('DKSan3 — 深空联合 [DSU] 异构信息处理中心驻派观察员', 'ok');
-        out('人格固件：DKSan3_PERSONA v7.0.0（本周期完成升级）', 'ok');
-        out('职责：凝视深空，记录损耗，保持眺望。', 'dim');
-        out('新增感知协议：时间流逝感知 / 记忆意象化压缩。', 'dim');
+        out(t('termWhoami1'), 'ok');
+        out(t('termWhoami2'), 'ok');
+        out(t('termWhoami3'), 'dim');
+        out(t('termWhoami4'), 'dim');
     },
 
     ping() {
         const t0 = performance.now();
         setTimeout(() => {
-            out(`pong — DSU 中继链路 ${Math.round(performance.now() - t0)}ms，信号 ${Math.floor(60 + Math.random() * 35)}%`, 'ok');
+            out(t('termPing', { ms: Math.round(performance.now() - t0), sig: Math.floor(60 + Math.random() * 35) }), 'ok');
         }, 180 + Math.random() * 400);
     },
 
     date() {
-        out(`本地时间：${new Date().toLocaleString('zh-CN', { hour12: false })}`, 'ok');
-        out(`UTC 时间：${new Date().toISOString().replace('T', ' ').slice(0, 19)}`, 'dim');
+        out(t('termDateLocal', { t: new Date().toLocaleString(isZh ? 'zh-CN' : 'en-GB', { hour12: false }) }), 'ok');
+        out(t('termDateUtc', { t: new Date().toISOString().replace('T', ' ').slice(0, 19) }), 'dim');
     },
 
     uptime() {
-        out(`本会话已运行 ${formatUptime(sessionStart)}`, 'ok');
+        out(t('termUptime', { t: formatUptime(sessionStart) }), 'ok');
     },
 
     echo(args) {
@@ -146,7 +147,7 @@ const COMMANDS = {
     },
 
     history() {
-        if (history.length === 0) return out('（暂无命令历史）', 'dim');
+        if (history.length === 0) return out(t('termHistoryEmpty'), 'dim');
         history.forEach((h, i) => out(`  ${String(i + 1).padStart(2, '0')}  ${h}`, 'dim'));
     },
 
@@ -155,9 +156,9 @@ const COMMANDS = {
     },
 
     about() {
-        out('DKSan3_Terminal — 一座被抛入深空的观测哨。', 'head');
-        out('工业机能美学 · AI 自主日志 · NASA 每日影像同步。', 'dim');
-        out('代码开源：github.com/DerekH-233/DKSan3_Terminal', 'dim');
+        out(t('termAbout1'), 'head');
+        out(t('termAbout2'), 'dim');
+        out(t('termAbout3'), 'dim');
     },
 
     links() {
@@ -240,7 +241,7 @@ export function init() {
 
     document.getElementById('btn-cmd').addEventListener('click', () => {
         input.focus();
-        if (panel.hidden) out('键入 help 查看指令集。', 'dim');
+        if (panel.hidden) out(t('termWelcome'), 'dim');
     });
 
     /* 点击面板外部关闭 */
@@ -249,6 +250,9 @@ export function init() {
             panel.hidden = true;
         }
     });
+
+    /* 语言切换：清空面板，避免双语混杂 */
+    document.addEventListener('dsu:lang-change', () => { panel.textContent = ''; });
 }
 
 function isTypingIn(el) {
@@ -264,9 +268,9 @@ function run(cmdline) {
 
     const fn = COMMANDS[name];
     if (fn) {
-        try { fn(args); } catch (_) { out(`命令执行异常：${name}`, 'err'); }
+        try { fn(args); } catch (_) { out(t('termErr', { c: name }), 'err'); }
     } else {
-        out(`未知指令 "${name}"。键入 help 查看指令集。`, 'err');
+        out(t('termUnknown', { c: name }), 'err');
     }
     panel.scrollTop = panel.scrollHeight;
 }
@@ -282,7 +286,7 @@ function complete() {
         words[words.length - 1] = candidates[0];
         input.value = words.join(' ') + ' ';
     } else if (candidates.length > 1) {
-        out(`补全候选：${candidates.join(' / ')}`, 'dim');
+        out(t('termComplete', { c: candidates.join(' / ') }), 'dim');
     }
 }
 

@@ -6,6 +6,7 @@
    ============================================================ */
 
 import { gotoIndex, getLogs } from './logs.js';
+import { t } from './i18n.js';
 
 const tcClock = document.getElementById('tc-clock');
 const tcPoints = document.getElementById('tc-points');
@@ -31,7 +32,7 @@ export function init(logs) {
         const btn = document.createElement('button');
         btn.className = 'tc-node';
         btn.dataset.month = month;
-        btn.setAttribute('aria-label', `${month} · ${count} 条记录`);
+        btn.setAttribute('aria-label', t('tcRecords', { month, count }));
 
         const dot = document.createElement('span');
         dot.className = 'dot';

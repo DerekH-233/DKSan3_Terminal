@@ -3,11 +3,14 @@
    manifest 加载（localStorage 缓存兜底）/ 搜索 / 分页
    卡片显示当日影像缩略图；数据异常（null / 缺失 / 加载失败）
    以科幻化的「信号失真 / SIGNAL_LOST」方式呈现
+   双语支持：英文界面读取 .en.txt 日志、英文标题（title_en）
    沉浸式阅读器：键盘导航、阅读进度、段落入场
    安全：所有动态内容经 textContent 渲染，杜绝注入
    ============================================================ */
 
-const CACHE_KEY = 'dsu_manifest_v1';
+import { t, isZh } from './i18n.js';
+
+const CACHE_KEY = 'dsu_manifest_v2';
 const CACHE_TTL = 1000 * 60 * 60 * 6;   // 缓存 6 小时
 const PAGE_SIZE = 12;                    // 每页记录数
 
@@ -30,18 +33,29 @@ const reader = document.getElementById('reader');
 
 const totalPages = () => Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
 
-/* ─────────────────────── 数据解码（科幻化异常处理） ─────────────────────── */
+/* ─────────────────────── 数据解码（科幻化异常处理 + 双语） ─────────────────────── */
 
 const BAD_TITLES = new Set(['null', '空值', 'none', 'undefined', '']);
 
-/** 标题解码：null / 空值 → 信号失真提示 */
-export function decodeTitle(title) {
-    const t = (title || '').trim();
-    if (BAD_TITLES.has(t.toLowerCase())) return '【 信号失真 】观测记录标题未能解码';
-    return t || '【 未命名记录 】信号载体损坏';
+/**
+ * 标题解码：按当前语言返回 title / title_en；
+ * null / 空值 → 信号失真提示（双语）
+ */
+export function decodeTitle(log) {
+    if (!log || typeof log !== 'object') return t('degradedTitle');
+    const zhTitle = (log.title || '').trim();
+    const enTitle = (log.title_en || '').trim();
+
+    if (!isZh()) {
+        if (BAD_TITLES.has(enTitle.toLowerCase())) return t('degradedTitle');
+        return enTitle || (BAD_TITLES.has(zhTitle.toLowerCase()) ? t('degradedTitle') : zhTitle);
+    }
+    if (BAD_TITLES.has(zhTitle.toLowerCase())) return t('degradedTitle');
+    return zhTitle || t('noTitle');
 }
 
-export function isDegradedTitle(title) {
+export function isDegradedTitle(log) {
+    const title = isZh() ? (log && log.title) : (log && (log.title_en || log.title));
     const t = (title || '').trim();
     return BAD_TITLES.has(t.toLowerCase()) || !t;
 }
@@ -90,7 +104,7 @@ async function loadManifest() {
         throw new Error('empty manifest');
     } catch (_) {
         if (stale) return stale;
-        placeholderEl.textContent = '▌ 上行链路中断，等待信号同步…';
+        placeholderEl.textContent = t('waitingSignalLost');
         return [];
     }
 }
@@ -157,8 +171,8 @@ function buildItem(log, idx, today) {
     date.className = 'log-date';
     date.textContent = log.date;
     const title = document.createElement('span');
-    title.className = 'log-title' + (isDegradedTitle(log.title) ? ' degraded' : '');
-    title.textContent = decodeTitle(log.title);
+    title.className = 'log-title' + (isDegradedTitle(log) ? ' degraded' : '');
+    title.textContent = decodeTitle(log);
     info.append(date, title);
 
     const arrow = document.createElement('span');
@@ -233,7 +247,9 @@ function setupSearch() {
             searchQuery = searchEl.value.trim().toLowerCase();
             filtered = searchQuery
                 ? logs.filter(l =>
-                    (decodeTitle(l.title) || '').toLowerCase().includes(searchQuery) ||
+                    decodeTitle(l).toLowerCase().includes(searchQuery) ||
+                    (l.title || '').toLowerCase().includes(searchQuery) ||
+                    (l.title_en || '').toLowerCase().includes(searchQuery) ||
                     l.date.includes(searchQuery))
                 : [...logs];
             currentPage = 1;
@@ -242,7 +258,7 @@ function setupSearch() {
                 listEl.textContent = '';
                 const empty = document.createElement('div');
                 empty.className = 'log-empty';
-                empty.append('∅ 无匹配记录：');
+                empty.append(t('noMatch'));
                 const q = document.createElement('span');
                 q.style.color = 'var(--c-primary)';
                 q.textContent = searchEl.value;
@@ -261,28 +277,49 @@ function setupSearch() {
 function openLogAt(idx) {
     readerIndex = idx;
     const log = filtered[idx];
-    openLog(log.date, decodeTitle(log.title), idx);
+    openLog(log.date, log, idx);
 }
 
-export async function openLog(date, title, idx) {
-    if (!date) return;
-    let text = '';
+/** 读取日志：英文界面优先 .en.txt，缺失则回退中文原文并提示 */
+async function fetchLogText(date) {
+    if (!isZh()) {
+        try {
+            const res = await fetch(`logs/${date}.en.txt`, { cache: 'no-cache' });
+            if (res.ok) return { text: await res.text(), fallback: false };
+        } catch (_) { /* 网络错误，尝试回退 */ }
+        try {
+            const res = await fetch(`logs/${date}.txt`, { cache: 'no-cache' });
+            if (res.ok) return { text: await res.text(), fallback: true };
+        } catch (_) { /* 双重失败 */ }
+        return { text: t('readerLinkDown'), fallback: false };
+    }
     try {
         const res = await fetch(`logs/${date}.txt`, { cache: 'no-cache' });
-        text = res.ok ? await res.text() : '[ 记录缺失：该日志段未能归档。 ]';
+        return { text: res.ok ? await res.text() : t('readerMissing'), fallback: false };
     } catch (_) {
-        text = '[ 上行链路中断：无法取回记录段。 ]';
+        return { text: t('readerLinkDown'), fallback: false };
     }
+}
+
+export async function openLog(date, log, idx) {
+    if (!date) return;
+    const { text, fallback } = await fetchLogText(date);
 
     readerIndex = idx ?? filtered.findIndex(l => l.date === date);
 
     /* 头部 */
     document.getElementById('reader-date').textContent = `[ ${date} ]`;
-    document.getElementById('reader-title').textContent = decodeTitle(title);
+    document.getElementById('reader-title').textContent = decodeTitle(log);
 
     /* 正文：逐段渲染（textContent 安全） */
     const body = document.getElementById('reader-body');
     body.textContent = '';
+    if (fallback) {
+        const note = document.createElement('div');
+        note.className = 'reader-note';
+        note.textContent = t('enNotAvailable');
+        body.appendChild(note);
+    }
     const paras = text.split(/\n+/).filter(p => p.trim());
     paras.forEach((p, i) => {
         const div = document.createElement('div');
@@ -316,8 +353,17 @@ function stepReader(dir) {
     if (filtered.length === 0) return;
     const next = (readerIndex + dir + filtered.length) % filtered.length;
     const log = filtered[next];
-    openLog(log.date, log.title, next);
+    openLog(log.date, log, next);
 }
+
+/* 语言切换：重绘列表；阅读器打开时重载当前日志 */
+document.addEventListener('dsu:lang-change', () => {
+    renderPage();
+    if (!reader.hidden && readerIndex >= 0 && filtered[readerIndex]) {
+        const log = filtered[readerIndex];
+        openLog(log.date, log, readerIndex);
+    }
+});
 
 function updateReaderNav() {
     document.getElementById('reader-pos').textContent = `${readerIndex + 1} / ${filtered.length}`;
