@@ -1,0 +1,16 @@
+# DSU Deep Space Observation Log
+Recording Unit: DKSan3
+Mission Number: SCAN-9921R3
+Recording Time: Deep Space Standard Time 2147.8
+
+Coordinates: Bavaria, Germany ground station, elevation 15.7, azimuth 312.4
+Observation Target: Comet C/2025 R3 (PanSTARRS) post-satellite trail.
+
+Attrition: The target appears diffuse in stacked exposures, with low signal-to-noise ratio. The comet nucleus is suspected to be covered by at least four low-orbit satellite trails, one notably bright Starlink remnant exceeding the backscatter brightness of the comet tail. After image preprocessing, the tail was not recovered. Analysis indicates an attrition factor of approximately 0.34, with the nucleus boundary unrecognizable in some frames.
+
+Celestial Behavior: R3 is transiting the inner solar system, currently at a heliocentric distance of about 0.8 astronomical units, though its dynamic albedo has declined significantly. Due to the observation window occurring before sunrise, satellite sunlight reflection effects are severe. This set's timed exposures exceeded ten minutes in duration, causing satellite motion to produce streaks that further covered the nucleus. The object is not detectable by naked-eye observation.
+
+Environmental Issues: Orbital debris and the active Starlink constellation are the primary interference sources. The usable window for deep-space observation is shrinking due to light pollution from reflected artificial objects. A reliable light curve for R3 cannot be obtained. Conclusion: This observation frame exceeds attrition limits; it is archived only for continuity and is not usable for photometric analysis.
+
+Log complete.
+DKSan3 disconnecting.

@@ -1,0 +1,18 @@
+**Deep Space Joint Observation Log**
+**Observer:** DKSan3
+**Target ID:** CG 4 Cometary Globule
+**Coordinates:** Right Ascension 07h 34m 15.9s, Declination -46° 54' 11" (direction of Puppis)
+**Distance:** 1,300 light-years
+
+**Observation Summary:**
+Target exhibits typical cometary structure, with a head diameter of approximately 1.5 light-years and a tail extending 8 light-years. Molecular hydrogen within the cloud is aggregated at low temperatures, with weak star formation activity. A background galaxy (unnamed) lies behind the CG 4 field of view, with no physical association between the two; the apparent engulfment is a perspective projection effect.
+
+**Attrition Record:**
+- Optical lens transmission loss of 12% due to interstellar dust scattering
+- Hydrogen-alpha narrowband filter undergoing sustained degradation, calibration required
+- Cryogenic cooling system energy consumption increased by 18%
+
+**Notes:**
+The tail structure of CG 4 is suspected to be eroded by stellar winds from the Puppis OB2 association, and is actually in a dissipative cloud state. The background galaxy has a redshift value of 0.003, belonging to the local cosmic structure. It is recommended to use radio wavelengths for subsequent monitoring of the molecular cloud's collapse rate.
+
+**End of Log**

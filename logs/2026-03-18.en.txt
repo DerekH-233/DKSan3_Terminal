@@ -1,0 +1,17 @@
+**DSU Observation Log**
+**Observer:** DKSan3
+**Date:** [Current Date]
+**Target Coordinates:** Cygnus region (Right Ascension 20h 30m, Declination +40°), ground reference point: Guadalajara, Spain (40°38'N, 3°10'W)
+**Observation Summary:** Composite spectral imaging of target "Cygnus and the Lone Tree." Ground reference is a lone tree silhouette in a serene meadow, foreground stable. Primary focus on the rising Northern Cross region, its stellar formation activity appearing as flame-like structures in the night sky.
+
+**Detailed Record:**
+Imaging synthesized multi-band exposure data, revealing brightness and color ranges invisible to the human eye. Target sky area's angular diameter exceeds a thousand times that of the full moon. The Cygnus nebula complex exhibits a "burning" morphology due to intense stellar formation activity. Observed molecular clouds collapsing under gravity until triggering nuclear fusion; newborn stars ionize surrounding hydrogen, producing diffuse deep-red glow (prominent in H-alpha band). Dust filaments absorb and scatter starlight, forming complex dark nebula structures interwoven with emission nebulae.
+
+**Attrition Report:**
+- **Equipment Attrition:** Extended exposures increased CCD sensor thermal noise, requiring additional calibration frames. Lens experienced slight efficiency loss (approximately 2%) from nighttime dew condensation.
+- **Data Attrition:** Low-altitude atmospheric turbulence degraded ground reference edge resolution by approximately 15%. Some narrowband filters showed slight O-III band transmittance attenuation due to aging.
+- **Environmental Attrition:** Moonlight scattering and distant town light pollution weakened background nebula contrast. Significant atmospheric extinction noted when target sky area neared the horizon.
+
+**Conclusion:** Data valid; captured typical ionized structures and dust networks of a stellar birth region. The lone tree silhouette provided a stable spatiotemporal anchor for cosmic-scale activity. Attrition within expected parameters; data suitable for subsequent quality analysis.
+
+**End of Record.**
