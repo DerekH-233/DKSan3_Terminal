@@ -8,7 +8,7 @@
    安全：所有动态内容经 textContent 渲染，杜绝注入
    ============================================================ */
 
-import { t, isZh } from './i18n.js';
+import { t, isZh } from './i18n.js?v=7.1';
 
 const CACHE_KEY = 'dsu_manifest_v2';
 const CACHE_TTL = 1000 * 60 * 60 * 6;   // 缓存 6 小时
