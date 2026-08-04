@@ -3,14 +3,14 @@
    编排：boot 序列 → 各模块初始化 → 主界面
    ============================================================ */
 
-import * as theme from './theme.js?v=7.5';
-import * as i18n from './i18n.js?v=7.5';
-import { init as initScene } from './scene.js?v=7.5';
-import { init as initLogs } from './logs.js?v=7.5';
-import { init as initApod } from './apod.js?v=7.5';
-import { init as initAudio } from './audio.js?v=7.5';
-import { init as initTerminal } from './terminal.js?v=7.5';
-import { init as initTimeline } from './timeline.js?v=7.5';
+import * as theme from './theme.js?v=7.6';
+import * as i18n from './i18n.js?v=7.6';
+import { init as initScene } from './scene.js?v=7.6';
+import { init as initLogs } from './logs.js?v=7.6';
+import { init as initApod } from './apod.js?v=7.6';
+import { init as initAudio } from './audio.js?v=7.6';
+import { init as initTerminal } from './terminal.js?v=7.6';
+import { init as initTimeline } from './timeline.js?v=7.6';
 
 const bootScreen = document.getElementById('boot-screen');
 const bootLog = document.getElementById('boot-log');

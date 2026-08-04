@@ -5,8 +5,8 @@
    仅桌面宽屏显示（CSS 控制）
    ============================================================ */
 
-import { gotoIndex, getLogs } from './logs.js?v=7.5';
-import { t } from './i18n.js?v=7.5';
+import { gotoIndex, getLogs } from './logs.js?v=7.6';
+import { t } from './i18n.js?v=7.6';
 
 const tcClock = document.getElementById('tc-clock');
 const tcPoints = document.getElementById('tc-points');

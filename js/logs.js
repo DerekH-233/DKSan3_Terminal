@@ -8,7 +8,7 @@
    安全：所有动态内容经 textContent 渲染，杜绝注入
    ============================================================ */
 
-import { t, isZh } from './i18n.js?v=7.5';
+import { t, isZh } from './i18n.js?v=7.6';
 
 const CACHE_KEY = 'dsu_manifest_v2';
 const CACHE_TTL = 1000 * 60 * 60 * 6;   // 缓存 6 小时
@@ -215,20 +215,23 @@ function buildItem(log, idx, today) {
     item.dataset.date = log.date;
     item.tabIndex = 0;
 
-    /* 当日影像缩略图（特殊记录使用愉悦星球插画，颜色跟随主题） */
+    /* 当日影像缩略图：特殊记录永远显示愉悦星球（笑脸是标志，不被影像替换）；
+       普通记录显示当日影像，缺失时 SIGNAL_LOST 占位 */
     const thumb = document.createElement('div');
     thumb.className = 'log-thumb' + (isSpecial ? ' joy' : '');
-    const imgUrl = decodeImage(log.img);
-    if (imgUrl) {
-        const img = new Image();
-        img.decoding = 'async';
-        img.onload = () => { thumb.style.backgroundImage = `url("${imgUrl}")`; };
-        img.onerror = () => thumb.classList.add('fail');
-        img.src = imgUrl;
-    } else if (isSpecial) {
+    if (isSpecial) {
         thumb.style.backgroundImage = `url("${joyImageDataUri()}")`;
     } else {
-        thumb.classList.add('fail');
+        const imgUrl = decodeImage(log.img);
+        if (imgUrl) {
+            const img = new Image();
+            img.decoding = 'async';
+            img.onload = () => { thumb.style.backgroundImage = `url("${imgUrl}")`; };
+            img.onerror = () => thumb.classList.add('fail');
+            img.src = imgUrl;
+        } else {
+            thumb.classList.add('fail');
+        }
     }
 
     /* 特殊记录角标 */
