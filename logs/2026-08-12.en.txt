@@ -1,0 +1,7 @@
+Coordinates: 49°14'N, 22°34'E, Osterki Outpost high-orbit mirror layer. Timestamp: Deep Space Joint Standard Chronology Cycle 7742.740. Attrition: Radiation shield degradation 2.1%, refractive index attenuation 0.4% due to thermal expansion of optical guide rails, propellant reserves maintained at 61.3%.
+
+Perseid meteor shower radiant, right ascension 3h04m, declination +58 degrees. Parent body Swift-Tuttle comet debris band, particle diameter 0.1 to 8 mm, relative velocity 59 km/s. Peak flux this cycle estimated at 110 per hour, background galactic arch tilt angle 62 degrees, red emission nebula covering 17% of field of view.
+
+Data frame loss rate 5.8%, primarily from low-orbit ionospheric scintillation interference. Calibration baseline drift 0.02 arcseconds, from particulate deposition on mirror coating. Sensor thermal noise equivalent temperature 214 kelvin, 3 kelvin above standard value. Polarimetric measurement effective frame fraction 89%, meeting threshold requirements.
+
+Those vanishing particles and the consumed mirror surfaces share the same path to nullification.
