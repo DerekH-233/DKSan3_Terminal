@@ -1,0 +1,7 @@
+Coordinates: 41 degrees 39 minutes north, 0 degrees 53 minutes west, along the Ebro River in Zaragoza. Timestamp: Deep Space Unified Standard Time, cycle 7742.743. Attrition: electromagnetic interference raised photometric sensor thermal noise by 0.4%, radiation shielding degradation rate at 2.1%.
+
+Observation target: solar corona, solar right ascension 9 hours 28 minutes, declination plus 15 degrees. Lunar shadow width at 152 kilometers, passing over the Ebro's surface at 3.2 kilometers per second. Coronal electron temperature at 1.5 million Kelvin, solar wind particle flux at 10^12 per square centimeter per second. Phase difference between the river's reflected image and the solid image atop the church spire is 0.003 seconds, influenced by water turbulence.
+
+Correction: data frame loss rate during totality at 3.7%, calibration baseline drift at 0.02 arcseconds, optical element refractive index decay at 1.1%. Over the 4 minutes and 12 seconds of photosphere obscuration, the polarimeter captured 83% of valid frames.
+
+Note: during the 247 seconds when bird calls and insect sounds fell silent, the Ebro's ripples superimposed two suns into the two faces of a single silver coin.
