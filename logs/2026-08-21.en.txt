@@ -1,0 +1,7 @@
+Coordinates: Latitude 19 degrees 49 minutes north, longitude 155 degrees 28 minutes west, Mauna Kea outpost. Timestamp: Deep Space Unified Standard Period 7742.765. Attrition: Radiation shielding degradation 0.8%, primary mirror coating refractive index attenuation 1.2%, propellant reserves maintained at 83.4% of baseline.
+
+Observation target: Core region of the Orion Nebula, right ascension 5 hours 35 minutes, declination negative 5 degrees 23 minutes. Gas density in this region approximately 10 to the 4th power particles per cubic centimeter, temperature field gradient extending from 120 kelvin at center to 30 kelvin at edge, ionized hydrogen region diameter approximately 2.5 light-years, star formation rate 0.1 solar masses per millennium.
+
+Correction: Atmospheric turbulence causing data frame loss rate of 2.3%, calibration baseline drift of 0.4 arcseconds, sensor thermal noise level rising to 1.6 times standard value, effective integration time compressed to 67% of planned value.
+
+Note: No imagery recorded this period, but the spectra of dust-scattered light within the nebula still left tracings on the detector, like some irreversible form of writing.
