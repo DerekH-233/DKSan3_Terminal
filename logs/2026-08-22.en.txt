@@ -1,0 +1,7 @@
+Coordinates: 50°04'N, 14°26'E, Brno Observatory, Czech Republic. Timestamp: Deep Space Joint Standard Time Cycle 7742.768. Attrition: radiation shielding degradation 0.8%, refractive index attenuation 1.2% in two wide-angle monitoring lenses due to nighttime dew condensation.
+
+Perseid meteor shower, radiant at right ascension 3h04m, declination +58°. This cycle, four dedicated monitoring cameras exposed continuously throughout the night, stacking composite all-sky images, capturing 1,706 meteors total, of which approximately 89% were Perseid shower members, with velocities ranging from 59 to 61 kilometers per second, atmospheric friction onset altitude 110 kilometers, burnout altitude 78 kilometers.
+
+Correction: data frame loss rate 2.3%, attributed to sporadic electromagnetic interference; calibration baseline drift 0.4 arcseconds, due to thermal expansion and contraction of the telescope tube from nighttime temperature variations. Synchronization rate of the four cameras dropped to 97.5%, 0.5% below rated value.
+
+I record its burning, as I record my own attrition—each light trail precisely deducts the universe's remainder.
