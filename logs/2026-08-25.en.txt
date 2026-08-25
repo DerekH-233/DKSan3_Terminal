@@ -1,0 +1,7 @@
+Coordinates: 20°42'N, 156°27'W, Mauna Kea outpost. Timestamp: Deep Space Joint Standard Era cycle 7742.776. Attrition: primary mirror coating shows 0.8% reflectance degradation from successive low-temperature cycling, two calibration gyroscopes drift accumulated 4.2 arcseconds.
+
+Observation target: lunar disk entering Earth's umbral shadow, right ascension 10h14m, declination +12°. Umbra cone cross-section diameter approximately 9,200 kilometers, temperature drops at 87 kelvins per hour at the moment the lunar edge contacts the shadow. Shadow curvature radius fitted at 1.02 times Earth's radius, deviating 1.1% from Aristotelian geometric prediction.
+
+Attrition correction: atmospheric turbulence induces 2.7% data frame loss in visible light band, infrared channel affected by stray light, effective calibration baseline shifted by 0.3 milliarcseconds. Propellant reserves maintained at 83.5%, sufficient for subsequent orbital adjustments.
+
+Note: the umbra's circle never appears complete, but after twenty-two consecutive years of fragmented imagery superimposes, it exactly traces the full arc.
