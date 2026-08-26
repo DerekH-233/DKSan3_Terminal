@@ -1,0 +1,7 @@
+Coordinate fix: 19 degrees 49 minutes north, 155 degrees 28 minutes west, Mauna Kea forward outpost. Time stamp: Deep Space Joint Standard period 7742.779. Attrition: infrared mask edge radiation shielding layer degraded 0.8%, NIRCam filter wheel drive shaft friction coefficient risen to 0.14.
+
+Observation target: Lion's Head Nebula (NGC 2392), right ascension 7 hours 29 minutes, declination plus 20 degrees 54 minutes. White dwarf core surface temperature approximately 84,000 Kelvin, surrounding ionized gas expansion velocity 49.6 kilometers per second, outer shell carbon-to-oxygen abundance ratio 2.3 to 1. This observation focuses on turbulent structures at the junction between the ionized front and neutral gas in the nebula's nasal region; no repetition of previous day's overall morphology data.
+
+Correction: MIRI mid-infrared channel sensor thermal noise increased to 12.4 millikelvin, data frame loss rate 1.7%; optical element refractive index degraded 0.03%, causing short-wavelength endpoint positioning deviation of 0.4 arcseconds. Calibration baseline drift 0.02 milliarcseconds, incorporated into astrometric model.
+
+Note: The breath a dying star leaves behind travels through this observation room's porthole longer than the light it cast while alive.
