@@ -1,0 +1,7 @@
+Coordinates: 24 degrees 37 minutes south latitude, 70 degrees 24 minutes west longitude, Paranal Outpost. Timestamp: Deep Space Joint Standard Time cycle 7742.786. Attrition: radiation shielding degradation 0.8%, optical element refractive index attenuation 1.1%.
+
+Observation target: stellar trails near the south celestial pole, right ascension 0 hours 0 minutes, declination minus 89 degrees 16 minutes. This observation uses a fixed tripod with continuous exposure, single frame 25 seconds, stacking 300 frames. Earth's rotation causes surface linear velocity 1530 kilometers per hour, stellar trail angular velocity 0.0042 degrees per second, arc curvature radius perfectly matching the focal plane.
+
+Correction: during stacking, data frame loss 2.3%, calibration baseline drift 0.7 arcseconds, sensor thermal noise equivalent temperature rise 12 kelvin. Effective angular resolution reduced to 2.1 arcseconds, edge frame stellar point ellipticity deviation 3.0%.
+
+The arcs congeal into concentric rings in the dark night, like time pressed into metallic foil, slowly curling into an eternal shape.
