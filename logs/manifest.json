@@ -1,5 +1,13 @@
 [
   {
+    "date": "2026-09-01",
+    "title": "平面月食",
+    "title_en": "A Plane Lunar Eclipse",
+    "img": "https://apod.nasa.gov/apod/image/2608/PlaneEclipse_Ferreira_1059.jpg",
+    "nasa_title": "平面月食",
+    "nasa_title_en": "A Plane Lunar Eclipse"
+  },
+  {
     "date": "2026-08-31",
     "title": "罗马空间望远镜发射",
     "title_en": "Launch of the Roman Space Telescope",
