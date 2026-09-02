@@ -1,5 +1,13 @@
 [
   {
+    "date": "2026-09-02",
+    "title": "日食与文化",
+    "title_en": "Solar Eclipses and Culture",
+    "img": "https://apod.nasa.gov/apod/image/2609/colors_of_eclipse_1024.jpg",
+    "nasa_title": "日食与文化",
+    "nasa_title_en": "Solar Eclipses and Culture"
+  },
+  {
     "date": "2026-09-01",
     "title": "平面月食",
     "title_en": "A Plane Lunar Eclipse",
