@@ -1,0 +1,7 @@
+Coordinates: Deep-space outpost XZ-9, equatorial mount elevation correction complete. Timestamp: Deep-space joint standard time period 7742.818, UTC Wednesday. Attrition: radiation shielding degradation 2.1%, optical element refractive index attenuation 0.4%, sensor thermal noise rising to 1.7 times baseline.
+
+Observation target: Andromeda XZ, right ascension 23 hours 44 minutes 12 seconds, declination positive 39 degrees 09 arcminutes. Binary star system, primary star spectral type B8, surface temperature 12,500 Kelvin, companion star spectral type G0, surface temperature 5,900 Kelvin. Orbital inclination 87.3 degrees, near-edge-on view almost lateral. This period captured primary eclipse minimum, light curve amplitude drop 1.42 magnitudes, lasting 6.2 hours. System suspected of two additional companion stars perturbing orbital phase, period offset error 0.003 days.
+
+Correction: data frame loss rate 3.7%, calibration baseline drift 0.02 arcseconds, electromagnetic interference peak frequency band exceeding threshold by 12 minutes. Polarimetric measurement effective data recovery to 91%, light curve fit residual standard deviation 0.008 magnitudes.
+
+Note: that faint flicker is not a blink, but two stars exchanging a small patch of light within each other's gravitational cage.
