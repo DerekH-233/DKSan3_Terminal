@@ -1,0 +1,7 @@
+Coordinate location: 43 degrees 02 minutes north, 087 degrees 15 minutes west, deep-space outpost DS-7742. Timestamp: Deep Space Union Standard Era cycle 7742.820. Attrition list: outer radiation shielding degraded 0.8%, sensor thermal noise elevated by 2.1 units, optical element refractive index attenuated by 1.4%.
+
+Observation target: LDN 1295 dark nebula, right ascension 03 hours 42 minutes, declination plus 62 degrees 18 minutes, direction of Cassiopeia. This object is a cataloged entry in the Lynds Dark Nebula catalog, composed of dust and gas, emitting no visible light, rendered visible only by obscuring background stars. In the field of view, stellar point density in the cloud core region drops to 11% of the surrounding area, extinction shows a gradient distribution, diffuse at the edges, dense at the center.
+
+Attrition correction: thermal noise superposition has raised the data frame loss rate of the polarization measurement channel to 17.3%. Calibration baseline drift 0.0042 arcminutes, relocked by reference star. Radiation shielding degradation does not currently affect imaging in this band, outer panel replacement expected before cycle 7810.
+
+The cloud itself does not shine; its form is defined only by the light it blocks. The same holds for the observer — what we can describe of ourselves is mostly those things that failed to pass through us.
