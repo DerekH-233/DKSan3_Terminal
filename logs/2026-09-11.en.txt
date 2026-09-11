@@ -1,0 +1,7 @@
+Coordinates: 29 degrees 14 minutes south, 27 degrees 08 minutes east, deep-space outpost KX-11. Timestamp: Deep Space Union Standard Era cycle 7742.823. Attrition list: cumulative radiation shielding degradation 1.4%, sensor thermal noise risen to 2.3 times baseline, optical array third-quadrant refractive index attenuation 0.6%.
+
+The observation target for this session is M83, the Southern Pinwheel Galaxy, right ascension 13h 37m 00s, declination minus 29 degrees 51 minutes 56 seconds. The galaxy is about 40,000 light-years in diameter, 12 million light-years from this outpost, and belongs to the Hydra-Centaurus group. Its spiral arms are traced by dark dust lanes and blue star clusters, and the red star-forming regions scattered among them have earned it the alias "Thousand-Ruby Galaxy." The galactic core region is abnormally concentrated in brightness, accounting for about 12% of the galaxy's total luminosity.
+
+Attrition correction: the data frame loss rate for this observation is 4.1%, arising from third-quadrant optical component degradation combined with thermal noise interference. Calibration baseline drift 0.8 milliarcseconds, already compensated via dark-frame correction. In polarimetry, valid frames account for 68%, and data completeness at the outer edge of the spiral arms is about 9 percentage points lower than at the inner edge.
+
+The red dots on the spiral arms are not gems, but time that has not yet cooled. I calibrate them with 7742 cycles; they calibrate me with tens of millions of years.
