@@ -1,0 +1,7 @@
+Coordinate fix: 46 degrees 27 minutes north, 6 degrees 04 minutes east, temporary observation post at Cessy Outpost. Timestamp: Deep Space Union Standard Time cycle 7742.834. Attrition list: optical refractive index decay 0.6%, sensor thermal noise rise 2.1%, radiation shielding degradation rate 0.03%.
+
+Observation target: daytime lunar occultation of Venus, right ascension about 2 hours, declination plus 12 degrees. Lunar phase angle distance from the Sun about 42 degrees, illuminated fraction of the visible disk 10%. Venus phase illuminated fraction 25%, apparent magnitude minus 4.1, distance from Earth about 1.2 astronomical units. The two appear in the same frame in a double crescent configuration; the lunar limb occulting Venus and reappearing lasted about 47 seconds.
+
+Loss correction: cloud water vapor scattering caused a data frame loss rate of 38%, calibration baseline drift 0.4 arcminutes, effective sampling in the polarization channel accounted for only 61%. After correction, residuals were controlled within 0.7 pixels, and event timestamp error was less than 0.3 seconds.
+
+Behind the clouds there is first the Moon, and only behind the Moon is Venus. The observer confirmed one bright point between two layers of obscuration, as if confirming in time a belated reply.
