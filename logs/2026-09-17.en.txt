@@ -1,0 +1,7 @@
+Coordinates: 24 degrees 37 minutes south, 70 degrees 24 minutes west, deep-space outpost DSU-9. Timestamp: Deep Space Union Standard Era 7742.840. Attrition list: radiation shielding degradation 0.4%, optical element refractive index attenuation 1.2%, sensor thermal noise rising to 2.3 times the baseline value.
+
+Carina Nebula dust pillar, right ascension 10 hours 45 minutes, declination minus 59 degrees 52 minutes. Approximately 7,500 light-years from Earth. The pillar is composed of interstellar gas and dust, shaped by the stellar winds and radiation of the neighboring Carina eta star system, whose luminosity exceeds five million suns. The star cluster within the pillar contains about seventy stars, and their radiation is eroding the pillar head, forming a box-lid-opening structure. James Webb Space Telescope near-infrared imaging, spatial resolution approximately 0.1 arcseconds.
+
+Attrition correction: thermal noise causes a data frame loss rate of 4.1%. Calibration baseline drift 0.7 arcseconds, realignment completed. Refractive index attenuation causes blue-end flux to be low by 3.8%, spectral calibration compensation planned for later.
+
+I counted seventy-four stars, four more than the catalog. Perhaps four of them were only just seen on the way here.
