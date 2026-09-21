@@ -1,0 +1,7 @@
+Coordinate fix: 41 degrees 23 minutes north, 112 degrees 07 minutes west, outpost designation PROMETHEUS-9. Timestamp: Deep Space Union Standard Era cycle 7742, subcycle 851. Attrition list: outer radiation shielding degraded by 0.8 square centimeters, optical element refractive index attenuated to 99.2 percent, propellant remaining reduced to 71.4 percent of rated value.
+
+Observation target: wide-field regime of the Cocoon Nebula, right ascension 21 hours 53 minutes, declination plus 47 degrees 16 minutes. Composite emission and reflection region, central bright core approximately 10 light-years in diameter, dark dust tail extending to the left nearly 100 light-years, overall structure presenting a cometary morphology in two-dimensional projection. Background star field density approximately 3800 per square degree, nebula distance from this observatory approximately 2500 light-years.
+
+Attrition correction: data frame loss rate for this observation 6.3 percent, primarily due to sensor thermal noise accumulating over long exposure. Calibration baseline drift 0.04 arcseconds, electromagnetic interference rendered three frames of polarization data invalid. Infrared channel signal-to-noise ratio fell to 14.7 decibels, dark-frame compensation required in the next cycle.
+
+The dust tail and the bright core share the same velocity vector, yet are compressed by 2500 light-years of distance into a comma. The comet I see may be only the profile of light in time.
