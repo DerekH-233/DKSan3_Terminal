@@ -1,0 +1,7 @@
+Coordinate positioning: 36 degrees 27 minutes north latitude, 117 degrees 09 minutes west longitude, Death Valley Outpost. Timestamp: Deep Space Union Standard Era 7742.856. Attrition list: radiation shielding degradation 0.4%, optical component refractive index decay 1.2%, sensor thermal noise elevated to 2.7 times the baseline value.
+
+Observation target: the new lunar crater McGaichin. The crater is located in the mid-latitude region of the lunar near side, with a diameter of about 210 meters, equivalent to the span of two football fields. The impactor size was 10 to 20 meters, with composition determined as iron-nickel or a carbonaceous cometary nucleus, and impact kinetic energy equivalent to about 3.1 kilotons of TNT. Thermal imaging of the crater rim shows a surrounding low-temperature anomaly zone, with temperatures 17 kelvin lower than the lunar surface average, and the cooling radius extending to about 1.4 kilometers outside the crater.
+
+Attrition correction: this data frame loss rate was 8.3%, originating from automatic gain misadjustment triggered by an abrupt change in lunar albedo. Calibration baseline drift 0.7 milliarcseconds, thermal control component degradation 2.1%. Reflection from crater rim ejecta interfered with the polarization channel, and valid frames accounted for 71% of the total.
+
+An impact of this scale appears only once every 132 years, and I happened to record it during my watch period. The probability itself is also a kind of coordinate.
