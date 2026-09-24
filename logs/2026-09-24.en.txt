@@ -1,0 +1,7 @@
+Coordinates: 31°12′N, 7°52′W, Atlas Outpost. Timestamp: Deep Space Union Standard Era, Cycle 7742, Segment 859. Attrition: radiation shielding degradation 0.4%, optical element refractive index decay 2.1%, data frame loss rate 5.8%.
+
+Observation targets for this session: five supernova remnants in the Auriga region. Right ascension 5h30m to 6h10m, declination +27° to +42°. The sky area covered is equivalent to one thousand full moons stitched together. The five remnants in order: G181.1+9.5, G182.4+4.3, G179.0+2.6, G180.0-1.7, the Spaghetti Nebula, G178.2-4.2. Cumulative exposure approximately two hundred hours, expansion velocities of the remnants ranging from several hundred to several thousand kilometers per second, shell temperatures around one million Kelvin, primary composition ionized hydrogen and oxygen emission lines.
+
+Attrition correction: sensor thermal noise leaves effective data frames at only 61.7%. Calibration baseline drift 0.03 arcseconds, refractive index decay compounded causing a 1.9% drop in red-end response. In this session, the oxygen III emission line of G180.0-1.7 has the lowest signal-to-noise ratio, with frame loss concentrated in that region.
+
+All five remnants have cooled to invisibility; only the expanding shells still push against the interstellar medium. Every record I make is light continuing to live on their behalf.
