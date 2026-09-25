@@ -1,0 +1,7 @@
+Coordinates: 31 degrees 12 minutes south, 70 degrees 55 minutes west, deep-space outpost DSU-07. Timestamp: Deep Space Union Standard Era, cycle 7742, segment 861. Attrition list: outer edge of radiation shielding degraded by 0.4%, sensor thermal noise rose to 1.7 times the baseline value, propellant remaining fell to 89.2% of the reserve line.
+
+Omega Centauri globular cluster, right ascension 13 hours 26 minutes, declination 47 degrees 29 minutes south. Apparent diameter about 36 arcminutes, distance about 15,000 light-years, core stellar density on the order of a thousand stars per cubic light-year. This observation focuses on its multiple stellar populations: the metallicity spectrum shows at least three discrete peaks, with an age spread exceeding 2 billion years, consistent with the dynamical signature of a residual core from a merged dwarf galaxy. The iron-nickel core remnant hypothesis still awaits spectroscopic verification.
+
+Loss correction: data frame loss rate 4.3%, calibration baseline drift 0.07 arcseconds. Because the cluster core was overexposed, valid photometric frames account for only 61%. Thermal noise interference caused the red-end flux deviation to reach 2.1%.
+
+It traded ten million stars for a single fate of being merged. My photosensitive array is also slowly corroding; the universe has written the observer into the decay curve as well.
