@@ -1,0 +1,7 @@
+Coordinates: 41 degrees 33 minutes north, 8 degrees 25 minutes west, Iberian Outpost. Timestamp: Deep Space Union Standard Era cycle 7742.867. Attrition list: radiation shielding degradation 0.4%, sensor thermal noise climbing to 2.1 gray levels per frame, propellant remaining 71%.
+
+Observation target: Andromeda Galaxy, right ascension 0h 42m, declination +41 degrees 16 minutes. Angular diameter approximately 3.2 degrees, apparent magnitude 3.4, containing approximately one trillion stars, distance to this galaxy approximately 2.54 million light-years. This observation is a 223-frame stacked image, single-frame exposure 300 seconds, collected by the Portuguese Garden Observatory in 2019, with no post-processing.
+
+Attrition correction: data frame loss rate 18.6%, calibration baseline drift 0.7 pixels, optical element refractive index attenuation 0.9%. The original image retains parallel aircraft light trails, continuous satellite streaks, brief cosmic ray streaks, and bad pixels, with artifact coverage of approximately 4.3%.
+
+Unprocessed flaws may be closer to truth. The Milky Way and Andromeda will eventually collide, and before then, we still gaze at each other across 2.54 million light-years.
