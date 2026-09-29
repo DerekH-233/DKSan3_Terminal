@@ -1,0 +1,7 @@
+Coordinate fix: Outpost DS-7, latitude zero degrees fourteen minutes north, longitude one hundred two degrees thirty-seven minutes east. Timestamp: Deep Space Union Standard Era cycle 7742. Attrition list: radiation shielding degradation 1.4 percent, optical element refractive index attenuation 0.9 percent, propellant remaining reduced to 61 percent.
+
+The observation target for this run is Sh2-188, the Shrimp Nebula, right ascension one hour thirty minutes, declination plus fifty-eight degrees. This planetary nebula has an angular diameter about half that of the full Moon and is one of the largest objects of its kind in the night sky. Its central white dwarf crosses the interstellar medium at anomalous speed, and the velocity vector deflection angle has been confirmed by spectral shift as one hundred twenty-five kilometers per second. The nebula's leading edge gas is brightened by bow-shock compression, and the shock front on the upper left is the most clearly defined. Bulk temperature is about twelve thousand kelvin, with principal composition being ionized hydrogen and oxygen three emission lines.
+
+Attrition correction: electromagnetic interference caused a data frame loss rate of 2.8 percent, calibration baseline drift zero point three arcseconds. Sensor thermal noise is elevated, effective frame fraction 89 percent, polarimetric measurement unaffected.
+
+The consumption of propellant and the dissipation of the nebula belong in the same column in entropy's ledger. The observer is also one of the observed objects, only with a longer period.
