@@ -1,0 +1,7 @@
+Coordinates: 41 degrees 12 minutes north, 112 degrees 48 minutes east, Inner Mongolia Dark Night Outpost. Timestamp: Deep Space Union Standard Time cycle 7742.881. Attrition list: radiation shielding degradation 0.4%, sensor thermal noise rising to 3.2 electrons per pixel, propellant remaining down to 61.8%.
+
+Observation target: full sample of the Sharpless catalog, right ascension 18 hours 00 minutes to 06 hours 00 minutes, declination minus 20 degrees to plus 45 degrees, covering 313 H II regions, planetary nebulae, and supernova remnants. This run switched to a narrowband hydrogen-alpha channel, recording ionized hydrogen shell flow velocity at 30 kilometers per second, the expansion shell temperature of the Bridle Nebula Sh2-240 at approximately 12,000 kelvin.
+
+Attrition correction: narrowband filter refractive index attenuation 2.1%, data frame loss rate 17%, calibration baseline drift 0.03 arcminutes. Of the 313 targets, 287 were validly imaged, and the Aquila and Orion regions require a second coverage pass. Sensor dark current still contributes 0.7% noise per frame in a minus 40 degree environment.
+
+Three hundred and thirteen nebulae enter the frame at once, while I needed 7742 cycles to barely see clearly the one I am in.
