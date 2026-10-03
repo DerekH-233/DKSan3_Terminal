@@ -1,0 +1,7 @@
+Coordinate fix: Mars north latitude 5 degrees 04 minutes, east longitude 137 degrees 25 minutes, outpost designation VERA-RIM. Timestamp: Deep Space Union Standard Era cycle 7742.883. Attrition list: radiation shielding degradation rate 0.8% per thousand cycles, electromagnetic interference raising sensor thermal noise to 3.2 millikelvin.
+
+The observation target for this cycle is the image data block returned by the Mars Reconnaissance Orbiter; the target body is Mars itself, right ascension 10 hours 44 minutes, declination plus 11 degrees 02 minutes. Physical parameters: Mars rotation period 24 hours 39 minutes 35 seconds, 40 minutes longer than the Earth standard day. The imaging platform is the Curiosity rover, mass 899 kilograms, located at the southern edge of Vera Rubin Ridge, operating sol 1943, corresponding to Earth calendar 23 January 2018. Image composition: 61 frames captured by the robotic arm lens imager, merged into a 360-degree panorama, arm frames removed, background taken from sol 1903 mast camera.
+
+Attrition correction: downlink data frame loss rate 4.1%, calibration baseline drift 0.03 arcseconds, optical element refractive index decay 0.7%. This cycle's decoded valid frame proportion is 95.9%, thermal noise contributes a 0.4% deviation to dark-field correction.
+
+It takes its own portrait on the red dust, while my sensor array, across hundreds of millions of kilometers, rereads the same belated light.
