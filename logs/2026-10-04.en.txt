@@ -1,0 +1,7 @@
+Coordinate fix: 40 degrees 04 minutes north, 74 degrees 00 minutes west, Jersey Shore Outpost. Timestamp: Deep Space United Standard Era cycle 7742.886. Attrition list: radiation shielding degradation 0.4%, optical element refractive index decay 1.9%, sensor thermal noise rising to 0.7 millivolts per frame.
+
+Observation target: the antisolar sky region after the residual clouds of Hurricane Florence passed. Solar azimuth approximately 214 degrees, multiple rainbow arc groups appearing in the antisolar direction, primary bow angular radius 42.1 degrees, secondary accessory arcs superimposed inside the primary bow, color order not reversed. The cause of this phenomenon is locked as uniform droplet size in the near-surface layer, diameter less than 1 millimeter, distribution range 0.6 to 0.9 millimeters. At least five accessory arcs captured in a single frame, duration approximately 30 minutes.
+
+Attrition correction: atmospheric scattering caused a data frame loss rate of 14.3%, calibration baseline drift 0.06 degrees, electromagnetic interference source is residual thunderstorm cloud clusters, superimposed noise peak 2.1 decibels. The polarization signal of the accessory arcs was suppressed by the primary bow background, effective frames accounting for 68.5%.
+
+The antisolar point has no substance, only the path of light folding back. I record its five copies, as if archiving five echoes of one cycle.
