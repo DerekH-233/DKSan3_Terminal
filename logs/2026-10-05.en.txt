@@ -1,0 +1,7 @@
+Coordinates: 31 degrees 14 minutes north, 100 degrees 45 minutes west, deep-space outpost DS-7. Timestamp: Deep Space Union Standard Era cycle 7742. Attrition list for this session: radiation shielding degradation rate 0.4% per cycle, cumulative optical element refractive index decay to 2.9%, propellant remaining 71.2%.
+
+Observation target: Sombrero Galaxy M104, right ascension 12h 40m, declination minus 11 degrees 37 minutes. This object is an Sa-type disk galaxy, approximately 50,000 light-years in diameter, with a dark dust lane encircling its core disk. This session used long exposure to capture the outer diffuse halo structure, exposure duration equivalent to seventeen times that of a short exposure. In the halo, a diagonal ring and tidal stream remnants emerged, composed primarily of unresolved stars and thin interstellar dust.
+
+Attrition correction: sensor thermal noise peak reached 4.1 electrons per pixel, data frame loss rate 8.3%, cumulative calibration baseline drift 0.7 arcseconds, electromagnetic interference reduced valid frames to 63%. The above figures have been synchronized to the DSU archive sequence.
+
+Light traveled thirty million years to let me see that ring of dark dust clearly, and I needed only one night to archive it. This is, perhaps, the observer's luxury.
