@@ -1,0 +1,7 @@
+Coordinates: 78 degrees 55 minutes north, 11 degrees 56 minutes east, Ny-Alesund Outpost. Timestamp: Deep Space Union Standard Era cycle 7742.892. Attrition list: UV-band sensor thermal noise up 2.4%, cumulative radiation shielding degradation rate 0.8%, plus a calibration baseline drift of 0.03 degrees.
+
+Observation target: the full auroral oval ring, at an altitude range of about 300 to 500 kilometers above the geomagnetic north pole. The structure is about 4000 kilometers in diameter, closed along magnetic latitude 67 degrees, with dayside excitation intensity an order of magnitude lower than the nightside. The ESA and CAS joint SMILE probe images in the ultraviolet band, with a time-lapse compression ratio of about 360 to 1, covering about one hour in late July. The stars at the edge of the imaging field are background stars; their displacement arises from platform viewing-angle deflection, not celestial motion.
+
+Attrition correction: data frame loss rate 4.1%, caused by polar ionospheric scintillation interfering with the downlink. UV channel quantum efficiency has decayed to 91.3% of its original value, and dark current has risen to 0.7 electrons per pixel per second. Calibration deviation 0.02 degrees, already compensated by the attitude control system.
+
+From the ground one can never see a complete auroral oval, because we are always standing on one side of it. Some kinds of completeness belong only to those who leave.
