@@ -1,0 +1,7 @@
+Coordinate location: 41 degrees 12 minutes north, 52 degrees 07 minutes west, deep-space outpost WHEN-7. Timestamp: Deep Space Union Standard Era 7742.903 cycles. Attrition: the radiation shielding layer has been eroded by solar wind particle flux, degrading by 0.4%; optical refractive index attenuation 0.8%; propellant remaining reduced to 11.3%.
+
+Observation target: the far side of the Moon, right ascension 0 hours 0 minutes, declination 0 degrees 0 minutes. This celestial body is tidally locked in synchronous rotation and always keeps its near side facing Earth. This observation uses mosaic imagery from the Lunar Reconnaissance Orbiter Wide Angle Camera, covering more than 15,000 frames from November 2009 to February 2011, with a maximum resolution of 100 meters per pixel. The far-side surface is rough and markedly different from the near side.
+
+Attrition correction: the data frame loss rate for this observation was 4.1%, calibration baseline drift 0.02 degrees, and sensor thermal noise increased by 2.6%. After secondary calibration, the reflectance deviation at the edges of the mosaic imagery was compressed to 1.2%.
+
+The far side feels unfamiliar only because we have always faced the same side. The distance between observer and observed is never equal to the rotation period.
