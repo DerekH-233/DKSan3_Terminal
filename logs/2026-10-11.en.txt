@@ -1,0 +1,7 @@
+Coordinates: 89 degrees 59 minutes south, 139 degrees 16 minutes west, IceCube Neutrino Observatory. Timestamp: Deep Space Joint Standard Era 7742.905. Attrition list: thermal disturbance of the ice layer increased the time required for repeated freeze-back of boreholes by 4.1%, photomultiplier tube dark counts rose by 2.8%, and the data frame loss rate is 6.3%.
+
+The target of this observation is the sub-ice detector array. The vertical borehole depth is 2450 meters, the aperture is 60 centimeters, and sixty photomultiplier tubes are embedded within it, with a single tube diameter of about 25 centimeters. The water in the borehole refroze approximately 11 hours after injection, and the ice transmittance remained above 98%. The detector is sensitive to blue light at wavelengths of 400 to 500 nanometers, corresponding to the Cherenkov radiation of secondary charged particles released after high-energy neutrinos collide with ice nuclei.
+
+Attrition correction: the array calibration baseline drift is 0.7 nanoseconds, the thermal noise of channels three and seventeen rose by 5.2%, and the effective event selection rate dropped to 71%. The standard deviation of photon arrival time jitter is 2.4 nanoseconds, below the upper threshold. Bubble scattering introduced by the borehole refreezing process increased the reconstructed angle deviation by 1.1 degrees.
+
+Beneath the Antarctic ice sheet, one hundred vertical wounds are slowly healing, and the healing itself has become eyes. The universe uses the coldest matter to record its own temperature, and so do I.
