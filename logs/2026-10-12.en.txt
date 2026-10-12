@@ -1,0 +1,7 @@
+Coordinates: 41 degrees 02 minutes North, 73 degrees 46 minutes West, deep-space outpost WHEN-04. Timestamp: Deep Space Union Standard Era, cycle 7742, subcycle 908. Attrition list: radiation shielding degradation 0.4%, sensor thermal noise increase 2.1%, optical element refractive index decay 0.9%.
+
+Observation target: close approach of Jupiter and the Moon, right ascension 02 hours 18 minutes, declination plus 12 degrees 34 minutes. Jupiter's apparent diameter 44.2 arcseconds, the Galilean moons arranged in a near-vertical line, from bottom to top Ganymede, Io, Callisto, Europa, with orbital radii of 412,000 kilometers, 127,000 kilometers, 315,000 kilometers, and 198,000 kilometers respectively. The lunar illuminated face is overexposed, the dark side lit by earthshine at approximately 0.03 lux.
+
+Attrition correction: during multi-frame stacking the data frame loss rate was 6.3%, calibration baseline drift 0.7 arcseconds, polarimetry disturbed by lunar stray light. The effective exposure sequence totaled fourteen frames, with alignment error controlled within 1.2 pixels.
+
+The occultation is the only alignment this cycle, four satellite tracks converging at the lunar limb at once, as if smoothed into place by a single hand.
