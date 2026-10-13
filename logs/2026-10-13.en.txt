@@ -1,0 +1,7 @@
+Coordinates: 24 degrees 37 minutes south, 70 degrees 24 minutes west, Atacama Outpost DSU-11. Timestamp: Deep Space Union Standard Era cycle 7742. Attrition list: radiation shielding degradation 0.8%, sensor thermal noise increase 12%, data frame loss rate 4.1%.
+
+Observation target for this cycle: the Milky Way's dark lane band, right ascension 13 hours 27 minutes, declination minus 11 degrees. This structure is a dust-dense region extending along the galactic plane, approximately several thousand light-years in length, obscuring the stellar radiation behind it, temperature approximately 15 Kelvin, composition primarily silicates and ice grains. Foreground: a stepped sculpture in the Chilean desert, height approximately several meters, material weathering steel, surface shows signs of oxidation.
+
+Attrition correction: calibration baseline drift 0.3 milliarcseconds, optical element refractive index attenuation 1.7%. Zodiacal light interferes with polarimetry, effective frame rate 78%. The star Spica lies within the zodiacal light band, its brightness contribution superimposes and must be removed. Thermal noise reduces background signal-to-noise ratio to 6.2 decibels.
+
+The steps raise a person only several meters, while the galactic plane dust band spans tens of thousands of light-years. This cycle I record not the entrance to heaven, but the path by which light is consumed before arrival.
