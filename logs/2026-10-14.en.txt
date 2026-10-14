@@ -1,0 +1,7 @@
+Coordinates: 36 degrees 27 minutes north, 117 degrees 09 minutes west, Death Valley Observation Station. Timestamp: Deep Space United Standard Era cycle 7742.913. Attrition: radiation shielding degradation 0.8%, sensor thermal noise increase 2.1%, propellant remaining reduced to 71.4%.
+
+Observation target: Mars and the Beehive Cluster M44, right ascension 08h 40m, declination plus 19 degrees 40 minutes. Above Ranfjället, Sweden, a curtain of aurora stretches across, the planet and the open cluster juxtaposed beneath the curtain. A solar eruption reached Earth on October 10, 2026, the magnetosphere was disturbed, high-energy particles struck atmospheric molecules, and energy was released in the form of aurora. The Sámi call it guovssahasat, regarding it as something to be treated with respect. This observation takes no spectrum, recording only spatial relationships and particle flux intensity.
+
+Attrition correction: ionospheric disturbance caused a data frame loss rate of 14.2%, calibration baseline drift 0.3 arcseconds, optical element refractive index attenuation 1.6%. The auroral background expanded the magnitude measurement deviation of cluster member stars to 0.05 magnitude.
+
+Attrition is one-directional, while light had already traversed that distance for us before it arrived.
