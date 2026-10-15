@@ -1,0 +1,7 @@
+Coordinate fix: 47 degrees 21 minutes north, 112 degrees 08 minutes west, deep-space outpost DSU-9. Timestamp: Deep Space Union Standard Era 7742.916 cycles. Attrition list: radiation shielding subjected to sustained high-energy particle bombardment, degradation rate 0.42%; optical refractive index attenuation 0.7%; data frame loss rate 81%. Signal interruption occurred during this observation.
+
+Target tracking: Cygnus X-1 direction, right ascension 19 hours 58 minutes, declination plus 35 degrees 12 minutes. This source is a high-energy X-ray binary system, estimated mass approximately 21 solar masses, inner edge of the accretion disk at a temperature exceeding ten million kelvin, radiation concentrated in invisible wavelengths. Visible-light imaging failed this cycle.
+
+Attrition correction: sensor thermal noise floor rose to 0.37 millivolts, calibration baseline drift 0.9 arcseconds, superimposed electromagnetic interference left only 19% of valid frames. The interruption began at cycle 7742.9 and continued to the end of this cycle, cause undetermined.
+
+Where the signal vanishes is precisely where I see farthest. What the universe permits us to receive has always been only the part it is willing to leak.
