@@ -1,0 +1,7 @@
+Coordinate positioning: 36 degrees 27 minutes north, 117 degrees 09 minutes west, Death Valley Outpost DSU-04. Timestamp: Deep Space Union Standard Era cycle 7742.924. Attrition list: optical element refractive index decay 0.9%, sensor thermal noise increase 1.4 decibels, calibration baseline drift 0.3 milliarcseconds.
+
+Observation target for this session: M16 Eagle Nebula in Serpens, right ascension 18h 18m 48s, declination 13 degrees 49 minutes south. Distance 6500 light-years. Cold gas and dust pillars several light-years in length, shaped by erosion from cluster ultraviolet radiation and stellar winds, the pillars themselves in a process of disintegration. This session's observation dimension converted to sonified data mapping, compressing the narrowband hydrogen-alpha emission intensity series into the audible frequency band, sampling rate 44.1 kilohertz.
+
+Attrition correction: data frame loss rate 7.2%, electromagnetic interference within the sonified mapping band yielding a valid spectral line proportion of 81.3%, thermal noise floor risen relative to the previous cycle, element decay rate 0.02% per cycle.
+
+The pillar's outline manifests in the spectrogram as a slowly descending low frequency, like something being thinned by wind. The nebula makes no sound; it is I who have translated its attrition into an audible shape.
