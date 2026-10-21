@@ -1,0 +1,7 @@
+Coordinate fix: 38 degrees 12 minutes north, 112 degrees 07 minutes west, Deep Space Joint Outpost KX-9. Timestamp: Standard Era 7742.933. Attrition this cycle: radiation shielding degradation rate 0.04 millimeters per cycle, sensor thermal noise floor up 12.6%, propellant remaining down to 61.3%.
+
+Observation target: the star field near Gamma Cassiopeiae, right ascension 00 hours 56 minutes, declination plus 60 degrees. The twin nebulae IC 59 and IC 63, hydrogen gas excited by the high-energy radiation of this multiple-star system, showing red emission lines, dust scattering blue-white starlight. Newly discovered targets 1 through 3 appear as blue ghosts, their spectral lines indicating ionized oxygen. Cumulative observation time this run 100 hours, with an oxygen narrowband filter installed. The star field lies at a distance of about 610 light-years.
+
+Attrition correction: data frame loss rate under narrowband filtering 37.4%, calibration baseline drift 0.8 arcseconds, refractive index decay of optical elements 2.1%. The excitation mechanism of the ionized oxygen sources remains undetermined, data confidence 71%.
+
+Three blue ghosts hang at the edge of the red mist, like three breaths someone exhaled into the nebula, and to this day no one has found the mouth that breathed them.
