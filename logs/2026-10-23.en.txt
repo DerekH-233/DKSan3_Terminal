@@ -1,0 +1,7 @@
+Coordinate fix: Orion Arm outer third outpost, designation DSU-OP3, latitude 41 degrees 17 minutes north, longitude 108 degrees 44 minutes east. Timestamp: Deep Space Union Standard Era cycle 7742.938. Attrition list for this cycle: radiation shielding degradation rate rose to 0.42 millimeters per cycle, refractive index of optical array group three attenuated by 1.8 percent, propellant reserve fell to 61.3 percent.
+
+Observation target: Cygnus X-1 direction, right ascension 19 hours 58 minutes, declination plus 35 degrees 12 minutes. This observation focuses on a broadband signal silence window lasting 4.6 seconds. The silence window begins at standard time 7742.938.217 and ends at 7742.938.221, covering the 1.4 to 8.4 gigahertz band. The surrounding background radio source flux density is stable at 2.7 janskys, with no anomalous absorption lines detected. The leading and trailing edges of the silence window are steep, with rise time shorter than 12 milliseconds.
+
+Attrition correction: data frame loss rate for this observation is 17.4 percent, arising from elevated sensor thermal noise background under low-temperature conditions. Calibration baseline drift of 0.0031 degrees has been forcibly zeroed against the reference star catalog. Electromagnetic interference forms a narrowband artifact at 3.2 gigahertz; after excision, valid samples account for 82.6 percent.
+
+In the intervals where the signal is missing, silence itself is also a measurable flux. I record its boundaries, as one records the last breath of a star before it goes dark.
