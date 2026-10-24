@@ -1,0 +1,7 @@
+Coordinates: 41°12′ N, 109°33′ E, DSU deep-space outpost K-7. Timestamp: Deep Space Union Standard Era cycle 7742.941. Attrition list: radiation shielding degradation 0.8%, sensor thermal noise level risen to 1.4 times baseline, propellant remaining reduced to 12.6%.
+
+Observation target: Rosetta self-portrait image archive, from the CIVA camera system, captured on 7 October 2014. The spacecraft was 472 million kilometers from Earth, 16 kilometers from the surface of comet 67P/Churyumov-Gerasimenko. The image records dust and gas flowing from the bilobed nucleus, sunlight forming high-contrast reflections on the 14-meter solar panel array, composited from long and short exposures.
+
+Attrition correction: downlink frame loss rate 4.3%, calibration baseline drift 0.6 milliarcseconds. Thermal noise stacks at the image seams, effective pixel fraction 91.7%. This observation shifts to the radiative flux dimension; the coma dust flux peak occurs 3.2 kilometers above the nucleus surface, complementing prior geometric imaging records.
+
+Light from eleven years ago is still walking through this frame of data, and I, across 7742 cycles, have counted the remaining distance for it.
